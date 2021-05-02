@@ -1,0 +1,6 @@
+framework module Pods_Bitirme_BitirmeUITests {
+  umbrella header "Pods-Bitirme-BitirmeUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}

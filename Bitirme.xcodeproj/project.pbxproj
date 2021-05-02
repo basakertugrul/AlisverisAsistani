@@ -1,0 +1,844 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 51;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1717715B262D02A400D90DA2 /* UImage+GIF.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1717715A262D02A400D90DA2 /* UImage+GIF.swift */; };
+		1717717A262D146C00D90DA2 /* funny.gif in Resources */ = {isa = PBXBuildFile; fileRef = 17177179262D146C00D90DA2 /* funny.gif */; };
+		172BD97926382CD600DCE4AE /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 172BD97826382CD600DCE4AE /* NetworkManager.swift */; };
+		172C27CD2629D56300BAF434 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 172C27CC2629D56300BAF434 /* AppDelegate.swift */; };
+		172C27CF2629D56300BAF434 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 172C27CE2629D56300BAF434 /* SceneDelegate.swift */; };
+		172C27D12629D56300BAF434 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 172C27D02629D56300BAF434 /* ViewController.swift */; };
+		172C27D42629D56300BAF434 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 172C27D22629D56300BAF434 /* Main.storyboard */; };
+		172C27D62629D56400BAF434 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 172C27D52629D56400BAF434 /* Assets.xcassets */; };
+		172C27D92629D56400BAF434 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 172C27D72629D56400BAF434 /* LaunchScreen.storyboard */; };
+		172C27E42629D56400BAF434 /* BitirmeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 172C27E32629D56400BAF434 /* BitirmeTests.swift */; };
+		172C27EF2629D56400BAF434 /* BitirmeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 172C27EE2629D56400BAF434 /* BitirmeUITests.swift */; };
+		172C28042629E68100BAF434 /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 172C28032629E68100BAF434 /* ProfileVC.swift */; };
+		172C28092629E75B00BAF434 /* SignInVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 172C28082629E75B00BAF434 /* SignInVC.swift */; };
+		172C280E2629E77D00BAF434 /* ForgotPasswordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 172C280D2629E77D00BAF434 /* ForgotPasswordVC.swift */; };
+		172C28132629E79A00BAF434 /* RegisterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 172C28122629E79A00BAF434 /* RegisterVC.swift */; };
+		172C28182629E7B400BAF434 /* ScanVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 172C28172629E7B400BAF434 /* ScanVC.swift */; };
+		172C281D2629E7F200BAF434 /* ProductVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 172C281C2629E7F200BAF434 /* ProductVC.swift */; };
+		172C28222629E8CD00BAF434 /* SeeAllCommentsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 172C28212629E8CD00BAF434 /* SeeAllCommentsVC.swift */; };
+		172C28272629E94F00BAF434 /* MakeCommentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 172C28262629E94F00BAF434 /* MakeCommentVC.swift */; };
+		175EA329263B7D93004BC583 /* RadioButtonController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 175EA328263B7D93004BC583 /* RadioButtonController.swift */; };
+		175EA33A263CA862004BC583 /* signInError.gif in Resources */ = {isa = PBXBuildFile; fileRef = 175EA339263CA862004BC583 /* signInError.gif */; };
+		177B41AC263DDC42000C9238 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = 177B41AB263DDC42000C9238 /* Product.swift */; };
+		17C0FC1B263D910A002F565E /* FavoritesCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C0FC1A263D910A002F565E /* FavoritesCollectionCell.swift */; };
+		17F7E06C263359FD006889F3 /* scanError.gif in Resources */ = {isa = PBXBuildFile; fileRef = 17F7E06B263359FD006889F3 /* scanError.gif */; };
+		17F7E07F26345918006889F3 /* LocationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17F7E07E26345918006889F3 /* LocationVC.swift */; };
+		642C95488EB0AB13F890857D /* Pods_Bitirme.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6958BC1367C4EA20C64B823E /* Pods_Bitirme.framework */; };
+		B38C7B420198C0C16FE09CB1 /* Pods_BitirmeTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E988B3CCFC697D66AB742104 /* Pods_BitirmeTests.framework */; };
+		D38BF30245E0D5F36CAA0E2A /* Pods_Bitirme_BitirmeUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E700A4E9DE869C914C379094 /* Pods_Bitirme_BitirmeUITests.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		172C27E02629D56400BAF434 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 172C27C12629D56300BAF434 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 172C27C82629D56300BAF434;
+			remoteInfo = Bitirme;
+		};
+		172C27EB2629D56400BAF434 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 172C27C12629D56300BAF434 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 172C27C82629D56300BAF434;
+			remoteInfo = Bitirme;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		0C9804B541317F7B66B3E17F /* Pods-Bitirme-BitirmeUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bitirme-BitirmeUITests.release.xcconfig"; path = "Target Support Files/Pods-Bitirme-BitirmeUITests/Pods-Bitirme-BitirmeUITests.release.xcconfig"; sourceTree = "<group>"; };
+		1717715A262D02A400D90DA2 /* UImage+GIF.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UImage+GIF.swift"; sourceTree = "<group>"; };
+		17177179262D146C00D90DA2 /* funny.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = funny.gif; path = ../../funny.gif; sourceTree = "<group>"; };
+		172BD97826382CD600DCE4AE /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		172C27C92629D56300BAF434 /* Bitirme.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Bitirme.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		172C27CC2629D56300BAF434 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		172C27CE2629D56300BAF434 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		172C27D02629D56300BAF434 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		172C27D32629D56300BAF434 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		172C27D52629D56400BAF434 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		172C27D82629D56400BAF434 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		172C27DA2629D56400BAF434 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		172C27DF2629D56400BAF434 /* BitirmeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BitirmeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		172C27E32629D56400BAF434 /* BitirmeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BitirmeTests.swift; sourceTree = "<group>"; };
+		172C27E52629D56400BAF434 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		172C27EA2629D56400BAF434 /* BitirmeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BitirmeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		172C27EE2629D56400BAF434 /* BitirmeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BitirmeUITests.swift; sourceTree = "<group>"; };
+		172C27F02629D56400BAF434 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		172C28032629E68100BAF434 /* ProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
+		172C28082629E75B00BAF434 /* SignInVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInVC.swift; sourceTree = "<group>"; };
+		172C280D2629E77D00BAF434 /* ForgotPasswordVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordVC.swift; sourceTree = "<group>"; };
+		172C28122629E79A00BAF434 /* RegisterVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterVC.swift; sourceTree = "<group>"; };
+		172C28172629E7B400BAF434 /* ScanVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanVC.swift; sourceTree = "<group>"; };
+		172C281C2629E7F200BAF434 /* ProductVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductVC.swift; sourceTree = "<group>"; };
+		172C28212629E8CD00BAF434 /* SeeAllCommentsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeeAllCommentsVC.swift; sourceTree = "<group>"; };
+		172C28262629E94F00BAF434 /* MakeCommentVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakeCommentVC.swift; sourceTree = "<group>"; };
+		175EA328263B7D93004BC583 /* RadioButtonController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioButtonController.swift; sourceTree = "<group>"; };
+		175EA339263CA862004BC583 /* signInError.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = signInError.gif; path = ../../signInError.gif; sourceTree = "<group>"; };
+		177B41AB263DDC42000C9238 /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
+		17C0FC1A263D910A002F565E /* FavoritesCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesCollectionCell.swift; sourceTree = "<group>"; };
+		17F7E06B263359FD006889F3 /* scanError.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = scanError.gif; path = ../../scanError.gif; sourceTree = "<group>"; };
+		17F7E07E26345918006889F3 /* LocationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationVC.swift; sourceTree = "<group>"; };
+		270108E5D688507E3304927C /* Pods-BitirmeTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BitirmeTests.debug.xcconfig"; path = "Target Support Files/Pods-BitirmeTests/Pods-BitirmeTests.debug.xcconfig"; sourceTree = "<group>"; };
+		3FFCA8018D5E160F82C83D53 /* Pods-BitirmeTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BitirmeTests.release.xcconfig"; path = "Target Support Files/Pods-BitirmeTests/Pods-BitirmeTests.release.xcconfig"; sourceTree = "<group>"; };
+		5148E3C2926487793BA2F3FE /* Pods-Bitirme.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bitirme.debug.xcconfig"; path = "Target Support Files/Pods-Bitirme/Pods-Bitirme.debug.xcconfig"; sourceTree = "<group>"; };
+		6958BC1367C4EA20C64B823E /* Pods_Bitirme.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Bitirme.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7114E88DB04F4DCE7FAE43C9 /* Pods-Bitirme.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bitirme.release.xcconfig"; path = "Target Support Files/Pods-Bitirme/Pods-Bitirme.release.xcconfig"; sourceTree = "<group>"; };
+		CE65A90CD0577EA74F40B34B /* Pods-Bitirme-BitirmeUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bitirme-BitirmeUITests.debug.xcconfig"; path = "Target Support Files/Pods-Bitirme-BitirmeUITests/Pods-Bitirme-BitirmeUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		E700A4E9DE869C914C379094 /* Pods_Bitirme_BitirmeUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Bitirme_BitirmeUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E988B3CCFC697D66AB742104 /* Pods_BitirmeTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BitirmeTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		172C27C62629D56300BAF434 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				642C95488EB0AB13F890857D /* Pods_Bitirme.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		172C27DC2629D56400BAF434 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B38C7B420198C0C16FE09CB1 /* Pods_BitirmeTests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		172C27E72629D56400BAF434 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D38BF30245E0D5F36CAA0E2A /* Pods_Bitirme_BitirmeUITests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		172C27C02629D56300BAF434 = {
+			isa = PBXGroup;
+			children = (
+				172C27CB2629D56300BAF434 /* Bitirme */,
+				172C27E22629D56400BAF434 /* BitirmeTests */,
+				172C27ED2629D56400BAF434 /* BitirmeUITests */,
+				172C27CA2629D56300BAF434 /* Products */,
+				251C77FCC2A1429BD0318FC9 /* Pods */,
+				5E9F27D0A6A48C5AB8D7F7C4 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		172C27CA2629D56300BAF434 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				172C27C92629D56300BAF434 /* Bitirme.app */,
+				172C27DF2629D56400BAF434 /* BitirmeTests.xctest */,
+				172C27EA2629D56400BAF434 /* BitirmeUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		172C27CB2629D56300BAF434 /* Bitirme */ = {
+			isa = PBXGroup;
+			children = (
+				172C27CC2629D56300BAF434 /* AppDelegate.swift */,
+				172C27CE2629D56300BAF434 /* SceneDelegate.swift */,
+				172C27D52629D56400BAF434 /* Assets.xcassets */,
+				172C27D72629D56400BAF434 /* LaunchScreen.storyboard */,
+				172C27DA2629D56400BAF434 /* Info.plist */,
+				1717715A262D02A400D90DA2 /* UImage+GIF.swift */,
+				17177179262D146C00D90DA2 /* funny.gif */,
+				175EA339263CA862004BC583 /* signInError.gif */,
+				17F7E06B263359FD006889F3 /* scanError.gif */,
+				172BD97826382CD600DCE4AE /* NetworkManager.swift */,
+				172C27D22629D56300BAF434 /* Main.storyboard */,
+				17C0FC1A263D910A002F565E /* FavoritesCollectionCell.swift */,
+				177B41AA263DDC30000C9238 /* Model */,
+				175EA327263B7D6B004BC583 /* Controller */,
+				172C27FF2629DA2600BAF434 /* VC */,
+			);
+			path = Bitirme;
+			sourceTree = "<group>";
+		};
+		172C27E22629D56400BAF434 /* BitirmeTests */ = {
+			isa = PBXGroup;
+			children = (
+				172C27E32629D56400BAF434 /* BitirmeTests.swift */,
+				172C27E52629D56400BAF434 /* Info.plist */,
+			);
+			path = BitirmeTests;
+			sourceTree = "<group>";
+		};
+		172C27ED2629D56400BAF434 /* BitirmeUITests */ = {
+			isa = PBXGroup;
+			children = (
+				172C27EE2629D56400BAF434 /* BitirmeUITests.swift */,
+				172C27F02629D56400BAF434 /* Info.plist */,
+			);
+			path = BitirmeUITests;
+			sourceTree = "<group>";
+		};
+		172C27FF2629DA2600BAF434 /* VC */ = {
+			isa = PBXGroup;
+			children = (
+				172C27D02629D56300BAF434 /* ViewController.swift */,
+				172C28082629E75B00BAF434 /* SignInVC.swift */,
+				172C28212629E8CD00BAF434 /* SeeAllCommentsVC.swift */,
+				172C28122629E79A00BAF434 /* RegisterVC.swift */,
+				172C28262629E94F00BAF434 /* MakeCommentVC.swift */,
+				172C281C2629E7F200BAF434 /* ProductVC.swift */,
+				172C280D2629E77D00BAF434 /* ForgotPasswordVC.swift */,
+				172C28172629E7B400BAF434 /* ScanVC.swift */,
+				17F7E07E26345918006889F3 /* LocationVC.swift */,
+				172C28032629E68100BAF434 /* ProfileVC.swift */,
+			);
+			path = VC;
+			sourceTree = "<group>";
+		};
+		175EA327263B7D6B004BC583 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				175EA328263B7D93004BC583 /* RadioButtonController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		177B41AA263DDC30000C9238 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				177B41AB263DDC42000C9238 /* Product.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		251C77FCC2A1429BD0318FC9 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				5148E3C2926487793BA2F3FE /* Pods-Bitirme.debug.xcconfig */,
+				7114E88DB04F4DCE7FAE43C9 /* Pods-Bitirme.release.xcconfig */,
+				CE65A90CD0577EA74F40B34B /* Pods-Bitirme-BitirmeUITests.debug.xcconfig */,
+				0C9804B541317F7B66B3E17F /* Pods-Bitirme-BitirmeUITests.release.xcconfig */,
+				270108E5D688507E3304927C /* Pods-BitirmeTests.debug.xcconfig */,
+				3FFCA8018D5E160F82C83D53 /* Pods-BitirmeTests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		5E9F27D0A6A48C5AB8D7F7C4 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				6958BC1367C4EA20C64B823E /* Pods_Bitirme.framework */,
+				E700A4E9DE869C914C379094 /* Pods_Bitirme_BitirmeUITests.framework */,
+				E988B3CCFC697D66AB742104 /* Pods_BitirmeTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		172C27C82629D56300BAF434 /* Bitirme */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 172C27F32629D56400BAF434 /* Build configuration list for PBXNativeTarget "Bitirme" */;
+			buildPhases = (
+				F641F8FFD4122190B5EAC7C9 /* [CP] Check Pods Manifest.lock */,
+				172C27C52629D56300BAF434 /* Sources */,
+				172C27C62629D56300BAF434 /* Frameworks */,
+				172C27C72629D56300BAF434 /* Resources */,
+				F3E2E5840443ECAB0864E26D /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Bitirme;
+			productName = Bitirme;
+			productReference = 172C27C92629D56300BAF434 /* Bitirme.app */;
+			productType = "com.apple.product-type.application";
+		};
+		172C27DE2629D56400BAF434 /* BitirmeTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 172C27F62629D56400BAF434 /* Build configuration list for PBXNativeTarget "BitirmeTests" */;
+			buildPhases = (
+				0A18670A0B5C2F906286A721 /* [CP] Check Pods Manifest.lock */,
+				172C27DB2629D56400BAF434 /* Sources */,
+				172C27DC2629D56400BAF434 /* Frameworks */,
+				172C27DD2629D56400BAF434 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				172C27E12629D56400BAF434 /* PBXTargetDependency */,
+			);
+			name = BitirmeTests;
+			productName = BitirmeTests;
+			productReference = 172C27DF2629D56400BAF434 /* BitirmeTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		172C27E92629D56400BAF434 /* BitirmeUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 172C27F92629D56400BAF434 /* Build configuration list for PBXNativeTarget "BitirmeUITests" */;
+			buildPhases = (
+				A32617C4BC58247D18E40305 /* [CP] Check Pods Manifest.lock */,
+				172C27E62629D56400BAF434 /* Sources */,
+				172C27E72629D56400BAF434 /* Frameworks */,
+				172C27E82629D56400BAF434 /* Resources */,
+				FBB882DE35F8B15BCFF2D394 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				172C27EC2629D56400BAF434 /* PBXTargetDependency */,
+			);
+			name = BitirmeUITests;
+			productName = BitirmeUITests;
+			productReference = 172C27EA2629D56400BAF434 /* BitirmeUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		172C27C12629D56300BAF434 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1240;
+				LastUpgradeCheck = 1240;
+				TargetAttributes = {
+					172C27C82629D56300BAF434 = {
+						CreatedOnToolsVersion = 12.4;
+					};
+					172C27DE2629D56400BAF434 = {
+						CreatedOnToolsVersion = 12.4;
+						TestTargetID = 172C27C82629D56300BAF434;
+					};
+					172C27E92629D56400BAF434 = {
+						CreatedOnToolsVersion = 12.4;
+						TestTargetID = 172C27C82629D56300BAF434;
+					};
+				};
+			};
+			buildConfigurationList = 172C27C42629D56300BAF434 /* Build configuration list for PBXProject "Bitirme" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 172C27C02629D56300BAF434;
+			productRefGroup = 172C27CA2629D56300BAF434 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				172C27C82629D56300BAF434 /* Bitirme */,
+				172C27DE2629D56400BAF434 /* BitirmeTests */,
+				172C27E92629D56400BAF434 /* BitirmeUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		172C27C72629D56300BAF434 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				172C27D92629D56400BAF434 /* LaunchScreen.storyboard in Resources */,
+				175EA33A263CA862004BC583 /* signInError.gif in Resources */,
+				17F7E06C263359FD006889F3 /* scanError.gif in Resources */,
+				1717717A262D146C00D90DA2 /* funny.gif in Resources */,
+				172C27D62629D56400BAF434 /* Assets.xcassets in Resources */,
+				172C27D42629D56300BAF434 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		172C27DD2629D56400BAF434 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		172C27E82629D56400BAF434 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		0A18670A0B5C2F906286A721 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-BitirmeTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A32617C4BC58247D18E40305 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Bitirme-BitirmeUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F3E2E5840443ECAB0864E26D /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Bitirme/Pods-Bitirme-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Bitirme/Pods-Bitirme-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Bitirme/Pods-Bitirme-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F641F8FFD4122190B5EAC7C9 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Bitirme-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FBB882DE35F8B15BCFF2D394 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Bitirme-BitirmeUITests/Pods-Bitirme-BitirmeUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Bitirme-BitirmeUITests/Pods-Bitirme-BitirmeUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Bitirme-BitirmeUITests/Pods-Bitirme-BitirmeUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		172C27C52629D56300BAF434 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				172C28042629E68100BAF434 /* ProfileVC.swift in Sources */,
+				172C27D12629D56300BAF434 /* ViewController.swift in Sources */,
+				172C280E2629E77D00BAF434 /* ForgotPasswordVC.swift in Sources */,
+				172BD97926382CD600DCE4AE /* NetworkManager.swift in Sources */,
+				172C27CD2629D56300BAF434 /* AppDelegate.swift in Sources */,
+				177B41AC263DDC42000C9238 /* Product.swift in Sources */,
+				1717715B262D02A400D90DA2 /* UImage+GIF.swift in Sources */,
+				172C28272629E94F00BAF434 /* MakeCommentVC.swift in Sources */,
+				17C0FC1B263D910A002F565E /* FavoritesCollectionCell.swift in Sources */,
+				17F7E07F26345918006889F3 /* LocationVC.swift in Sources */,
+				172C28132629E79A00BAF434 /* RegisterVC.swift in Sources */,
+				172C28182629E7B400BAF434 /* ScanVC.swift in Sources */,
+				172C28222629E8CD00BAF434 /* SeeAllCommentsVC.swift in Sources */,
+				172C281D2629E7F200BAF434 /* ProductVC.swift in Sources */,
+				172C27CF2629D56300BAF434 /* SceneDelegate.swift in Sources */,
+				172C28092629E75B00BAF434 /* SignInVC.swift in Sources */,
+				175EA329263B7D93004BC583 /* RadioButtonController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		172C27DB2629D56400BAF434 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				172C27E42629D56400BAF434 /* BitirmeTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		172C27E62629D56400BAF434 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				172C27EF2629D56400BAF434 /* BitirmeUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		172C27E12629D56400BAF434 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 172C27C82629D56300BAF434 /* Bitirme */;
+			targetProxy = 172C27E02629D56400BAF434 /* PBXContainerItemProxy */;
+		};
+		172C27EC2629D56400BAF434 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 172C27C82629D56300BAF434 /* Bitirme */;
+			targetProxy = 172C27EB2629D56400BAF434 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		172C27D22629D56300BAF434 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				172C27D32629D56300BAF434 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		172C27D72629D56400BAF434 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				172C27D82629D56400BAF434 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		172C27F12629D56400BAF434 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		172C27F22629D56400BAF434 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		172C27F42629D56400BAF434 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5148E3C2926487793BA2F3FE /* Pods-Bitirme.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = J4MP6X34JN;
+				INFOPLIST_FILE = Bitirme/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = basak.Bitirme;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		172C27F52629D56400BAF434 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7114E88DB04F4DCE7FAE43C9 /* Pods-Bitirme.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = J4MP6X34JN;
+				INFOPLIST_FILE = Bitirme/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = basak.Bitirme;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		172C27F72629D56400BAF434 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 270108E5D688507E3304927C /* Pods-BitirmeTests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = J4MP6X34JN;
+				INFOPLIST_FILE = BitirmeTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = basak.BitirmeTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Bitirme.app/Bitirme";
+			};
+			name = Debug;
+		};
+		172C27F82629D56400BAF434 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3FFCA8018D5E160F82C83D53 /* Pods-BitirmeTests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = J4MP6X34JN;
+				INFOPLIST_FILE = BitirmeTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = basak.BitirmeTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Bitirme.app/Bitirme";
+			};
+			name = Release;
+		};
+		172C27FA2629D56400BAF434 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = CE65A90CD0577EA74F40B34B /* Pods-Bitirme-BitirmeUITests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = J4MP6X34JN;
+				INFOPLIST_FILE = BitirmeUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = basak.BitirmeUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Bitirme;
+			};
+			name = Debug;
+		};
+		172C27FB2629D56400BAF434 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0C9804B541317F7B66B3E17F /* Pods-Bitirme-BitirmeUITests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = J4MP6X34JN;
+				INFOPLIST_FILE = BitirmeUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = basak.BitirmeUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Bitirme;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		172C27C42629D56300BAF434 /* Build configuration list for PBXProject "Bitirme" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				172C27F12629D56400BAF434 /* Debug */,
+				172C27F22629D56400BAF434 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		172C27F32629D56400BAF434 /* Build configuration list for PBXNativeTarget "Bitirme" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				172C27F42629D56400BAF434 /* Debug */,
+				172C27F52629D56400BAF434 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		172C27F62629D56400BAF434 /* Build configuration list for PBXNativeTarget "BitirmeTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				172C27F72629D56400BAF434 /* Debug */,
+				172C27F82629D56400BAF434 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		172C27F92629D56400BAF434 /* Build configuration list for PBXNativeTarget "BitirmeUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				172C27FA2629D56400BAF434 /* Debug */,
+				172C27FB2629D56400BAF434 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 172C27C12629D56300BAF434 /* Project object */;
+}
