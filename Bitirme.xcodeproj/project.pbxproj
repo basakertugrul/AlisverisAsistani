@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		1717715B262D02A400D90DA2 /* UImage+GIF.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1717715A262D02A400D90DA2 /* UImage+GIF.swift */; };
-		1717717A262D146C00D90DA2 /* funny.gif in Resources */ = {isa = PBXBuildFile; fileRef = 17177179262D146C00D90DA2 /* funny.gif */; };
 		172BD97926382CD600DCE4AE /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 172BD97826382CD600DCE4AE /* NetworkManager.swift */; };
 		172C27CD2629D56300BAF434 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 172C27CC2629D56300BAF434 /* AppDelegate.swift */; };
 		172C27CF2629D56300BAF434 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 172C27CE2629D56300BAF434 /* SceneDelegate.swift */; };
@@ -27,10 +26,11 @@
 		172C28222629E8CD00BAF434 /* SeeAllCommentsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 172C28212629E8CD00BAF434 /* SeeAllCommentsVC.swift */; };
 		172C28272629E94F00BAF434 /* MakeCommentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 172C28262629E94F00BAF434 /* MakeCommentVC.swift */; };
 		175EA329263B7D93004BC583 /* RadioButtonController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 175EA328263B7D93004BC583 /* RadioButtonController.swift */; };
-		175EA33A263CA862004BC583 /* signInError.gif in Resources */ = {isa = PBXBuildFile; fileRef = 175EA339263CA862004BC583 /* signInError.gif */; };
 		177B41AC263DDC42000C9238 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = 177B41AB263DDC42000C9238 /* Product.swift */; };
-		17C0FC1B263D910A002F565E /* FavoritesCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C0FC1A263D910A002F565E /* FavoritesCollectionCell.swift */; };
-		17F7E06C263359FD006889F3 /* scanError.gif in Resources */ = {isa = PBXBuildFile; fileRef = 17F7E06B263359FD006889F3 /* scanError.gif */; };
+		17C0FC1B263D910A002F565E /* CollectionCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C0FC1A263D910A002F565E /* CollectionCells.swift */; };
+		17D787C0263F6012005A8257 /* scanError.gif in Resources */ = {isa = PBXBuildFile; fileRef = 17D787BD263F6012005A8257 /* scanError.gif */; };
+		17D787C1263F6012005A8257 /* signInError.gif in Resources */ = {isa = PBXBuildFile; fileRef = 17D787BE263F6012005A8257 /* signInError.gif */; };
+		17D787C2263F6012005A8257 /* funny.gif in Resources */ = {isa = PBXBuildFile; fileRef = 17D787BF263F6012005A8257 /* funny.gif */; };
 		17F7E07F26345918006889F3 /* LocationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17F7E07E26345918006889F3 /* LocationVC.swift */; };
 		642C95488EB0AB13F890857D /* Pods_Bitirme.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6958BC1367C4EA20C64B823E /* Pods_Bitirme.framework */; };
 		B38C7B420198C0C16FE09CB1 /* Pods_BitirmeTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E988B3CCFC697D66AB742104 /* Pods_BitirmeTests.framework */; };
@@ -57,7 +57,6 @@
 /* Begin PBXFileReference section */
 		0C9804B541317F7B66B3E17F /* Pods-Bitirme-BitirmeUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bitirme-BitirmeUITests.release.xcconfig"; path = "Target Support Files/Pods-Bitirme-BitirmeUITests/Pods-Bitirme-BitirmeUITests.release.xcconfig"; sourceTree = "<group>"; };
 		1717715A262D02A400D90DA2 /* UImage+GIF.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UImage+GIF.swift"; sourceTree = "<group>"; };
-		17177179262D146C00D90DA2 /* funny.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = funny.gif; path = ../../funny.gif; sourceTree = "<group>"; };
 		172BD97826382CD600DCE4AE /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		172C27C92629D56300BAF434 /* Bitirme.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Bitirme.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		172C27CC2629D56300BAF434 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -82,10 +81,11 @@
 		172C28212629E8CD00BAF434 /* SeeAllCommentsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeeAllCommentsVC.swift; sourceTree = "<group>"; };
 		172C28262629E94F00BAF434 /* MakeCommentVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakeCommentVC.swift; sourceTree = "<group>"; };
 		175EA328263B7D93004BC583 /* RadioButtonController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioButtonController.swift; sourceTree = "<group>"; };
-		175EA339263CA862004BC583 /* signInError.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = signInError.gif; path = ../../signInError.gif; sourceTree = "<group>"; };
 		177B41AB263DDC42000C9238 /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
-		17C0FC1A263D910A002F565E /* FavoritesCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesCollectionCell.swift; sourceTree = "<group>"; };
-		17F7E06B263359FD006889F3 /* scanError.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = scanError.gif; path = ../../scanError.gif; sourceTree = "<group>"; };
+		17C0FC1A263D910A002F565E /* CollectionCells.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionCells.swift; sourceTree = "<group>"; };
+		17D787BD263F6012005A8257 /* scanError.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = scanError.gif; path = ../../../Development/scanError.gif; sourceTree = "<group>"; };
+		17D787BE263F6012005A8257 /* signInError.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = signInError.gif; path = ../../../Development/signInError.gif; sourceTree = "<group>"; };
+		17D787BF263F6012005A8257 /* funny.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = funny.gif; path = ../../../Development/funny.gif; sourceTree = "<group>"; };
 		17F7E07E26345918006889F3 /* LocationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationVC.swift; sourceTree = "<group>"; };
 		270108E5D688507E3304927C /* Pods-BitirmeTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BitirmeTests.debug.xcconfig"; path = "Target Support Files/Pods-BitirmeTests/Pods-BitirmeTests.debug.xcconfig"; sourceTree = "<group>"; };
 		3FFCA8018D5E160F82C83D53 /* Pods-BitirmeTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BitirmeTests.release.xcconfig"; path = "Target Support Files/Pods-BitirmeTests/Pods-BitirmeTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -156,12 +156,12 @@
 				172C27D72629D56400BAF434 /* LaunchScreen.storyboard */,
 				172C27DA2629D56400BAF434 /* Info.plist */,
 				1717715A262D02A400D90DA2 /* UImage+GIF.swift */,
-				17177179262D146C00D90DA2 /* funny.gif */,
-				175EA339263CA862004BC583 /* signInError.gif */,
-				17F7E06B263359FD006889F3 /* scanError.gif */,
+				17D787BF263F6012005A8257 /* funny.gif */,
+				17D787BD263F6012005A8257 /* scanError.gif */,
+				17D787BE263F6012005A8257 /* signInError.gif */,
+				17C0FC1A263D910A002F565E /* CollectionCells.swift */,
 				172BD97826382CD600DCE4AE /* NetworkManager.swift */,
 				172C27D22629D56300BAF434 /* Main.storyboard */,
-				17C0FC1A263D910A002F565E /* FavoritesCollectionCell.swift */,
 				177B41AA263DDC30000C9238 /* Model */,
 				175EA327263B7D6B004BC583 /* Controller */,
 				172C27FF2629DA2600BAF434 /* VC */,
@@ -351,12 +351,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				17D787C0263F6012005A8257 /* scanError.gif in Resources */,
+				17D787C1263F6012005A8257 /* signInError.gif in Resources */,
 				172C27D92629D56400BAF434 /* LaunchScreen.storyboard in Resources */,
-				175EA33A263CA862004BC583 /* signInError.gif in Resources */,
-				17F7E06C263359FD006889F3 /* scanError.gif in Resources */,
-				1717717A262D146C00D90DA2 /* funny.gif in Resources */,
 				172C27D62629D56400BAF434 /* Assets.xcassets in Resources */,
 				172C27D42629D56300BAF434 /* Main.storyboard in Resources */,
+				17D787C2263F6012005A8257 /* funny.gif in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -492,7 +492,7 @@
 				177B41AC263DDC42000C9238 /* Product.swift in Sources */,
 				1717715B262D02A400D90DA2 /* UImage+GIF.swift in Sources */,
 				172C28272629E94F00BAF434 /* MakeCommentVC.swift in Sources */,
-				17C0FC1B263D910A002F565E /* FavoritesCollectionCell.swift in Sources */,
+				17C0FC1B263D910A002F565E /* CollectionCells.swift in Sources */,
 				17F7E07F26345918006889F3 /* LocationVC.swift in Sources */,
 				172C28132629E79A00BAF434 /* RegisterVC.swift in Sources */,
 				172C28182629E7B400BAF434 /* ScanVC.swift in Sources */,
