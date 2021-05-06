@@ -31,7 +31,6 @@ enum HTTPRequestMethod {
 typealias RequestCompletionBlock = (_ data: [String: Any]?, _ error: String?) -> ()
 
 struct NetworkManager {
-    
     static func sendPostRequest(urlStr: String,
                                 parameters: [String: Any],
                                 completion: @escaping RequestCompletionBlock) {
@@ -59,6 +58,7 @@ struct NetworkManager {
                                completion: @escaping RequestCompletionBlock) {
         AF.request(urlStr, method: .get, encoding: JSONEncoding.default, headers: nil)
             .validate(statusCode: 200..<600)
+            .validate(contentType: ["application/json"])
             .responseJSON { response in
                 switch response.result {
                 case .failure(let error):

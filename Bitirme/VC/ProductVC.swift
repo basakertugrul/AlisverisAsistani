@@ -29,21 +29,33 @@ class ProductVC: UIViewController, CLLocationManagerDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        if UserDefaults.standard.value(forKey: "Username") == nil {
-
+        if UserDefaults.standard.value(forKey: "username") == nil {
         }
     }
     
     @IBAction func backButtonPressed(_ sender: Any) {
-        self.dismiss(animated: true, completion: nil)
+        let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = mainStoryboard.instantiateViewController(withIdentifier: "ViewController") as! ViewController
+        vc.modalPresentationStyle = .fullScreen
+//        vc.barcodeNumber = self.barcodeNumber
+        present(vc, animated: true, completion: nil)
     }
+    
+    @IBAction func seeAllCommentsButtonPressed(_ sender: Any) {
+        let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = mainStoryboard.instantiateViewController(withIdentifier: "SeeAllCommentsVC") as! SeeAllCommentsVC
+        vc.modalPresentationStyle = .fullScreen
+//        vc.barcodeNumber = self.barcodeNumber
+        present(vc, animated: true, completion: nil)
+    }
+    
     
     @IBAction func likeButtonPressed(_ sender: Any) {
         
     }
     
     @IBAction func makeCommentButtonPressed(_ sender: Any) {
-       if UserDefaults.standard.value(forKey: "Username") != nil {
+       if UserDefaults.standard.value(forKey: "username") != nil {
             let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
             let vc = mainStoryboard.instantiateViewController(withIdentifier: "makeCommentVC") as! MakeCommentVC
             vc.modalPresentationStyle = .popover

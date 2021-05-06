@@ -31,6 +31,7 @@
 		17D787C0263F6012005A8257 /* scanError.gif in Resources */ = {isa = PBXBuildFile; fileRef = 17D787BD263F6012005A8257 /* scanError.gif */; };
 		17D787C1263F6012005A8257 /* signInError.gif in Resources */ = {isa = PBXBuildFile; fileRef = 17D787BE263F6012005A8257 /* signInError.gif */; };
 		17D787C2263F6012005A8257 /* funny.gif in Resources */ = {isa = PBXBuildFile; fileRef = 17D787BF263F6012005A8257 /* funny.gif */; };
+		17F63307264423C3008E52EE /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17F63306264423C3008E52EE /* Comment.swift */; };
 		17F7E07F26345918006889F3 /* LocationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17F7E07E26345918006889F3 /* LocationVC.swift */; };
 		642C95488EB0AB13F890857D /* Pods_Bitirme.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6958BC1367C4EA20C64B823E /* Pods_Bitirme.framework */; };
 		B38C7B420198C0C16FE09CB1 /* Pods_BitirmeTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E988B3CCFC697D66AB742104 /* Pods_BitirmeTests.framework */; };
@@ -86,6 +87,7 @@
 		17D787BD263F6012005A8257 /* scanError.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = scanError.gif; path = ../../../Development/scanError.gif; sourceTree = "<group>"; };
 		17D787BE263F6012005A8257 /* signInError.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = signInError.gif; path = ../../../Development/signInError.gif; sourceTree = "<group>"; };
 		17D787BF263F6012005A8257 /* funny.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = funny.gif; path = ../../../Development/funny.gif; sourceTree = "<group>"; };
+		17F63306264423C3008E52EE /* Comment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
 		17F7E07E26345918006889F3 /* LocationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationVC.swift; sourceTree = "<group>"; };
 		270108E5D688507E3304927C /* Pods-BitirmeTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BitirmeTests.debug.xcconfig"; path = "Target Support Files/Pods-BitirmeTests/Pods-BitirmeTests.debug.xcconfig"; sourceTree = "<group>"; };
 		3FFCA8018D5E160F82C83D53 /* Pods-BitirmeTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BitirmeTests.release.xcconfig"; path = "Target Support Files/Pods-BitirmeTests/Pods-BitirmeTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -216,6 +218,7 @@
 			isa = PBXGroup;
 			children = (
 				177B41AB263DDC42000C9238 /* Product.swift */,
+				17F63306264423C3008E52EE /* Comment.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -491,6 +494,7 @@
 				172C27CD2629D56300BAF434 /* AppDelegate.swift in Sources */,
 				177B41AC263DDC42000C9238 /* Product.swift in Sources */,
 				1717715B262D02A400D90DA2 /* UImage+GIF.swift in Sources */,
+				17F63307264423C3008E52EE /* Comment.swift in Sources */,
 				172C28272629E94F00BAF434 /* MakeCommentVC.swift in Sources */,
 				17C0FC1B263D910A002F565E /* CollectionCells.swift in Sources */,
 				17F7E07F26345918006889F3 /* LocationVC.swift in Sources */,

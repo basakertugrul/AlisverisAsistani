@@ -39,9 +39,11 @@ class SignInVC: UIViewController {
     func userSignedIn(data: [String : Any]?, username: String)  {
         
         let token = data!["token"]
+        let expiration = data!["expiration"]
         
         UserDefaults.standard.setValue(token, forKey: "token")
-        UserDefaults.standard.setValue(username, forKey: "Username")
+        UserDefaults.standard.setValue(username, forKey: "username")
+        UserDefaults.standard.setValue(expiration, forKey: "expiration")
         
         self.dismiss(animated: true, completion: nil)
     }

@@ -32,8 +32,8 @@ class MakeCommentVC: UIViewController {
         commentTextField.contentVerticalAlignment = .top
         sendButton.layer.cornerRadius = 0.05 * sendButton.bounds.size.width
         
-        if UserDefaults.standard.value(forKey: "Username") != nil {
-            nicknameLabel.text = UserDefaults.standard.value(forKey: "Username") as? String
+        if UserDefaults.standard.value(forKey: "username") != nil {
+            nicknameLabel.text = UserDefaults.standard.value(forKey: "username") as? String
         }
         radioController.buttonsArray = [anonymousButton,nicknameButton]
         radioController.defaultButton = nicknameButton
