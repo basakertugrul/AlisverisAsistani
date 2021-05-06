@@ -7,6 +7,7 @@
 
 import UIKit
 import CoreLocation
+import SwiftKeychainWrapper
 
 class ProductVC: UIViewController, CLLocationManagerDelegate {
     
@@ -29,7 +30,8 @@ class ProductVC: UIViewController, CLLocationManagerDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        if UserDefaults.standard.value(forKey: "username") == nil {
+       if KeychainWrapper.standard.string(forKey: "username") == nil {
+            
         }
     }
     
@@ -37,7 +39,7 @@ class ProductVC: UIViewController, CLLocationManagerDelegate {
         let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = mainStoryboard.instantiateViewController(withIdentifier: "ViewController") as! ViewController
         vc.modalPresentationStyle = .fullScreen
-//        vc.barcodeNumber = self.barcodeNumber
+        //        vc.barcodeNumber = self.barcodeNumber
         present(vc, animated: true, completion: nil)
     }
     
@@ -45,7 +47,7 @@ class ProductVC: UIViewController, CLLocationManagerDelegate {
         let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = mainStoryboard.instantiateViewController(withIdentifier: "SeeAllCommentsVC") as! SeeAllCommentsVC
         vc.modalPresentationStyle = .fullScreen
-//        vc.barcodeNumber = self.barcodeNumber
+        //        vc.barcodeNumber = self.barcodeNumber
         present(vc, animated: true, completion: nil)
     }
     
@@ -55,32 +57,32 @@ class ProductVC: UIViewController, CLLocationManagerDelegate {
     }
     
     @IBAction func makeCommentButtonPressed(_ sender: Any) {
-       if UserDefaults.standard.value(forKey: "username") != nil {
+        if KeychainWrapper.standard.string(forKey: "username") != nil {
             let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
             let vc = mainStoryboard.instantiateViewController(withIdentifier: "makeCommentVC") as! MakeCommentVC
             vc.modalPresentationStyle = .popover
             vc.barcodeNumber = self.barcodeNumber
             present(vc, animated: true, completion: nil)
         }
-       else{
-        let window = UIApplication.shared.keyWindow!
-        let backgroundView = UIView(frame: window.bounds)
-        window.addSubview(backgroundView)
-        backgroundView.backgroundColor = UIColor.init(displayP3Red: 0.954, green: 0.934, blue: 0.925, alpha: 0.95)
-        view.addSubview(backgroundView)
-        let gif = UIImage.gifImageWithName("signInError")
-        let imageView = UIImageView(image: gif)
-        imageView.frame = CGRect(x: -20, y: 285, width: 467.25, height: 350)
-        view.addSubview(imageView)
-        DispatchQueue.main.asyncAfter(deadline: .now() + 8) {
-            imageView.removeFromSuperview()
-            backgroundView.removeFromSuperview()
+        else{
+            let window = UIApplication.shared.keyWindow!
+            let backgroundView = UIView(frame: window.bounds)
+            window.addSubview(backgroundView)
+            backgroundView.backgroundColor = UIColor.init(displayP3Red: 0.954, green: 0.934, blue: 0.925, alpha: 0.95)
+            view.addSubview(backgroundView)
+            let gif = UIImage.gifImageWithName("signInError")
+            let imageView = UIImageView(image: gif)
+            imageView.frame = CGRect(x: -20, y: 285, width: 467.25, height: 350)
+            view.addSubview(imageView)
+            DispatchQueue.main.asyncAfter(deadline: .now() + 8) {
+                imageView.removeFromSuperview()
+                backgroundView.removeFromSuperview()
+            }
         }
-       }
     }
     
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
-
+        
         switch status {
         // 1
         case .notDetermined:

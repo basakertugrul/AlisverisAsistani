@@ -6,10 +6,7 @@
 //
 
 import UIKit
-import Foundation
-#if canImport(FoundationNetworking)
-import FoundationNetworking
-#endif
+import SwiftKeychainWrapper
 
 class RegisterVC: UIViewController {
     
@@ -48,17 +45,18 @@ class RegisterVC: UIViewController {
     
     func userSignedIn(data: [String : Any]?, username: String)  {
         
-        let token = data!["token"]
-        let expiration = data!["expiration"]
-        
-        UserDefaults.standard.setValue(token, forKey: "token")
-        UserDefaults.standard.setValue(username, forKey: "username")
-        UserDefaults.standard.setValue(expiration, forKey: "expiration")
-        
+        if let token = data!["token"] as? String{
+            if let expiration = data!["expiration"] as? String{
+                let saveSuccessfulToken: Bool = KeychainWrapper.standard.set(token, forKey: "token")
+                let saveSuccessfulUsername: Bool = KeychainWrapper.standard.set(username, forKey: "username")
+                let saveSuccessfulExpiration: Bool = KeychainWrapper.standard.set(expiration, forKey: "expiration")
+            }
+        }
+
         let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = mainStoryboard.instantiateViewController(withIdentifier: "ViewController") as! ViewController
         vc.modalPresentationStyle = .fullScreen
-//        vc.barcodeNumber = self.barcodeNumber
+        vc.backFromProfile = true
         present(vc, animated: true, completion: nil)
     }
     
@@ -66,9 +64,3 @@ class RegisterVC: UIViewController {
         ProfileVC().viewWillAppear(true)
     }
 }
-
-
-//SIGNOUTTA UserDefaults.standard.remove(token, forKey: "token") UserDefaults.standard.remove(username, forKey: "username") UserDefaults.standard.remove(expiration, forKey: "expiration")
-
-//Basak98A.b
-//Basakk

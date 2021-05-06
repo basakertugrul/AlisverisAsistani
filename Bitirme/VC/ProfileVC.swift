@@ -7,6 +7,7 @@
 
 
 import UIKit
+import SwiftKeychainWrapper
 
 class ProfileVC:UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
     
@@ -26,7 +27,6 @@ class ProfileVC:UIViewController, UICollectionViewDelegate, UICollectionViewData
     let commentedCollectionViewIdentifier = "CommentedCollectionCell"
     
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -35,14 +35,15 @@ class ProfileVC:UIViewController, UICollectionViewDelegate, UICollectionViewData
         self.registerButton?.layer.cornerRadius = 0.05 * self.registerButton.bounds.size.width
         self.topView?.layer.cornerRadius = 5
         self.topView?.layer.backgroundColor = UIColor(red: 0.184, green: 0.314, blue: 0.380, alpha: 1.0).cgColor
-        if (UserDefaults.standard.string(forKey: "token") == nil){
+        if (KeychainWrapper.standard.string(forKey: "username") == nil){
             pushSignInVC()
         }
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        if (UserDefaults.standard.string(forKey: "token") == nil){
+        
+        if (KeychainWrapper.standard.string(forKey: "token") == nil){
             
             let myView = UIView(frame: CGRect(x: 0, y: 170, width: 500, height: 630))
             myView.backgroundColor = UIColor(red: 0.957, green: 0.918, blue: 0.902, alpha: 1.0) //açık pembe
@@ -57,9 +58,10 @@ class ProfileVC:UIViewController, UICollectionViewDelegate, UICollectionViewData
             self.setUpFavorites()
             self.setUpScanned()
             self.setUpCommented()
-            self.helloLabel.text = "Hello \(UserDefaults.standard.string(forKey: "username") ?? "no username")!"
-            self.signInButton.removeFromSuperview()
-            self.registerButton.removeFromSuperview()
+            
+            self.helloLabel?.text = "Hello \(KeychainWrapper.standard.string(forKey: "username")!)!"
+            self.signInButton?.removeFromSuperview()
+            self.registerButton?.removeFromSuperview()
         }
     }
     

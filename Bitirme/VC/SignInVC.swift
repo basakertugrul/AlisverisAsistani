@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SwiftKeychainWrapper
 
 class SignInVC: UIViewController {
     
@@ -15,11 +16,9 @@ class SignInVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        
     }
     
     @IBAction func signInButtonPressed(_ sender: Any) {
-        
         let username = String(usernameTextField.text ?? "")
         let password = String(passwordTextField.text ?? "")
         let params: [String: Any] = ["username": username,
@@ -37,15 +36,19 @@ class SignInVC: UIViewController {
     }
     
     func userSignedIn(data: [String : Any]?, username: String)  {
+        if let token = data!["token"] as? String{
+            if let expiration = data!["expiration"] as? String{
+                let saveSuccessfulToken: Bool = KeychainWrapper.standard.set(token, forKey: "token")
+                let saveSuccessfulUsername: Bool = KeychainWrapper.standard.set(username, forKey: "username")
+                let saveSuccessfulExpiration: Bool = KeychainWrapper.standard.set(expiration, forKey: "expiration")
+            }
+        }
         
-        let token = data!["token"]
-        let expiration = data!["expiration"]
-        
-        UserDefaults.standard.setValue(token, forKey: "token")
-        UserDefaults.standard.setValue(username, forKey: "username")
-        UserDefaults.standard.setValue(expiration, forKey: "expiration")
-        
-        self.dismiss(animated: true, completion: nil)
+        let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = mainStoryboard.instantiateViewController(withIdentifier: "ViewController") as! ViewController
+        vc.modalPresentationStyle = .fullScreen
+        vc.backFromProfile = true
+        present(vc, animated: true, completion: nil)
     }
     
     override func viewWillDisappear(_ animated: Bool) {

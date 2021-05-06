@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SwiftKeychainWrapper
 
 class MakeCommentVC: UIViewController {
     
@@ -32,8 +33,8 @@ class MakeCommentVC: UIViewController {
         commentTextField.contentVerticalAlignment = .top
         sendButton.layer.cornerRadius = 0.05 * sendButton.bounds.size.width
         
-        if UserDefaults.standard.value(forKey: "username") != nil {
-            nicknameLabel.text = UserDefaults.standard.value(forKey: "username") as? String
+        if KeychainWrapper.standard.string(forKey: "username") != nil {
+            nicknameLabel.text = KeychainWrapper.standard.string(forKey: "username")
         }
         radioController.buttonsArray = [anonymousButton,nicknameButton]
         radioController.defaultButton = nicknameButton

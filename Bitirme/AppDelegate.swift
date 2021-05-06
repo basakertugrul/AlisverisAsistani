@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SwiftKeychainWrapper
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -14,16 +15,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        if UserDefaults.standard.value(forKey: "username") != nil {
+        
+        if KeychainWrapper.standard.string(forKey: "username") != nil {
             var dateExpiration: Date
-            
-            if UserDefaults.standard.value(forKey: "expiration") != nil {
+            if KeychainWrapper.standard.string(forKey: "expiration") != nil {
                 let formatter = Foundation.DateFormatter()
                 formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
-                dateExpiration  = formatter.date(from: UserDefaults.standard.value(forKey: "expiration") as! String)!
-                print("date:\(String(describing: dateExpiration))")
             }
         }
+        
+//        let removeSuccessfulToken: Bool = KeychainWrapper.standard.removeObject(forKey: "token")
+//        let removeSuccessfulUsername: Bool = KeychainWrapper.standard.removeObject(forKey: "username")
+//        let removeSuccessfulExpiration: Bool = KeychainWrapper.standard.removeObject(forKey: "expiration")
+        
         return true
     }
 }
