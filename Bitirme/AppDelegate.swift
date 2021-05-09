@@ -16,13 +16,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
-        if KeychainWrapper.standard.string(forKey: "username") != nil {
-            var dateExpiration: Date
-            if KeychainWrapper.standard.string(forKey: "expiration") != nil {
-                let formatter = Foundation.DateFormatter()
-                formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
-            }
-        }
+//        if KeychainWrapper.standard.string(forKey: "username") != nil {
+//            var dateExpiration: Date
+//            if KeychainWrapper.standard.string(forKey: "expiration") != nil {
+//                let formatter = Foundation.DateFormatter()
+//                formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
+//            }
+//        }
         
 //        let removeSuccessfulToken: Bool = KeychainWrapper.standard.removeObject(forKey: "token")
 //        let removeSuccessfulUsername: Bool = KeychainWrapper.standard.removeObject(forKey: "username")

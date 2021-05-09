@@ -33,7 +33,7 @@ enum HTTPRequestMethod {
 
 
 typealias RequestCompletionBlock = (_ data: [String: Any]?, _ error: String?) -> ()
-
+typealias ScanRequestCompletionBlock = (_ data: Scan?, _ error: String?) -> ()
 
 struct NetworkManager {
     static func sendPostRequest(urlStr: String,
@@ -71,19 +71,27 @@ struct NetworkManager {
             }
     }
     
-    static func sendScanRequest(urlStr: String,
-                               completion: @escaping RequestCompletionBlock) {
-        AF.request(urlStr, method: .get, encoding: JSONEncoding.default, headers: nil)
-            .validate(statusCode: 200..<600)
-            .validate(contentType: ["application/json"])
+    static func sendScanRequest(parameters: [String: Any],
+                                completion: @escaping ScanRequestCompletionBlock) {
+        
+        let headers : HTTPHeaders = ["Content-Type": "application/json"]
+        
+        AF.request("http://192.168.1.155:62755/api/user/scan", method: .post, parameters: parameters,  encoding: JSONEncoding.default, headers: headers)
             .responseJSON { response in
-                switch response.result {
-                case .failure(let error):
-                    print(error)
-                    completion(nil, error.localizedDescription)
-                case .success(let responseObject):
-                    completion(responseObject as? [String : Any], nil)
+            switch response.result {
+            case .success:
+                do {
+                    let jsonString = String(data: response.data!, encoding: .utf8)
+                    let scan = try Scan(jsonString!)
+                    completion(scan, nil )
                 }
+                catch let e {
+                    completion(nil, e.localizedDescription)
+                }
+                
+            case .failure(let error):
+                completion(nil, error.localizedDescription)
             }
+        }
     }
 }

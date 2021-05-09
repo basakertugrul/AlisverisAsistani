@@ -32,8 +32,23 @@ class ProductVC: UIViewController, CLLocationManagerDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+//        self.longitude = Double(locationValue.longitude)
+//        self.latitude = Double(locationValue.latitude)
+        
+        let params: [String: Any] = ["barcode": self.barcodeNumber!,
+                                     "latitude": 41.048106,
+                                     "longitude": 29.081074]
+        NetworkManager.sendScanRequest(parameters: params)
+        { [weak self] (data, error) in
+            if let error = error {
+                print("Error:\(error)")
+                return
+            }
+            print("asdfghjkljhgfdsa")
+            print(data!)
     }
-    
+    }
     @IBAction func backButtonPressed(_ sender: Any) {
         let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = mainStoryboard.instantiateViewController(withIdentifier: "ViewController") as! ViewController
@@ -111,24 +126,10 @@ class ProductVC: UIViewController, CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let locationValue: CLLocationCoordinate2D = manager.location!.coordinate
-        self.longitude = Double(locationValue.longitude)
-        self.latitude = Double(locationValue.latitude)
         
-        let params: [String: Any] = ["barcode": self.barcodeNumber!,
-                                     "latitude": 41.048106,
-                                     "longitude": 29.081074]
-        NetworkManager.sendPostRequest(urlStr: "http://192.168.1.155:62755/api/user/scan", parameters: params)
-        { [weak self] (data, error) in
-            if let error = error {
-                print("Error:\(error)")
-                return
-            }
-            print(data!)
-        }
     }
     
-    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Swift.Error) {
         print("Failed \(error)")
     }
 }
-
