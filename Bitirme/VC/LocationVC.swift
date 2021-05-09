@@ -28,6 +28,10 @@ class LocationVC: UIViewController, UITableViewDelegate, UITableViewDataSource{
     }()
     
     private var sections = [Section]()
+    var barcodeNumber: String = ""
+    
+    var longitude: String = ""
+    var latitude: String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -89,5 +93,12 @@ class LocationVC: UIViewController, UITableViewDelegate, UITableViewDataSource{
         else{
             print("tapped subcell")
         }
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        ProductVC().viewWillAppear(true)
+        ProductVC().longitude = 2
+        ProductVC().latitude = 2
+        
     }
 }

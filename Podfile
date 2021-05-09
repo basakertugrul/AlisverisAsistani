@@ -16,7 +16,8 @@ target 'Bitirme' do
     # Pods for testing
   end
 
-pod 'Alamofire', '~> 5.4'
+pod 'Alamofire', '~> 5.0.0-rc.2'
 pod 'SwiftKeychainWrapper'
+pod 'AlamofireObjectMapper', '~> 6.2.0'
 
 end

@@ -44,20 +44,20 @@ class RegisterVC: UIViewController {
     }
     
     func userSignedIn(data: [String : Any]?, username: String)  {
-        
         if let token = data!["token"] as? String{
             if let expiration = data!["expiration"] as? String{
                 let saveSuccessfulToken: Bool = KeychainWrapper.standard.set(token, forKey: "token")
                 let saveSuccessfulUsername: Bool = KeychainWrapper.standard.set(username, forKey: "username")
                 let saveSuccessfulExpiration: Bool = KeychainWrapper.standard.set(expiration, forKey: "expiration")
+                
+                let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                let vc = mainStoryboard.instantiateViewController(withIdentifier: "ViewController") as! ViewController
+                vc.modalPresentationStyle = .fullScreen
+                vc.backFromProfile = true
+                present(vc, animated: true, completion: nil)
             }
         }
-
-        let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        let vc = mainStoryboard.instantiateViewController(withIdentifier: "ViewController") as! ViewController
-        vc.modalPresentationStyle = .fullScreen
-        vc.backFromProfile = true
-        present(vc, animated: true, completion: nil)
+        
     }
     
     override func viewWillDisappear(_ animated: Bool) {

@@ -7,6 +7,9 @@
 
 import Foundation
 import Alamofire
+import ObjectMapper
+import AlamofireObjectMapper
+
 
 enum HTTPRequestMethod {
     case get
@@ -28,7 +31,9 @@ enum HTTPRequestMethod {
     }
 }
 
+
 typealias RequestCompletionBlock = (_ data: [String: Any]?, _ error: String?) -> ()
+
 
 struct NetworkManager {
     static func sendPostRequest(urlStr: String,
@@ -43,10 +48,6 @@ struct NetworkManager {
                 case .failure(let error):
                     print(error)
                     completion(nil, error.localizedDescription)
-                    if let data = response.data, let responseString = String(data: data, encoding: .utf8) {
-                        print(responseString)
-                        completion(nil, responseString)
-                    }
                 case .success(let responseObject):
                     print(responseObject)
                     completion(responseObject as? [String : Any], nil)
@@ -64,15 +65,25 @@ struct NetworkManager {
                 case .failure(let error):
                     print(error)
                     completion(nil, error.localizedDescription)
-                    if let data = response.data, let responseString = String(data: data, encoding: .utf8) {
-                        print(responseString)
-                        completion(nil, responseString)
-                    }
                 case .success(let responseObject):
-                    print(responseObject)
                     completion(responseObject as? [String : Any], nil)
                 }
             }
     }
     
+    static func sendScanRequest(urlStr: String,
+                               completion: @escaping RequestCompletionBlock) {
+        AF.request(urlStr, method: .get, encoding: JSONEncoding.default, headers: nil)
+            .validate(statusCode: 200..<600)
+            .validate(contentType: ["application/json"])
+            .responseJSON { response in
+                switch response.result {
+                case .failure(let error):
+                    print(error)
+                    completion(nil, error.localizedDescription)
+                case .success(let responseObject):
+                    completion(responseObject as? [String : Any], nil)
+                }
+            }
+    }
 }

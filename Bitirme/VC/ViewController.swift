@@ -24,6 +24,7 @@ class ViewController: UIViewController {
         else{
             self.scanView.alpha = 0
             self.profileView.alpha = 1
+            segmentedControl.selectedSegmentIndex = 1
             self.backFromProfile = false
         }
         

@@ -1,20 +1,29 @@
 PODS:
-  - Alamofire (5.4.3)
+  - Alamofire (5.0.0-rc.2)
+  - AlamofireObjectMapper (6.2.0):
+    - Alamofire (= 5.0.0-rc.2)
+    - ObjectMapper (~> 3.5.1)
+  - ObjectMapper (3.5.3)
   - SwiftKeychainWrapper (4.0.1)
 
 DEPENDENCIES:
-  - Alamofire (~> 5.4)
+  - Alamofire (~> 5.0.0-rc.2)
+  - AlamofireObjectMapper (~> 6.2.0)
   - SwiftKeychainWrapper
 
 SPEC REPOS:
   trunk:
     - Alamofire
+    - AlamofireObjectMapper
+    - ObjectMapper
     - SwiftKeychainWrapper
 
 SPEC CHECKSUMS:
-  Alamofire: e447a2774a40c996748296fa2c55112fdbbc42f9
+  Alamofire: f9450d3c7f6bea2ad62e7a541c3e9b186c7991d6
+  AlamofireObjectMapper: 74d1440c92c42bbcc2b5f4dc81654ac095ec669f
+  ObjectMapper: 97111c97e054a6ee25917662106689f0b4127b37
   SwiftKeychainWrapper: 807ba1d63c33a7d0613288512399cd1eda1e470c
 
-PODFILE CHECKSUM: 938fe86f30ef2733c8152b3efd5a535ed712ee11
+PODFILE CHECKSUM: 4521548b0d29c8b541d308a5d7d49985b38aef9f
 
 COCOAPODS: 1.10.1

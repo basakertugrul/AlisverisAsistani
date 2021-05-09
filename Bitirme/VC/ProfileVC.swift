@@ -54,7 +54,6 @@ class ProfileVC:UIViewController, UICollectionViewDelegate, UICollectionViewData
             view.addSubview(imageView)
         }
         else{
-            
             self.setUpFavorites()
             self.setUpScanned()
             self.setUpCommented()

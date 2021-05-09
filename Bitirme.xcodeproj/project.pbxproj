@@ -28,6 +28,7 @@
 		175EA329263B7D93004BC583 /* RadioButtonController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 175EA328263B7D93004BC583 /* RadioButtonController.swift */; };
 		177B41AC263DDC42000C9238 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = 177B41AB263DDC42000C9238 /* Product.swift */; };
 		17C0FC1B263D910A002F565E /* CollectionCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C0FC1A263D910A002F565E /* CollectionCells.swift */; };
+		17CEAA9B26481287003FE9DA /* ScanModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17CEAA9A26481287003FE9DA /* ScanModel.swift */; };
 		17D787C0263F6012005A8257 /* scanError.gif in Resources */ = {isa = PBXBuildFile; fileRef = 17D787BD263F6012005A8257 /* scanError.gif */; };
 		17D787C1263F6012005A8257 /* signInError.gif in Resources */ = {isa = PBXBuildFile; fileRef = 17D787BE263F6012005A8257 /* signInError.gif */; };
 		17D787C2263F6012005A8257 /* funny.gif in Resources */ = {isa = PBXBuildFile; fileRef = 17D787BF263F6012005A8257 /* funny.gif */; };
@@ -84,6 +85,7 @@
 		175EA328263B7D93004BC583 /* RadioButtonController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioButtonController.swift; sourceTree = "<group>"; };
 		177B41AB263DDC42000C9238 /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
 		17C0FC1A263D910A002F565E /* CollectionCells.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionCells.swift; sourceTree = "<group>"; };
+		17CEAA9A26481287003FE9DA /* ScanModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanModel.swift; sourceTree = "<group>"; };
 		17D787BD263F6012005A8257 /* scanError.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = scanError.gif; path = ../../../Development/scanError.gif; sourceTree = "<group>"; };
 		17D787BE263F6012005A8257 /* signInError.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = signInError.gif; path = ../../../Development/signInError.gif; sourceTree = "<group>"; };
 		17D787BF263F6012005A8257 /* funny.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = funny.gif; path = ../../../Development/funny.gif; sourceTree = "<group>"; };
@@ -219,6 +221,7 @@
 			children = (
 				177B41AB263DDC42000C9238 /* Product.swift */,
 				17F63306264423C3008E52EE /* Comment.swift */,
+				17CEAA9A26481287003FE9DA /* ScanModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -499,6 +502,7 @@
 				17C0FC1B263D910A002F565E /* CollectionCells.swift in Sources */,
 				17F7E07F26345918006889F3 /* LocationVC.swift in Sources */,
 				172C28132629E79A00BAF434 /* RegisterVC.swift in Sources */,
+				17CEAA9B26481287003FE9DA /* ScanModel.swift in Sources */,
 				172C28182629E7B400BAF434 /* ScanVC.swift in Sources */,
 				172C28222629E8CD00BAF434 /* SeeAllCommentsVC.swift in Sources */,
 				172C281D2629E7F200BAF434 /* ProductVC.swift in Sources */,
