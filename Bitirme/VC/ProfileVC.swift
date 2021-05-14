@@ -160,8 +160,9 @@ class ProfileVC:UIViewController, UICollectionViewDelegate, UICollectionViewData
             self.cardShadow(cell: cellA)
             cellA.label.text = favoritesArray[indexPath.row].name
             cellA.label.textColor = .black
-           // cellA.detail.text = String(describing: favoritesArray[indexPath.row].color)
-           // cellA.seconddetail.text = String(describing: favoritesArray[indexPath.row].size)
+            let path = String(describing: (favoritesArray[indexPath.row].productImage?.path!)!) //OPTIONI YOK ETTİM
+            cellA.detail.text = String(describing: (favoritesArray[indexPath.row].id)!)
+           
             return cellA
         }
         else if collectionView == self.scannedCollectionView {
@@ -169,8 +170,8 @@ class ProfileVC:UIViewController, UICollectionViewDelegate, UICollectionViewData
             self.cardShadow(cell: cellB)
             cellB.label.text = scannedArray[indexPath.row].name
             cellB.label.textColor = .black
-//            cellB.detail.text = String(describing: scannedArray[indexPath.row].color)
-//            cellB.seconddetail.text = String(describing: scannedArray[indexPath.row].size)
+            let path = String(describing: (scannedArray[indexPath.row].productImage?.path!)!) //OPTIONI YOK ETTİM
+            cellB.detail.text = String(describing: indexPath.row)
             return cellB
         }
         else{
@@ -178,7 +179,10 @@ class ProfileVC:UIViewController, UICollectionViewDelegate, UICollectionViewData
             self.cardShadow(cell: cellC)
             cellC.label.text = commentedArray[indexPath.row].name
             cellC.label.textColor = .black
-//            let comments = commentedArray[indexPath.row].productComments
+            let path = String(describing: (commentedArray[indexPath.row].productImage?.path!)!) //OPTIONI YOK ETTİM
+            cellC.detail.text = String(describing: indexPath.row)
+            
+//            let comments = commentedArray[indexPath.row]
 //            cellC.detail.text = comments![0].comment
 //            cellC.seconddetail.text = comments![0].createdOn
             return cellC

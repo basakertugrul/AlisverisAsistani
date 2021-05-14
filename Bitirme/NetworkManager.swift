@@ -43,7 +43,6 @@ struct NetworkManager {
         AF.request(urlStr, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: nil)
             .validate(statusCode: 200..<600)
             .responseJSON { response in
-                // do whatever you want here
                 switch response.result {
                 case .failure(let error):
                     completion(nil, error.localizedDescription)
@@ -54,29 +53,29 @@ struct NetworkManager {
     }
     
     static func sendGetRequestwithAuth(urlStr: String,
-                               completion: @escaping GetRequestCompletionBlock) {
+                                       completion: @escaping GetRequestCompletionBlock) {
         let stringToken = String(describing: KeychainWrapper.standard.string(forKey: "token") ?? "" )
         let headers : HTTPHeaders = ["Content-Type": "application/json", "Authorization": "Bearer \(stringToken)"]
         
         AF.request(urlStr, method: .get, encoding: JSONEncoding.default, headers: headers)
             .responseJSON { response in
-            switch response.result {
-            case .success:
-                do {
-                    let jsonString = String(data: response.data!, encoding: .utf8)
-                    let profileProducts = try ProfileProducts(jsonString!)
-                    completion(profileProducts, nil )
+                switch response.result {
+                case .success:
+                    do {
+                        let jsonString = String(data: response.data!, encoding: .utf8)
+                        let profileProducts = try ProfileProducts(jsonString!)
+                        completion(profileProducts, nil )
+                    }
+                    catch let e {
+                        completion(nil, e.localizedDescription)
+                    }
+                    
+                case .failure(let error):
+                    completion(nil, error.localizedDescription)
                 }
-                catch let e {
-                    completion(nil, e.localizedDescription)
-                }
-                
-            case .failure(let error):
-                completion(nil, error.localizedDescription)
             }
-        }
     }
-
+    
     static func sendScanRequest(parameters: [String: Any],
                                 completion: @escaping ScanRequestCompletionBlock) {
         
@@ -84,20 +83,36 @@ struct NetworkManager {
         
         AF.request("http://192.168.1.155:62755/api/user/scan", method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers)
             .responseJSON { response in
-            switch response.result {
-            case .success:
-                do {
-                    let jsonString = String(data: response.data!, encoding: .utf8)
-                    let scan = try Scan(jsonString!)
-                    completion(scan, nil )
+                switch response.result {
+                case .success:
+                    do {
+                        let jsonString = String(data: response.data!, encoding: .utf8)
+                        let scan = try Scan(jsonString!)
+                        completion(scan, nil )
+                    }
+                    catch let e {
+                        completion(nil, e.localizedDescription)
+                    }
+                    
+                case .failure(let error):
+                    completion(nil, error.localizedDescription)
                 }
-                catch let e {
-                    completion(nil, e.localizedDescription)
-                }
-                
-            case .failure(let error):
-                completion(nil, error.localizedDescription)
             }
-        }
+    }
+    
+    static func sendCommentRequest(parameters: [String: Any],
+                                   completion: @escaping RequestCompletionBlock) {
+        let stringToken = String(describing: KeychainWrapper.standard.string(forKey: "token") ?? "" )
+        let headers : HTTPHeaders = ["Content-Type": "application/json", "Authorization": "Bearer \(stringToken)"]
+        
+        AF.request("http://192.168.1.155:62755/api/product/comment", method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers)
+            .responseJSON { response in
+                switch response.result {
+                case .failure(let error):
+                    completion(nil, error.localizedDescription)
+                case .success(let responseObject):
+                    completion(responseObject as? [String : Any], nil)
+                }
+            }
     }
 }

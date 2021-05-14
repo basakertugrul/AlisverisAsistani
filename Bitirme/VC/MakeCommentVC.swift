@@ -20,7 +20,8 @@ class MakeCommentVC: UIViewController {
     let radioController: RadioButtonController = RadioButtonController()
     var anonymous : Bool = false
     
-    var barcodeNumber: String = ""
+    var productID: String = ""
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,7 +55,22 @@ class MakeCommentVC: UIViewController {
     @IBAction func sendButtonTapped(_ sender: UIButton) {
         let comment = commentTextField.text
         //self.anonymous
-        //Servis
+        var isAnonym:Int = 0
+        if self.anonymous {
+            isAnonym = 1
+        }
+        
+        let params: [String: Any] = ["productId": String(self.productID),
+                                     "comment": comment ?? "",
+                                     "isAnonym": isAnonym]
+        NetworkManager.sendCommentRequest(parameters: params)
+        { [weak self] (data, error) in
+            if let error = error {
+                print("ERROR:\(error)")
+                return
+            }
+            print(String(describing: data))
+            self!.dismiss(animated: true, completion: nil)
+        }
     }
-    
 }

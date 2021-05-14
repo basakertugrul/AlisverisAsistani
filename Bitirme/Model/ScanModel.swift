@@ -9,7 +9,7 @@ import Foundation
 struct Scan: Codable {
     let id, name: String?
     let address: JSONNull?
-    let products: [Products]?
+    let products: [ScanProduct]?
 }
 
 // MARK: Scan convenience initializers and mutators
@@ -34,7 +34,7 @@ extension Scan {
         id: String?? = nil,
         name: String?? = nil,
         address: JSONNull?? = nil,
-        products: [Products]?? = nil
+        products: [ScanProduct]?? = nil
     ) -> Scan {
         return Scan(
             id: id ?? self.id,
@@ -53,14 +53,14 @@ extension Scan {
     }
 }
 
-// MARK: - Products
-struct Products: Codable {
+// MARK: - Product
+struct ScanProduct: Codable {
     let id, userID, productTypeID, name: String?
     let stock: Int?
     let price: Double?
     let color, size: Int?
     let barcode, productNo: String?
-    let likesNumber: Int?
+    let likeNumber, scanNumber: Int?
     let productImages: [ProductImage]?
     let productComments: [ProductComment]?
 
@@ -68,15 +68,15 @@ struct Products: Codable {
         case id
         case userID = "userId"
         case productTypeID = "productTypeId"
-        case name, stock, price, color, size, barcode, productNo, likesNumber, productImages, productComments
+        case name, stock, price, color, size, barcode, productNo, likeNumber, scanNumber, productImages, productComments
     }
 }
 
-// MARK: Products convenience initializers and mutators
+// MARK: Product convenience initializers and mutators
 
-extension Products {
+extension ScanProduct {
     init(data: Data) throws {
-        self = try newJSONDecoder().decode(Products.self, from: data)
+        self = try newJSONDecoder().decode(ScanProduct.self, from: data)
     }
 
     init(_ json: String, using encoding: String.Encoding = .utf8) throws {
@@ -89,7 +89,7 @@ extension Products {
     init(fromURL url: URL) throws {
         try self.init(data: try Data(contentsOf: url))
     }
-    
+
     func with(
         id: String?? = nil,
         userID: String?? = nil,
@@ -101,11 +101,12 @@ extension Products {
         size: Int?? = nil,
         barcode: String?? = nil,
         productNo: String?? = nil,
-        likesNumber: Int?? = nil,
+        likeNumber: Int?? = nil,
+        scanNumber: Int?? = nil,
         productImages: [ProductImage]?? = nil,
         productComments: [ProductComment]?? = nil
-    ) -> Products {
-        return Products(
+    ) -> ScanProduct {
+        return ScanProduct(
             id: id ?? self.id,
             userID: userID ?? self.userID,
             productTypeID: productTypeID ?? self.productTypeID,
@@ -116,7 +117,8 @@ extension Products {
             size: size ?? self.size,
             barcode: barcode ?? self.barcode,
             productNo: productNo ?? self.productNo,
-            likesNumber: likesNumber ?? self.likesNumber,
+            likeNumber: likeNumber ?? self.likeNumber,
+            scanNumber: scanNumber ?? self.scanNumber,
             productImages: productImages ?? self.productImages,
             productComments: productComments ?? self.productComments
         )
@@ -226,6 +228,24 @@ extension ProductImage {
     func jsonString(encoding: String.Encoding = .utf8) throws -> String? {
         return String(data: try self.jsonData(), encoding: encoding)
     }
+}
+
+// MARK: - Helper functions for creating encoders and decoders
+
+func newJSONDecoder() -> JSONDecoder {
+    let decoder = JSONDecoder()
+    if #available(iOS 10.0, OSX 10.12, tvOS 10.0, watchOS 3.0, *) {
+        decoder.dateDecodingStrategy = .iso8601
+    }
+    return decoder
+}
+
+func newJSONEncoder() -> JSONEncoder {
+    let encoder = JSONEncoder()
+    if #available(iOS 10.0, OSX 10.12, tvOS 10.0, watchOS 3.0, *) {
+        encoder.dateEncodingStrategy = .iso8601
+    }
+    return encoder
 }
 
 // MARK: - Encode/decode helpers

@@ -8,14 +8,14 @@ import Foundation
 // MARK: - ProfileProduct
 struct ProfileProduct: Codable {
     let id, name: String?
-    let productImages: [ProductImage]?
+    let productImage: ProductImage2?
 }
 
 // MARK: ProfileProduct convenience initializers and mutators
 
 extension ProfileProduct {
     init(data: Data) throws {
-        self = try newJSONDecoder().decode(ProfileProduct.self, from: data)
+        self = try newJSONDecoder2().decode(ProfileProduct.self, from: data)
     }
 
     init(_ json: String, using encoding: String.Encoding = .utf8) throws {
@@ -32,21 +32,21 @@ extension ProfileProduct {
     func with(
         id: String?? = nil,
         name: String?? = nil,
-        productImages: [ProductImage]?? = nil
+        productImage: ProductImage2?? = nil
     ) -> ProfileProduct {
         return ProfileProduct(
-            id: id ?? self.id,
+            id: (id ?? self.id)!,
             name: name ?? self.name,
-            productImages: productImages ?? self.productImages
+            productImage: productImage ?? self.productImage
         )
     }
 
-    func jsonData() throws -> Data {
+    func jsonData2() throws -> Data {
         return try newJSONEncoder().encode(self)
     }
 
     func jsonString(encoding: String.Encoding = .utf8) throws -> String? {
-        return String(data: try self.jsonData(), encoding: encoding)
+        return String(data: try self.jsonData2(), encoding: encoding)
     }
 }
 
@@ -61,7 +61,7 @@ struct ProductImage2: Codable {
 
 extension ProductImage2 {
     init(data: Data) throws {
-        self = try newJSONDecoder().decode(ProductImage2.self, from: data)
+        self = try newJSONDecoder2().decode(ProductImage2.self, from: data)
     }
 
     init(_ json: String, using encoding: String.Encoding = .utf8) throws {
@@ -79,20 +79,20 @@ extension ProductImage2 {
         id: String?? = nil,
         sort: Int?? = nil,
         path: String?? = nil
-    ) -> ProductImage {
-        return ProductImage(
+    ) -> ProductImage2 {
+        return ProductImage2(
             id: id ?? self.id,
             sort: sort ?? self.sort,
             path: path ?? self.path
         )
     }
 
-    func jsonData() throws -> Data {
+    func jsonData2() throws -> Data {
         return try newJSONEncoder().encode(self)
     }
 
     func jsonString(encoding: String.Encoding = .utf8) throws -> String? {
-        return String(data: try self.jsonData(), encoding: encoding)
+        return String(data: try self.jsonData2(), encoding: encoding)
     }
 }
 
@@ -100,7 +100,7 @@ typealias ProfileProducts = [ProfileProduct]
 
 extension Array where Element == ProfileProducts.Element {
     init(data: Data) throws {
-        self = try newJSONDecoder().decode(ProfileProducts.self, from: data)
+        self = try newJSONDecoder2().decode(ProfileProducts.self, from: data)
     }
 
     init(_ json: String, using encoding: String.Encoding = .utf8) throws {
@@ -114,18 +114,18 @@ extension Array where Element == ProfileProducts.Element {
         try self.init(data: try Data(contentsOf: url))
     }
 
-    func jsonData() throws -> Data {
+    func jsonData2() throws -> Data {
         return try newJSONEncoder().encode(self)
     }
 
     func jsonString(encoding: String.Encoding = .utf8) throws -> String? {
-        return String(data: try self.jsonData(), encoding: encoding)
+        return String(data: try self.jsonData2(), encoding: encoding)
     }
 }
 
 // MARK: - Helper functions for creating encoders and decoders
 
-func newJSONDecoder() -> JSONDecoder {
+func newJSONDecoder2() -> JSONDecoder {
     let decoder = JSONDecoder()
     if #available(iOS 10.0, OSX 10.12, tvOS 10.0, watchOS 3.0, *) {
         decoder.dateDecodingStrategy = .iso8601
@@ -133,7 +133,7 @@ func newJSONDecoder() -> JSONDecoder {
     return decoder
 }
 
-func newJSONEncoder() -> JSONEncoder {
+func newJSONEncoder2() -> JSONEncoder {
     let encoder = JSONEncoder()
     if #available(iOS 10.0, OSX 10.12, tvOS 10.0, watchOS 3.0, *) {
         encoder.dateEncodingStrategy = .iso8601
