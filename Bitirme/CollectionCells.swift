@@ -11,18 +11,21 @@ class FavoritesCollectionCell: UICollectionViewCell{
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var label: UILabel!
     @IBOutlet weak var detail: UILabel!
+    @IBOutlet weak var seconddetail: UILabel!
 }
 
 class ScannedCollectionCell: UICollectionViewCell{
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var label: UILabel!
     @IBOutlet weak var detail: UILabel!
+    @IBOutlet weak var seconddetail: UILabel!
 }
 
 class CommentedCollectionCell: UICollectionViewCell{
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var label: UILabel!
     @IBOutlet weak var detail: UILabel!
+    @IBOutlet weak var seconddetail: UILabel!
 }
 
 class CommentsofProductCollectionCell: UICollectionViewCell{

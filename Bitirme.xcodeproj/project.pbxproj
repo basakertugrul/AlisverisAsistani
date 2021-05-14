@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		1717715B262D02A400D90DA2 /* UImage+GIF.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1717715A262D02A400D90DA2 /* UImage+GIF.swift */; };
+		172101252649F3C200A8B0C4 /* BitirmeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 172101242649F3C200A8B0C4 /* BitirmeTests.swift */; };
+		17210126264A960700A8B0C4 /* Pods_Bitirme.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4065B5CE6077487341D34BF /* Pods_Bitirme.framework */; };
+		17210127264A960700A8B0C4 /* Pods_Bitirme.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E4065B5CE6077487341D34BF /* Pods_Bitirme.framework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		17210138264A96B600A8B0C4 /* Pods_Bitirme.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1721012D264A96B600A8B0C4 /* Pods_Bitirme.framework */; };
+		17210139264A96B600A8B0C4 /* Pods_Bitirme.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1721012D264A96B600A8B0C4 /* Pods_Bitirme.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		172BD97926382CD600DCE4AE /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 172BD97826382CD600DCE4AE /* NetworkManager.swift */; };
 		172C27CD2629D56300BAF434 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 172C27CC2629D56300BAF434 /* AppDelegate.swift */; };
 		172C27CF2629D56300BAF434 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 172C27CE2629D56300BAF434 /* SceneDelegate.swift */; };
@@ -26,17 +31,15 @@
 		172C28222629E8CD00BAF434 /* SeeAllCommentsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 172C28212629E8CD00BAF434 /* SeeAllCommentsVC.swift */; };
 		172C28272629E94F00BAF434 /* MakeCommentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 172C28262629E94F00BAF434 /* MakeCommentVC.swift */; };
 		175EA329263B7D93004BC583 /* RadioButtonController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 175EA328263B7D93004BC583 /* RadioButtonController.swift */; };
-		177B41AC263DDC42000C9238 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = 177B41AB263DDC42000C9238 /* Product.swift */; };
+		178E9136264CA1060085D7EC /* ProfileProductModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 178E9135264CA1060085D7EC /* ProfileProductModel.swift */; };
 		17C0FC1B263D910A002F565E /* CollectionCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C0FC1A263D910A002F565E /* CollectionCells.swift */; };
 		17CEAA9B26481287003FE9DA /* ScanModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17CEAA9A26481287003FE9DA /* ScanModel.swift */; };
 		17D787C0263F6012005A8257 /* scanError.gif in Resources */ = {isa = PBXBuildFile; fileRef = 17D787BD263F6012005A8257 /* scanError.gif */; };
 		17D787C1263F6012005A8257 /* signInError.gif in Resources */ = {isa = PBXBuildFile; fileRef = 17D787BE263F6012005A8257 /* signInError.gif */; };
 		17D787C2263F6012005A8257 /* funny.gif in Resources */ = {isa = PBXBuildFile; fileRef = 17D787BF263F6012005A8257 /* funny.gif */; };
-		17F63307264423C3008E52EE /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17F63306264423C3008E52EE /* Comment.swift */; };
 		17F7E07F26345918006889F3 /* LocationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17F7E07E26345918006889F3 /* LocationVC.swift */; };
-		642C95488EB0AB13F890857D /* Pods_Bitirme.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6958BC1367C4EA20C64B823E /* Pods_Bitirme.framework */; };
-		B38C7B420198C0C16FE09CB1 /* Pods_BitirmeTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E988B3CCFC697D66AB742104 /* Pods_BitirmeTests.framework */; };
-		D38BF30245E0D5F36CAA0E2A /* Pods_Bitirme_BitirmeUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E700A4E9DE869C914C379094 /* Pods_Bitirme_BitirmeUITests.framework */; };
+		651856B4FCB723589B2BC657 /* Pods_Bitirme_BitirmeUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29223283D5D17A89EA2CFB18 /* Pods_Bitirme_BitirmeUITests.framework */; };
+		8810BA225D509249907FE8C1 /* Pods_BitirmeTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D8C7DD4D6CC0FCF82C12902 /* Pods_BitirmeTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,9 +59,32 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		17210128264A960700A8B0C4 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				17210127264A960700A8B0C4 /* Pods_Bitirme.framework in Embed Frameworks */,
+				17210139264A96B600A8B0C4 /* Pods_Bitirme.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
-		0C9804B541317F7B66B3E17F /* Pods-Bitirme-BitirmeUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bitirme-BitirmeUITests.release.xcconfig"; path = "Target Support Files/Pods-Bitirme-BitirmeUITests/Pods-Bitirme-BitirmeUITests.release.xcconfig"; sourceTree = "<group>"; };
+		0F4406FDD76A68CF92F61318 /* Pods-Bitirme.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bitirme.debug.xcconfig"; path = "Target Support Files/Pods-Bitirme/Pods-Bitirme.debug.xcconfig"; sourceTree = "<group>"; };
 		1717715A262D02A400D90DA2 /* UImage+GIF.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UImage+GIF.swift"; sourceTree = "<group>"; };
+		172101242649F3C200A8B0C4 /* BitirmeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BitirmeTests.swift; sourceTree = "<group>"; };
+		17210129264A96B600A8B0C4 /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1721012A264A96B600A8B0C4 /* AlamofireObjectMapper.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = AlamofireObjectMapper.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1721012B264A96B600A8B0C4 /* ObjectMapper.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = ObjectMapper.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1721012C264A96B600A8B0C4 /* Pods_Bitirme_BitirmeUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_Bitirme_BitirmeUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1721012D264A96B600A8B0C4 /* Pods_Bitirme.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_Bitirme.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1721012E264A96B600A8B0C4 /* Pods_BitirmeTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_BitirmeTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1721012F264A96B600A8B0C4 /* SwiftKeychainWrapper.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SwiftKeychainWrapper.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		172BD97826382CD600DCE4AE /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		172C27C92629D56300BAF434 /* Bitirme.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Bitirme.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		172C27CC2629D56300BAF434 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -83,22 +109,21 @@
 		172C28212629E8CD00BAF434 /* SeeAllCommentsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeeAllCommentsVC.swift; sourceTree = "<group>"; };
 		172C28262629E94F00BAF434 /* MakeCommentVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakeCommentVC.swift; sourceTree = "<group>"; };
 		175EA328263B7D93004BC583 /* RadioButtonController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioButtonController.swift; sourceTree = "<group>"; };
-		177B41AB263DDC42000C9238 /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
+		178E9135264CA1060085D7EC /* ProfileProductModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileProductModel.swift; sourceTree = "<group>"; };
 		17C0FC1A263D910A002F565E /* CollectionCells.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionCells.swift; sourceTree = "<group>"; };
 		17CEAA9A26481287003FE9DA /* ScanModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanModel.swift; sourceTree = "<group>"; };
 		17D787BD263F6012005A8257 /* scanError.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = scanError.gif; path = ../../../Development/scanError.gif; sourceTree = "<group>"; };
 		17D787BE263F6012005A8257 /* signInError.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = signInError.gif; path = ../../../Development/signInError.gif; sourceTree = "<group>"; };
 		17D787BF263F6012005A8257 /* funny.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = funny.gif; path = ../../../Development/funny.gif; sourceTree = "<group>"; };
-		17F63306264423C3008E52EE /* Comment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
 		17F7E07E26345918006889F3 /* LocationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationVC.swift; sourceTree = "<group>"; };
-		270108E5D688507E3304927C /* Pods-BitirmeTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BitirmeTests.debug.xcconfig"; path = "Target Support Files/Pods-BitirmeTests/Pods-BitirmeTests.debug.xcconfig"; sourceTree = "<group>"; };
-		3FFCA8018D5E160F82C83D53 /* Pods-BitirmeTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BitirmeTests.release.xcconfig"; path = "Target Support Files/Pods-BitirmeTests/Pods-BitirmeTests.release.xcconfig"; sourceTree = "<group>"; };
-		5148E3C2926487793BA2F3FE /* Pods-Bitirme.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bitirme.debug.xcconfig"; path = "Target Support Files/Pods-Bitirme/Pods-Bitirme.debug.xcconfig"; sourceTree = "<group>"; };
-		6958BC1367C4EA20C64B823E /* Pods_Bitirme.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Bitirme.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		7114E88DB04F4DCE7FAE43C9 /* Pods-Bitirme.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bitirme.release.xcconfig"; path = "Target Support Files/Pods-Bitirme/Pods-Bitirme.release.xcconfig"; sourceTree = "<group>"; };
-		CE65A90CD0577EA74F40B34B /* Pods-Bitirme-BitirmeUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bitirme-BitirmeUITests.debug.xcconfig"; path = "Target Support Files/Pods-Bitirme-BitirmeUITests/Pods-Bitirme-BitirmeUITests.debug.xcconfig"; sourceTree = "<group>"; };
-		E700A4E9DE869C914C379094 /* Pods_Bitirme_BitirmeUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Bitirme_BitirmeUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		E988B3CCFC697D66AB742104 /* Pods_BitirmeTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BitirmeTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		29223283D5D17A89EA2CFB18 /* Pods_Bitirme_BitirmeUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Bitirme_BitirmeUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2D8C7DD4D6CC0FCF82C12902 /* Pods_BitirmeTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BitirmeTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3A9A44CF21082420EEEBA17F /* Pods-Bitirme.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bitirme.release.xcconfig"; path = "Target Support Files/Pods-Bitirme/Pods-Bitirme.release.xcconfig"; sourceTree = "<group>"; };
+		4D1D0598D43BE513CECDEA5B /* Pods-BitirmeTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BitirmeTests.debug.xcconfig"; path = "Target Support Files/Pods-BitirmeTests/Pods-BitirmeTests.debug.xcconfig"; sourceTree = "<group>"; };
+		90DE5F5F95A136E811163564 /* Pods-BitirmeTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BitirmeTests.release.xcconfig"; path = "Target Support Files/Pods-BitirmeTests/Pods-BitirmeTests.release.xcconfig"; sourceTree = "<group>"; };
+		9D3EA0F55ADA0FE6A3C9E40B /* Pods-Bitirme-BitirmeUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bitirme-BitirmeUITests.debug.xcconfig"; path = "Target Support Files/Pods-Bitirme-BitirmeUITests/Pods-Bitirme-BitirmeUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		E4065B5CE6077487341D34BF /* Pods_Bitirme.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Bitirme.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E538C63993D5B092CDD6491B /* Pods-Bitirme-BitirmeUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bitirme-BitirmeUITests.release.xcconfig"; path = "Target Support Files/Pods-Bitirme-BitirmeUITests/Pods-Bitirme-BitirmeUITests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,7 +131,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				642C95488EB0AB13F890857D /* Pods_Bitirme.framework in Frameworks */,
+				17210126264A960700A8B0C4 /* Pods_Bitirme.framework in Frameworks */,
+				17210138264A96B600A8B0C4 /* Pods_Bitirme.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -114,7 +140,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B38C7B420198C0C16FE09CB1 /* Pods_BitirmeTests.framework in Frameworks */,
+				8810BA225D509249907FE8C1 /* Pods_BitirmeTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -122,7 +148,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D38BF30245E0D5F36CAA0E2A /* Pods_Bitirme_BitirmeUITests.framework in Frameworks */,
+				651856B4FCB723589B2BC657 /* Pods_Bitirme_BitirmeUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -137,7 +163,7 @@
 				172C27ED2629D56400BAF434 /* BitirmeUITests */,
 				172C27CA2629D56300BAF434 /* Products */,
 				251C77FCC2A1429BD0318FC9 /* Pods */,
-				5E9F27D0A6A48C5AB8D7F7C4 /* Frameworks */,
+				A7BE0D10DE9FAAB2C6A15A44 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -156,6 +182,7 @@
 			children = (
 				172C27CC2629D56300BAF434 /* AppDelegate.swift */,
 				172C27CE2629D56300BAF434 /* SceneDelegate.swift */,
+				172101242649F3C200A8B0C4 /* BitirmeTests.swift */,
 				172C27D52629D56400BAF434 /* Assets.xcassets */,
 				172C27D72629D56400BAF434 /* LaunchScreen.storyboard */,
 				172C27DA2629D56400BAF434 /* Info.plist */,
@@ -219,9 +246,8 @@
 		177B41AA263DDC30000C9238 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				177B41AB263DDC42000C9238 /* Product.swift */,
-				17F63306264423C3008E52EE /* Comment.swift */,
 				17CEAA9A26481287003FE9DA /* ScanModel.swift */,
+				178E9135264CA1060085D7EC /* ProfileProductModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -229,22 +255,29 @@
 		251C77FCC2A1429BD0318FC9 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				5148E3C2926487793BA2F3FE /* Pods-Bitirme.debug.xcconfig */,
-				7114E88DB04F4DCE7FAE43C9 /* Pods-Bitirme.release.xcconfig */,
-				CE65A90CD0577EA74F40B34B /* Pods-Bitirme-BitirmeUITests.debug.xcconfig */,
-				0C9804B541317F7B66B3E17F /* Pods-Bitirme-BitirmeUITests.release.xcconfig */,
-				270108E5D688507E3304927C /* Pods-BitirmeTests.debug.xcconfig */,
-				3FFCA8018D5E160F82C83D53 /* Pods-BitirmeTests.release.xcconfig */,
+				0F4406FDD76A68CF92F61318 /* Pods-Bitirme.debug.xcconfig */,
+				3A9A44CF21082420EEEBA17F /* Pods-Bitirme.release.xcconfig */,
+				9D3EA0F55ADA0FE6A3C9E40B /* Pods-Bitirme-BitirmeUITests.debug.xcconfig */,
+				E538C63993D5B092CDD6491B /* Pods-Bitirme-BitirmeUITests.release.xcconfig */,
+				4D1D0598D43BE513CECDEA5B /* Pods-BitirmeTests.debug.xcconfig */,
+				90DE5F5F95A136E811163564 /* Pods-BitirmeTests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
 		};
-		5E9F27D0A6A48C5AB8D7F7C4 /* Frameworks */ = {
+		A7BE0D10DE9FAAB2C6A15A44 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				6958BC1367C4EA20C64B823E /* Pods_Bitirme.framework */,
-				E700A4E9DE869C914C379094 /* Pods_Bitirme_BitirmeUITests.framework */,
-				E988B3CCFC697D66AB742104 /* Pods_BitirmeTests.framework */,
+				17210129264A96B600A8B0C4 /* Alamofire.framework */,
+				1721012A264A96B600A8B0C4 /* AlamofireObjectMapper.framework */,
+				1721012B264A96B600A8B0C4 /* ObjectMapper.framework */,
+				1721012C264A96B600A8B0C4 /* Pods_Bitirme_BitirmeUITests.framework */,
+				1721012D264A96B600A8B0C4 /* Pods_Bitirme.framework */,
+				1721012E264A96B600A8B0C4 /* Pods_BitirmeTests.framework */,
+				1721012F264A96B600A8B0C4 /* SwiftKeychainWrapper.framework */,
+				E4065B5CE6077487341D34BF /* Pods_Bitirme.framework */,
+				29223283D5D17A89EA2CFB18 /* Pods_Bitirme_BitirmeUITests.framework */,
+				2D8C7DD4D6CC0FCF82C12902 /* Pods_BitirmeTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -256,11 +289,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 172C27F32629D56400BAF434 /* Build configuration list for PBXNativeTarget "Bitirme" */;
 			buildPhases = (
-				F641F8FFD4122190B5EAC7C9 /* [CP] Check Pods Manifest.lock */,
+				C493B3C6D4ED6C4EEBF655FD /* [CP] Check Pods Manifest.lock */,
 				172C27C52629D56300BAF434 /* Sources */,
 				172C27C62629D56300BAF434 /* Frameworks */,
 				172C27C72629D56300BAF434 /* Resources */,
-				F3E2E5840443ECAB0864E26D /* [CP] Embed Pods Frameworks */,
+				034E810F5BF060418CD3E812 /* [CP] Embed Pods Frameworks */,
+				17210128264A960700A8B0C4 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -275,7 +309,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 172C27F62629D56400BAF434 /* Build configuration list for PBXNativeTarget "BitirmeTests" */;
 			buildPhases = (
-				0A18670A0B5C2F906286A721 /* [CP] Check Pods Manifest.lock */,
+				647595F12EE327D9B4B9AF7A /* [CP] Check Pods Manifest.lock */,
 				172C27DB2629D56400BAF434 /* Sources */,
 				172C27DC2629D56400BAF434 /* Frameworks */,
 				172C27DD2629D56400BAF434 /* Resources */,
@@ -294,11 +328,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 172C27F92629D56400BAF434 /* Build configuration list for PBXNativeTarget "BitirmeUITests" */;
 			buildPhases = (
-				A32617C4BC58247D18E40305 /* [CP] Check Pods Manifest.lock */,
+				7E147BEE853D2CE84C3DA577 /* [CP] Check Pods Manifest.lock */,
 				172C27E62629D56400BAF434 /* Sources */,
 				172C27E72629D56400BAF434 /* Frameworks */,
 				172C27E82629D56400BAF434 /* Resources */,
-				FBB882DE35F8B15BCFF2D394 /* [CP] Embed Pods Frameworks */,
+				F1688C052F8BB15A5056B23F /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -383,7 +417,24 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		0A18670A0B5C2F906286A721 /* [CP] Check Pods Manifest.lock */ = {
+		034E810F5BF060418CD3E812 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Bitirme/Pods-Bitirme-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Bitirme/Pods-Bitirme-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Bitirme/Pods-Bitirme-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		647595F12EE327D9B4B9AF7A /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -405,7 +456,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		A32617C4BC58247D18E40305 /* [CP] Check Pods Manifest.lock */ = {
+		7E147BEE853D2CE84C3DA577 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -427,24 +478,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		F3E2E5840443ECAB0864E26D /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Bitirme/Pods-Bitirme-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Bitirme/Pods-Bitirme-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Bitirme/Pods-Bitirme-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		F641F8FFD4122190B5EAC7C9 /* [CP] Check Pods Manifest.lock */ = {
+		C493B3C6D4ED6C4EEBF655FD /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -466,7 +500,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		FBB882DE35F8B15BCFF2D394 /* [CP] Embed Pods Frameworks */ = {
+		F1688C052F8BB15A5056B23F /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -495,9 +529,8 @@
 				172C280E2629E77D00BAF434 /* ForgotPasswordVC.swift in Sources */,
 				172BD97926382CD600DCE4AE /* NetworkManager.swift in Sources */,
 				172C27CD2629D56300BAF434 /* AppDelegate.swift in Sources */,
-				177B41AC263DDC42000C9238 /* Product.swift in Sources */,
+				178E9136264CA1060085D7EC /* ProfileProductModel.swift in Sources */,
 				1717715B262D02A400D90DA2 /* UImage+GIF.swift in Sources */,
-				17F63307264423C3008E52EE /* Comment.swift in Sources */,
 				172C28272629E94F00BAF434 /* MakeCommentVC.swift in Sources */,
 				17C0FC1B263D910A002F565E /* CollectionCells.swift in Sources */,
 				17F7E07F26345918006889F3 /* LocationVC.swift in Sources */,
@@ -516,6 +549,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				172101252649F3C200A8B0C4 /* BitirmeTests.swift in Sources */,
 				172C27E42629D56400BAF434 /* BitirmeTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -681,7 +715,7 @@
 		};
 		172C27F42629D56400BAF434 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5148E3C2926487793BA2F3FE /* Pods-Bitirme.debug.xcconfig */;
+			baseConfigurationReference = 0F4406FDD76A68CF92F61318 /* Pods-Bitirme.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -689,7 +723,7 @@
 				DEVELOPMENT_TEAM = J4MP6X34JN;
 				INFOPLIST_FILE = Bitirme/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
+					"$(SRCROOT)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = basak.Bitirme;
@@ -701,7 +735,7 @@
 		};
 		172C27F52629D56400BAF434 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7114E88DB04F4DCE7FAE43C9 /* Pods-Bitirme.release.xcconfig */;
+			baseConfigurationReference = 3A9A44CF21082420EEEBA17F /* Pods-Bitirme.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -709,7 +743,7 @@
 				DEVELOPMENT_TEAM = J4MP6X34JN;
 				INFOPLIST_FILE = Bitirme/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
+					"$(SRCROOT)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = basak.Bitirme;
@@ -721,7 +755,7 @@
 		};
 		172C27F72629D56400BAF434 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 270108E5D688507E3304927C /* Pods-BitirmeTests.debug.xcconfig */;
+			baseConfigurationReference = 4D1D0598D43BE513CECDEA5B /* Pods-BitirmeTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -744,7 +778,7 @@
 		};
 		172C27F82629D56400BAF434 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3FFCA8018D5E160F82C83D53 /* Pods-BitirmeTests.release.xcconfig */;
+			baseConfigurationReference = 90DE5F5F95A136E811163564 /* Pods-BitirmeTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -767,7 +801,7 @@
 		};
 		172C27FA2629D56400BAF434 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = CE65A90CD0577EA74F40B34B /* Pods-Bitirme-BitirmeUITests.debug.xcconfig */;
+			baseConfigurationReference = 9D3EA0F55ADA0FE6A3C9E40B /* Pods-Bitirme-BitirmeUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -788,7 +822,7 @@
 		};
 		172C27FB2629D56400BAF434 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0C9804B541317F7B66B3E17F /* Pods-Bitirme-BitirmeUITests.release.xcconfig */;
+			baseConfigurationReference = E538C63993D5B092CDD6491B /* Pods-Bitirme-BitirmeUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;

@@ -53,10 +53,6 @@ class SeeAllCommentsVC: UIViewController, UICollectionViewDelegate, UICollection
     }
     
     @IBAction func goBackButtonPressed(_ sender: Any) {
-        let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        let vc = mainStoryboard.instantiateViewController(withIdentifier: "productVC") as! ProductVC
-        vc.modalPresentationStyle = .fullScreen
-//        vc.barcodeNumber = self.barcodeNumber
-        present(vc, animated: true, completion: nil)
+        self.dismiss(animated: true, completion: nil)
     }
 }
