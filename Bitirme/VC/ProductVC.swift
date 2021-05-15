@@ -184,12 +184,15 @@ class ProductVC: UIViewController, UICollectionViewDelegate, UICollectionViewDat
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: self.photosCollectionViewIdentifier, for: indexPath) as! PhotosofProductCell
-        let imageUrlString = "http://192.168.1.155/\(String(describing: self.imageUrlArray[indexPath.row]))"
-        guard let imageUrl:URL = URL(string: imageUrlString) else {
-            return cell
-        }
-        cell.imageView.loadImge(withUrl: imageUrl)
-        cell.imageView.image = UIImage(named: "barcodeProduct")
+        var imageUrlString = "http://192.168.1.155/\(String(describing: self.imageUrlArray[indexPath.row]))"
+        imageUrlString = imageUrlString.replacingOccurrences(of: "\\",
+                                                                           with: "/")
+
+        let imageUrl = URL(string: imageUrlString)
+        if let data = try? Data(contentsOf: imageUrl!) {
+                // Create Image and Update Image View
+            cell.imageView.image = UIImage(data: data)
+            }
         return cell
     }
     
@@ -242,16 +245,10 @@ extension UIButton {
     }
 }
 
-extension UIImageView {
-    func loadImge(withUrl url: URL) {
-        DispatchQueue.global().async { [weak self] in
-            if let imageData = try? Data(contentsOf: url) {
-                if let image = UIImage(data: imageData) {
-                    DispatchQueue.main.async {
-                        self?.image = image
-                    }
-                }
-            }
-        }
+extension UIImage {
+    convenience init?(withContentsOfUrl url: URL) throws {
+        let imageData = try Data(contentsOf: url)
+        self.init(data: imageData)
     }
 }
+
