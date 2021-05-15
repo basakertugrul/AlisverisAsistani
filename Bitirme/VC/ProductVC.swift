@@ -20,6 +20,7 @@ class ProductVC: UIViewController, UICollectionViewDelegate, UICollectionViewDat
     @IBOutlet weak var sizeLabel: UILabel!
     @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var totallikesLabel: UILabel!
+    @IBOutlet weak var totalscansLabel: UILabel!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var actionView: UIView!
     
@@ -28,6 +29,7 @@ class ProductVC: UIViewController, UICollectionViewDelegate, UICollectionViewDat
     let locationManager = CLLocationManager()
     var longitude: Double = 0.0
     var latitude: Double = 0.0
+    var productTypeID: String = ""
     
     var storeName: String = ""
     var productsArray: [ScanProduct] = []
@@ -85,8 +87,10 @@ class ProductVC: UIViewController, UICollectionViewDelegate, UICollectionViewDat
                 self?.sizeLabel.text = "Size: \(String(Int(self!.theProduct[0].size!)))"
                 self?.priceLabel.text = "Price: \(String(Double(self!.theProduct[0].price!)))"
                 self?.totallikesLabel.text = "\(String(Int(self!.theProduct[0].likeNumber!))) people have liked this product"
+                self?.totalscansLabel.text = "\(String(Int(self!.theProduct[0].scanNumber!))) people have scanned this product"
                 self?.nameLabel.text = String(self!.theProduct[0].name!)
                 self?.productID = String(self!.theProduct[0].id!)
+                self?.productTypeID = String(self!.theProduct[0].productTypeID!)
                 for item in self!.theProduct[0].productImages! {
                     self?.imageUrlArray.append(String(item.path!))
                 }
@@ -114,6 +118,16 @@ class ProductVC: UIViewController, UICollectionViewDelegate, UICollectionViewDat
     }
     @IBAction func likeButtonPressed(_ sender: Any) {
         
+        NetworkManager.sendGetRequestwithAuth(urlStr: "http://192.168.1.155:62755/api/user/favorite/\(String(describing: {self.productID}))")
+        { [weak self] (data, error) in
+            if let error = error {
+                print("ERROR:\(error)")
+                return
+            }
+            if let array = data {
+                print(array)
+            }
+        }
     }
     
     @IBAction func makeCommentButtonPressed(_ sender: Any) {
