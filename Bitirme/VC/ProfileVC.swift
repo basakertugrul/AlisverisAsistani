@@ -162,7 +162,6 @@ class ProfileVC:UIViewController, UICollectionViewDelegate, UICollectionViewData
             cellA.label.textColor = .black
             let path = String(describing: (favoritesArray[indexPath.row].productImage?.path!)!) //OPTIONI YOK ETTİM
             cellA.detail.text = String(describing: (favoritesArray[indexPath.row].id)!)
-           
             return cellA
         }
         else if collectionView == self.scannedCollectionView {

@@ -9,13 +9,12 @@ import UIKit
 import CoreLocation
 import SwiftKeychainWrapper
 
-class ProductVC: UIViewController, CLLocationManagerDelegate {
+class ProductVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, CLLocationManagerDelegate {
     
     @IBOutlet weak var topView: UIView!
     @IBOutlet weak var makeCommentButton: UIButton!
     @IBOutlet weak var seeAllCommentsButton: UIButton!
     @IBOutlet weak var storeLabel: UILabel!
-    @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var likeButton: UIButton!
     @IBOutlet weak var colorLabel: UILabel!
     @IBOutlet weak var sizeLabel: UILabel!
@@ -34,6 +33,10 @@ class ProductVC: UIViewController, CLLocationManagerDelegate {
     var productsArray: [ScanProduct] = []
     var theProduct: [ScanProduct] = []
     var imageUrlArray: [String] = []
+    @IBOutlet weak var photosCollectionView: UICollectionView!
+    let photosCollectionViewIdentifier = "PhotosofProductCell"
+    @IBOutlet weak var pageControl: UIPageControl!
+    var currentIndex = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -87,102 +90,117 @@ class ProductVC: UIViewController, CLLocationManagerDelegate {
                 for item in self!.theProduct[0].productImages! {
                     self?.imageUrlArray.append(String(item.path!))
                 }
-                let imageUrlString = "http://192.168.1.155/ProductImages/\(String(describing: self?.imageUrlArray[0]))"
-                guard let imageUrl:URL = URL(string: imageUrlString) else {
-                    return
+                self?.pageControl.numberOfPages = (self?.imageUrlArray.count)!
+                DispatchQueue.main.async{
+                    self?.photosCollectionView.reloadData()
                 }
-                self?.imageView.loadImge(withUrl: imageUrl)
             }
         }
+    }
+    
+    @IBAction func backButtonPressed(_ sender: Any) {
+        let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = mainStoryboard.instantiateViewController(withIdentifier: "ViewController") as! ViewController
+        vc.modalPresentationStyle = .fullScreen
+        present(vc, animated: true, completion: nil)
+    }
+    
+    @IBAction func seeAllCommentsButtonPressed(_ sender: Any) {
+        let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = mainStoryboard.instantiateViewController(withIdentifier: "SeeAllCommentsVC") as! SeeAllCommentsVC
+        vc.modalPresentationStyle = .fullScreen
+        //        vc.barcodeNumber = self.barcodeNumber
+        present(vc, animated: true, completion: nil)
+    }
+    @IBAction func likeButtonPressed(_ sender: Any) {
         
-        let imageUrlString = "http://192.168.1.155/ProductImages/2f79ecd8-2b8c-401b-9d6c-e27e7c8d2ca1.jpg"
-        guard let imageUrl:URL = URL(string: imageUrlString) else {
+    }
+    
+    @IBAction func makeCommentButtonPressed(_ sender: Any) {
+        if KeychainWrapper.standard.string(forKey: "username") != nil {
+            let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
+            let vc = mainStoryboard.instantiateViewController(withIdentifier: "makeCommentVC") as! MakeCommentVC
+            vc.modalPresentationStyle = .popover
+            vc.productID = self.productID
+            present(vc, animated: true, completion: nil)
+        }
+        else{
+            let window = UIApplication.shared.keyWindow!
+            let backgroundView = UIView(frame: window.bounds)
+            window.addSubview(backgroundView)
+            backgroundView.backgroundColor = UIColor.init(displayP3Red: 0.954, green: 0.934, blue: 0.925, alpha: 0.95)
+            view.addSubview(backgroundView)
+            let gif = UIImage.gifImageWithName("signInError")
+            let imageView = UIImageView(image: gif)
+            imageView.frame = CGRect(x: -20, y: 285, width: 467.25, height: 350)
+            view.addSubview(imageView)
+            DispatchQueue.main.asyncAfter(deadline: .now() + 8) {
+                imageView.removeFromSuperview()
+                backgroundView.removeFromSuperview()
+            }
+        }
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        switch status {
+        // 1
+        case .notDetermined:
+            locationManager.requestWhenInUseAuthorization()
             return
+            
+        // 2
+        case .denied, .restricted:
+            let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
+            let vc = mainStoryboard.instantiateViewController(withIdentifier: "locationVC") as! LocationVC
+            vc.modalPresentationStyle = .popover
+            vc.barcodeNumber = self.barcodeNumber
+            present(vc, animated: true, completion: nil)
+            return
+            
+        case .authorizedAlways, .authorizedWhenInUse:
+            manager.requestLocation()
+            break
+            
+        @unknown default:
+            print("unknown")
+            fatalError()
         }
-        imageView.loadImge(withUrl: imageUrl)
+        // 4
+        locationManager.delegate = self
+        locationManager.startUpdatingLocation()
     }
-
-
-@IBAction func backButtonPressed(_ sender: Any) {
-    let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
-    let vc = mainStoryboard.instantiateViewController(withIdentifier: "ViewController") as! ViewController
-    vc.modalPresentationStyle = .fullScreen
-    present(vc, animated: true, completion: nil)
-}
-
-@IBAction func seeAllCommentsButtonPressed(_ sender: Any) {
-    let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
-    let vc = mainStoryboard.instantiateViewController(withIdentifier: "SeeAllCommentsVC") as! SeeAllCommentsVC
-    vc.modalPresentationStyle = .fullScreen
-    //        vc.barcodeNumber = self.barcodeNumber
-    present(vc, animated: true, completion: nil)
-}
-@IBAction func likeButtonPressed(_ sender: Any) {
     
-}
-
-@IBAction func makeCommentButtonPressed(_ sender: Any) {
-    if KeychainWrapper.standard.string(forKey: "username") != nil {
-        let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        let vc = mainStoryboard.instantiateViewController(withIdentifier: "makeCommentVC") as! MakeCommentVC
-        vc.modalPresentationStyle = .popover
-        vc.productID = self.productID
-        present(vc, animated: true, completion: nil)
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        let locationValue: CLLocationCoordinate2D = manager.location!.coordinate
     }
-    else{
-        let window = UIApplication.shared.keyWindow!
-        let backgroundView = UIView(frame: window.bounds)
-        window.addSubview(backgroundView)
-        backgroundView.backgroundColor = UIColor.init(displayP3Red: 0.954, green: 0.934, blue: 0.925, alpha: 0.95)
-        view.addSubview(backgroundView)
-        let gif = UIImage.gifImageWithName("signInError")
-        let imageView = UIImageView(image: gif)
-        imageView.frame = CGRect(x: -20, y: 285, width: 467.25, height: 350)
-        view.addSubview(imageView)
-        DispatchQueue.main.asyncAfter(deadline: .now() + 8) {
-            imageView.removeFromSuperview()
-            backgroundView.removeFromSuperview()
+    
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Swift.Error) {
+        print("Failed \(error)")
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+            return self.imageUrlArray.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: self.photosCollectionViewIdentifier, for: indexPath) as! PhotosofProductCell
+        let imageUrlString = "http://192.168.1.155/\(String(describing: self.imageUrlArray[indexPath.row]))"
+        guard let imageUrl:URL = URL(string: imageUrlString) else {
+            return cell
         }
+        cell.imageView.loadImge(withUrl: imageUrl)
+        cell.imageView.image = UIImage(named: "barcodeProduct")
+        return cell
     }
-}
-
-func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
     
-    switch status {
-    // 1
-    case .notDetermined:
-        locationManager.requestWhenInUseAuthorization()
-        return
-        
-    // 2
-    case .denied, .restricted:
-        let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        let vc = mainStoryboard.instantiateViewController(withIdentifier: "locationVC") as! LocationVC
-        vc.modalPresentationStyle = .popover
-        vc.barcodeNumber = self.barcodeNumber
-        present(vc, animated: true, completion: nil)
-        return
-        
-    case .authorizedAlways, .authorizedWhenInUse:
-        manager.requestLocation()
-        break
-        
-    @unknown default:
-        print("unknown")
-        fatalError()
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: collectionView.frame.width, height: collectionView.frame.height)
     }
-    // 4
-    locationManager.delegate = self
-    locationManager.startUpdatingLocation()
-}
-
-func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-    let locationValue: CLLocationCoordinate2D = manager.location!.coordinate
-}
-
-func locationManager(_ manager: CLLocationManager, didFailWithError error: Swift.Error) {
-    print("Failed \(error)")
-}
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        self.currentIndex = Int(scrollView.contentOffset.x / photosCollectionView.frame.size.width)
+        pageControl.currentPage = currentIndex
+    }
 }
 
 extension UIView {
