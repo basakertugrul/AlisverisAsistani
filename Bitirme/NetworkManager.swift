@@ -34,6 +34,7 @@ enum HTTPRequestMethod {
 typealias RequestCompletionBlock = (_ data: [String: Any]?, _ error: String?) -> ()
 typealias ScanRequestCompletionBlock = (_ data: Scan?, _ error: String?) -> ()
 typealias GetRequestCompletionBlock = (_ data: [ProfileProduct]?, _ error: String?) -> ()
+typealias CommentGetRequestCompletionBlock = (_ data: ProfileProductComment3?, _ error: String?) -> ()
 
 struct NetworkManager {
     static func sendPostRequest(urlStr: String,
@@ -65,6 +66,30 @@ struct NetworkManager {
                         let jsonString = String(data: response.data!, encoding: .utf8)
                         let profileProducts = try ProfileProducts(jsonString!)
                         completion(profileProducts, nil )
+                    }
+                    catch let e {
+                        completion(nil, e.localizedDescription)
+                    }
+                    
+                case .failure(let error):
+                    completion(nil, error.localizedDescription)
+                }
+            }
+    }
+    
+    static func sendCommentGetRequestwithAuth(urlStr: String,
+                                       completion: @escaping CommentGetRequestCompletionBlock) {
+        let stringToken = String(describing: KeychainWrapper.standard.string(forKey: "token") ?? "" )
+        let headers : HTTPHeaders = ["Content-Type": "application/json", "Authorization": "Bearer \(stringToken)"]
+        
+        AF.request(urlStr, method: .get, encoding: JSONEncoding.default, headers: headers)
+            .responseJSON { response in
+                switch response.result {
+                case .success:
+                    do {
+                        let jsonString = String(data: response.data!, encoding: .utf8)
+                        let profileProductComment = try ProfileProductComment3(jsonString!)
+                        completion(profileProductComment, nil )
                     }
                     catch let e {
                         completion(nil, e.localizedDescription)

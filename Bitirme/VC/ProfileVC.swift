@@ -21,7 +21,7 @@ class ProfileVC:UIViewController, UICollectionViewDelegate, UICollectionViewData
     
     var favoritesArray = [ProfileProduct]()
     var scannedArray = [ProfileProduct]()
-    var commentedArray = [ProfileProduct]()
+    var commentedArray = ProfileProductComment3()
     @IBOutlet weak var favoritesCollectionView: UICollectionView!
     @IBOutlet weak var scannedCollectionView: UICollectionView!
     @IBOutlet weak var commentedCollectionView: UICollectionView!
@@ -86,6 +86,8 @@ class ProfileVC:UIViewController, UICollectionViewDelegate, UICollectionViewData
             let _: Bool = KeychainWrapper.standard.removeObject(forKey: "token")
             let _: Bool = KeychainWrapper.standard.removeObject(forKey: "username")
             let _: Bool = KeychainWrapper.standard.removeObject(forKey: "expiration")
+            let _: Bool = KeychainWrapper.standard.removeObject(forKey: "password")
+            
             self.viewWillAppear(true)
         }
     }
@@ -127,7 +129,7 @@ class ProfileVC:UIViewController, UICollectionViewDelegate, UICollectionViewData
     }
     
     func setUpCommented(){
-        NetworkManager.sendGetRequestwithAuth(urlStr: "http://192.168.1.155:62755/api/user/comment")
+        NetworkManager.sendCommentGetRequestwithAuth(urlStr: "http://192.168.1.155:62755/api/user/comment")
         { [weak self] (data, error) in
             if let error = error {
                 print("ERROR:\(error)")

@@ -8,6 +8,7 @@ import Foundation
 // MARK: - ProfileProduct
 struct ProfileProduct: Codable {
     let id, name: String?
+    let color, size: Int?
     let productImage: ProductImage2?
 }
 
@@ -32,11 +33,15 @@ extension ProfileProduct {
     func with(
         id: String?? = nil,
         name: String?? = nil,
+        color: Int?? = nil,
+        size: Int?? = nil,
         productImage: ProductImage2?? = nil
     ) -> ProfileProduct {
         return ProfileProduct(
             id: (id ?? self.id)!,
             name: name ?? self.name,
+            color: color ?? self.color,
+            size: size ?? self.size,
             productImage: productImage ?? self.productImage
         )
     }

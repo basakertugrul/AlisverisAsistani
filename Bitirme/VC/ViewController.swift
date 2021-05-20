@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SwiftKeychainWrapper
 
 class ViewController: UIViewController {
     
@@ -16,7 +17,33 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let _: Bool = KeychainWrapper.standard.removeObject(forKey: "token")
+        let _: Bool = KeychainWrapper.standard.removeObject(forKey: "username")
+        let _: Bool = KeychainWrapper.standard.removeObject(forKey: "expiration")
+        let _: Bool = KeychainWrapper.standard.removeObject(forKey: "password")
         // Do any additional setup after loading the view.
+        
+        if KeychainWrapper.standard.string(forKey: "username") != nil {
+            
+            let username = KeychainWrapper.standard.string(forKey: "username")
+            let password = KeychainWrapper.standard.string(forKey: "password")
+            
+            let params: [String: Any] = ["username": username!,
+                                         "password": password!]
+            let signUrlStr = "http://192.168.1.155:62755/api/auth/login"
+            NetworkManager.sendPostRequest(urlStr: signUrlStr,
+                                           parameters: params)
+            { [weak self] (data, error) in
+                if let error = error {
+                    print("Sign In Error:\(error)")
+                    return
+                }
+                self!.userSignedIn(data: data, username: username!, password: password!)
+            }
+        }
+             
+        
+        
         if self.backFromProfile == false{
             self.scanView.alpha = 1
             self.profileView.alpha = 0
@@ -46,8 +73,17 @@ class ViewController: UIViewController {
     
     
     
-    
-    
-    
-}
+    func userSignedIn(data: [String : Any]?, username: String, password: String)  {
+        if let token = data!["token"] as? String{
+            if let expiration = data!["expiration"] as? String{
+                let saveSuccessfulToken: Bool = KeychainWrapper.standard.set(token, forKey: "token")
+                let saveSuccessfulUsername: Bool = KeychainWrapper.standard.set(username, forKey: "username")
+                let saveSuccessfulExpiration: Bool = KeychainWrapper.standard.set(expiration, forKey: "expiration")
+                let saveSuccessfulPassword: Bool = KeychainWrapper.standard.set(password, forKey: "password")
+            }
+        }
+        
+        
+    }
 
+}

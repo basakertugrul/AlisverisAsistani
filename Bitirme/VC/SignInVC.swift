@@ -31,16 +31,17 @@ class SignInVC: UIViewController {
                 print("Sign In Error:\(error)")
                 return
             }
-            self!.userSignedIn(data: data, username: username)
+            self!.userSignedIn(data: data, username: username, password: password)
         }
     }
     
-    func userSignedIn(data: [String : Any]?, username: String)  {
+    func userSignedIn(data: [String : Any]?, username: String, password:String )  {
         if let token = data!["token"] as? String{
             if let expiration = data!["expiration"] as? String{
                 let saveSuccessfulToken: Bool = KeychainWrapper.standard.set(token, forKey: "token")
                 let saveSuccessfulUsername: Bool = KeychainWrapper.standard.set(username, forKey: "username")
                 let saveSuccessfulExpiration: Bool = KeychainWrapper.standard.set(expiration, forKey: "expiration")
+                let saveSuccessfulPassword: Bool = KeychainWrapper.standard.set(password, forKey: "password")
             }
         }
         
