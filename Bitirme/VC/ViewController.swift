@@ -17,10 +17,6 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let _: Bool = KeychainWrapper.standard.removeObject(forKey: "token")
-        let _: Bool = KeychainWrapper.standard.removeObject(forKey: "username")
-        let _: Bool = KeychainWrapper.standard.removeObject(forKey: "expiration")
-        let _: Bool = KeychainWrapper.standard.removeObject(forKey: "password")
         // Do any additional setup after loading the view.
         
         if KeychainWrapper.standard.string(forKey: "username") != nil {

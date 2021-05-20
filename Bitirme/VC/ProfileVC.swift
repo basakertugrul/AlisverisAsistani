@@ -162,8 +162,8 @@ class ProfileVC:UIViewController, UICollectionViewDelegate, UICollectionViewData
             self.cardShadow(cell: cellA)
             cellA.label.text = favoritesArray[indexPath.row].name
             cellA.label.textColor = .black
-            if ((scannedArray[indexPath.row].productImage?.path) != nil) {
-                let path = String(describing: (scannedArray[indexPath.row].productImage?.path!)!)} //OPTIONI YOK ETTİM)
+//            if ((scannedArray[indexPath.row].productImage?.path) != nil) {
+//                let path = String(describing: (scannedArray[indexPath.row].productImage?.path!)!)} //OPTIONI YOK ETTİM)
             cellA.detail.text = String(describing: (favoritesArray[indexPath.row].id)!)
             return cellA
         }
@@ -172,8 +172,8 @@ class ProfileVC:UIViewController, UICollectionViewDelegate, UICollectionViewData
             self.cardShadow(cell: cellB)
             cellB.label.text = scannedArray[indexPath.row].name
             cellB.label.textColor = .black
-            if ((scannedArray[indexPath.row].productImage?.path) != nil) {
-                let path = String(describing: (scannedArray[indexPath.row].productImage?.path!)!)} //OPTIONI YOK ETTİM)
+//            if ((scannedArray[indexPath.row].productImage?.path) != nil) {
+//                let path = String(describing: (scannedArray[indexPath.row].productImage?.path!)!)} //OPTIONI YOK ETTİM)
             cellB.detail.text = String(describing: indexPath.row)
             return cellB
         }
@@ -182,8 +182,8 @@ class ProfileVC:UIViewController, UICollectionViewDelegate, UICollectionViewData
             self.cardShadow(cell: cellC)
             cellC.label.text = commentedArray[indexPath.row].name
             cellC.label.textColor = .black
-            if ((scannedArray[indexPath.row].productImage?.path) != nil) {
-                let path = String(describing: (scannedArray[indexPath.row].productImage?.path!)!)} //OPTIONI YOK ETTİM)
+//            if ((scannedArray[indexPath.row].productImage?.path) != nil) {
+//                let path = String(describing: (scannedArray[indexPath.row].productImage?.path!)!)} //OPTIONI YOK ETTİM)
             cellC.detail.text = String(describing: indexPath.row)
             
 //            let comments = commentedArray[indexPath.row]
