@@ -9,15 +9,15 @@ import Foundation
 struct ProfileProductCommentElement: Codable {
     let id, name: String?
     let color, size: Int?
-    let ProductImage3: ProductImage3?
-    let ProductComment3s: [ProductComment3]?
+    let productImage: ProductImage?
+    let productComments: [ProductComment]?
 }
 
 // MARK: ProfileProductCommentElement convenience initializers and mutators
 
 extension ProfileProductCommentElement {
     init(data: Data) throws {
-        self = try newJSONDecoder3().decode(ProfileProductCommentElement.self, from: data)
+        self = try newJSONDecoder().decode(ProfileProductCommentElement.self, from: data)
     }
 
     init(_ json: String, using encoding: String.Encoding = .utf8) throws {
@@ -36,21 +36,21 @@ extension ProfileProductCommentElement {
         name: String?? = nil,
         color: Int?? = nil,
         size: Int?? = nil,
-        ProductImage3: ProductImage3?? = nil,
-        ProductComment3s: [ProductComment3]?? = nil
+        productImage: ProductImage?? = nil,
+        productComments: [ProductComment]?? = nil
     ) -> ProfileProductCommentElement {
         return ProfileProductCommentElement(
             id: id ?? self.id,
             name: name ?? self.name,
             color: color ?? self.color,
             size: size ?? self.size,
-            ProductImage3: ProductImage3 ?? self.ProductImage3,
-            ProductComment3s: ProductComment3s ?? self.ProductComment3s
+            productImage: productImage ?? self.productImage,
+            productComments: productComments ?? self.productComments
         )
     }
 
     func jsonData() throws -> Data {
-        return try newJSONEncoder3().encode(self)
+        return try newJSONEncoder().encode(self)
     }
 
     func jsonString(encoding: String.Encoding = .utf8) throws -> String? {
@@ -58,18 +58,18 @@ extension ProfileProductCommentElement {
     }
 }
 
-// MARK: - ProductComment3
-struct ProductComment3: Codable {
+// MARK: - ProductComment
+struct ProductComment: Codable {
     let comment: String?
     let isAnonym: Bool?
     let createdOn: String?
 }
 
-// MARK: ProductComment3 convenience initializers and mutators
+// MARK: ProductComment convenience initializers and mutators
 
-extension ProductComment3 {
+extension ProductComment {
     init(data: Data) throws {
-        self = try newJSONDecoder3().decode(ProductComment3.self, from: data)
+        self = try newJSONDecoder().decode(ProductComment.self, from: data)
     }
 
     init(_ json: String, using encoding: String.Encoding = .utf8) throws {
@@ -87,8 +87,8 @@ extension ProductComment3 {
         comment: String?? = nil,
         isAnonym: Bool?? = nil,
         createdOn: String?? = nil
-    ) -> ProductComment3 {
-        return ProductComment3(
+    ) -> ProductComment {
+        return ProductComment(
             comment: comment ?? self.comment,
             isAnonym: isAnonym ?? self.isAnonym,
             createdOn: createdOn ?? self.createdOn
@@ -96,7 +96,7 @@ extension ProductComment3 {
     }
 
     func jsonData() throws -> Data {
-        return try newJSONEncoder3().encode(self)
+        return try newJSONEncoder().encode(self)
     }
 
     func jsonString(encoding: String.Encoding = .utf8) throws -> String? {
@@ -104,18 +104,18 @@ extension ProductComment3 {
     }
 }
 
-// MARK: - ProductImage3
-struct ProductImage3: Codable {
+// MARK: - ProductImage
+struct ProductImage: Codable {
     let id: String?
     let sort: Int?
     let path: String?
 }
 
-// MARK: ProductImage3 convenience initializers and mutators
+// MARK: ProductImage convenience initializers and mutators
 
-extension ProductImage3 {
+extension ProductImage {
     init(data: Data) throws {
-        self = try newJSONDecoder3().decode(ProductImage3.self, from: data)
+        self = try newJSONDecoder().decode(ProductImage.self, from: data)
     }
 
     init(_ json: String, using encoding: String.Encoding = .utf8) throws {
@@ -133,8 +133,8 @@ extension ProductImage3 {
         id: String?? = nil,
         sort: Int?? = nil,
         path: String?? = nil
-    ) -> ProductImage3 {
-        return ProductImage3(
+    ) -> ProductImage {
+        return ProductImage(
             id: id ?? self.id,
             sort: sort ?? self.sort,
             path: path ?? self.path
@@ -142,7 +142,7 @@ extension ProductImage3 {
     }
 
     func jsonData() throws -> Data {
-        return try newJSONEncoder3().encode(self)
+        return try newJSONEncoder().encode(self)
     }
 
     func jsonString(encoding: String.Encoding = .utf8) throws -> String? {
@@ -150,11 +150,11 @@ extension ProductImage3 {
     }
 }
 
-typealias ProfileProductComment3 = [ProfileProductCommentElement]
+typealias ProfileProductComment = [ProfileProductCommentElement]
 
-extension Array where Element == ProfileProductComment3.Element {
+extension Array where Element == ProfileProductComment.Element {
     init(data: Data) throws {
-        self = try newJSONDecoder3().decode(ProfileProductComment3.self, from: data)
+        self = try newJSONDecoder().decode(ProfileProductComment.self, from: data)
     }
 
     init(_ json: String, using encoding: String.Encoding = .utf8) throws {
@@ -169,7 +169,7 @@ extension Array where Element == ProfileProductComment3.Element {
     }
 
     func jsonData() throws -> Data {
-        return try newJSONEncoder3().encode(self)
+        return try newJSONEncoder().encode(self)
     }
 
     func jsonString(encoding: String.Encoding = .utf8) throws -> String? {
@@ -179,7 +179,7 @@ extension Array where Element == ProfileProductComment3.Element {
 
 // MARK: - Helper functions for creating encoders and decoders
 
-func newJSONDecoder3() -> JSONDecoder {
+func newJSONDecoder() -> JSONDecoder {
     let decoder = JSONDecoder()
     if #available(iOS 10.0, OSX 10.12, tvOS 10.0, watchOS 3.0, *) {
         decoder.dateDecodingStrategy = .iso8601
@@ -187,7 +187,7 @@ func newJSONDecoder3() -> JSONDecoder {
     return decoder
 }
 
-func newJSONEncoder3() -> JSONEncoder {
+func newJSONEncoder() -> JSONEncoder {
     let encoder = JSONEncoder()
     if #available(iOS 10.0, OSX 10.12, tvOS 10.0, watchOS 3.0, *) {
         encoder.dateEncodingStrategy = .iso8601

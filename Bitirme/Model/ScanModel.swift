@@ -16,7 +16,7 @@ struct Scan: Codable {
 
 extension Scan {
     init(data: Data) throws {
-        self = try newJSONDecoder().decode(Scan.self, from: data)
+        self = try newJSONDecoder3().decode(Scan.self, from: data)
     }
 
     init(_ json: String, using encoding: String.Encoding = .utf8) throws {
@@ -45,7 +45,7 @@ extension Scan {
     }
 
     func jsonData() throws -> Data {
-        return try newJSONEncoder().encode(self)
+        return try newJSONEncoder3().encode(self)
     }
 
     func jsonString(encoding: String.Encoding = .utf8) throws -> String? {
@@ -53,7 +53,7 @@ extension Scan {
     }
 }
 
-// MARK: - Product
+// MARK: - ScanProduct
 struct ScanProduct: Codable {
     let id, userID, productTypeID, name: String?
     let stock: Int?
@@ -61,22 +61,24 @@ struct ScanProduct: Codable {
     let color, size: Int?
     let barcode, productNo: String?
     let likeNumber, scanNumber: Int?
-    let productImages: [ProductImage]?
-    let productComments: [ProductComment]?
+    let liked: String?
+    let productImages: [ProductImage3]?
+    let favorites: [Favorite]?
+    let productComments: [ProductComment3]?
 
     enum CodingKeys: String, CodingKey {
         case id
         case userID = "userId"
         case productTypeID = "productTypeId"
-        case name, stock, price, color, size, barcode, productNo, likeNumber, scanNumber, productImages, productComments
+        case name, stock, price, color, size, barcode, productNo, likeNumber, scanNumber, liked, productImages, favorites, productComments
     }
 }
 
-// MARK: Product convenience initializers and mutators
+// MARK: ScanProduct convenience initializers and mutators
 
 extension ScanProduct {
     init(data: Data) throws {
-        self = try newJSONDecoder().decode(ScanProduct.self, from: data)
+        self = try newJSONDecoder3().decode(ScanProduct.self, from: data)
     }
 
     init(_ json: String, using encoding: String.Encoding = .utf8) throws {
@@ -103,8 +105,10 @@ extension ScanProduct {
         productNo: String?? = nil,
         likeNumber: Int?? = nil,
         scanNumber: Int?? = nil,
-        productImages: [ProductImage]?? = nil,
-        productComments: [ProductComment]?? = nil
+        liked: String?? = nil,
+        productImages: [ProductImage3]?? = nil,
+        favorites: [Favorite]?? = nil,
+        productComments: [ProductComment3]?? = nil
     ) -> ScanProduct {
         return ScanProduct(
             id: id ?? self.id,
@@ -119,13 +123,15 @@ extension ScanProduct {
             productNo: productNo ?? self.productNo,
             likeNumber: likeNumber ?? self.likeNumber,
             scanNumber: scanNumber ?? self.scanNumber,
+            liked: liked ?? self.liked,
             productImages: productImages ?? self.productImages,
+            favorites: favorites ?? self.favorites,
             productComments: productComments ?? self.productComments
         )
     }
 
     func jsonData() throws -> Data {
-        return try newJSONEncoder().encode(self)
+        return try newJSONEncoder3().encode(self)
     }
 
     func jsonString(encoding: String.Encoding = .utf8) throws -> String? {
@@ -133,8 +139,52 @@ extension ScanProduct {
     }
 }
 
-// MARK: - ProductComment
-struct ProductComment: Codable {
+// MARK: - Favorite
+struct Favorite: Codable {
+    let userID: String?
+
+    enum CodingKeys: String, CodingKey {
+        case userID = "userId"
+    }
+}
+
+// MARK: Favorite convenience initializers and mutators
+
+extension Favorite {
+    init(data: Data) throws {
+        self = try newJSONDecoder3().decode(Favorite.self, from: data)
+    }
+
+    init(_ json: String, using encoding: String.Encoding = .utf8) throws {
+        guard let data = json.data(using: encoding) else {
+            throw NSError(domain: "JSONDecoding", code: 0, userInfo: nil)
+        }
+        try self.init(data: data)
+    }
+
+    init(fromURL url: URL) throws {
+        try self.init(data: try Data(contentsOf: url))
+    }
+
+    func with(
+        userID: String?? = nil
+    ) -> Favorite {
+        return Favorite(
+            userID: userID ?? self.userID
+        )
+    }
+
+    func jsonData() throws -> Data {
+        return try newJSONEncoder3().encode(self)
+    }
+
+    func jsonString(encoding: String.Encoding = .utf8) throws -> String? {
+        return String(data: try self.jsonData(), encoding: encoding)
+    }
+}
+
+// MARK: - ProductComment3
+struct ProductComment3: Codable {
     let productID, username, comment, createdOn: String?
 
     enum CodingKeys: String, CodingKey {
@@ -143,11 +193,11 @@ struct ProductComment: Codable {
     }
 }
 
-// MARK: ProductComment convenience initializers and mutators
+// MARK: ProductComment3 convenience initializers and mutators
 
-extension ProductComment {
+extension ProductComment3 {
     init(data: Data) throws {
-        self = try newJSONDecoder().decode(ProductComment.self, from: data)
+        self = try newJSONDecoder3().decode(ProductComment3.self, from: data)
     }
 
     init(_ json: String, using encoding: String.Encoding = .utf8) throws {
@@ -166,8 +216,8 @@ extension ProductComment {
         username: String?? = nil,
         comment: String?? = nil,
         createdOn: String?? = nil
-    ) -> ProductComment {
-        return ProductComment(
+    ) -> ProductComment3 {
+        return ProductComment3(
             productID: productID ?? self.productID,
             username: username ?? self.username,
             comment: comment ?? self.comment,
@@ -176,7 +226,7 @@ extension ProductComment {
     }
 
     func jsonData() throws -> Data {
-        return try newJSONEncoder().encode(self)
+        return try newJSONEncoder3().encode(self)
     }
 
     func jsonString(encoding: String.Encoding = .utf8) throws -> String? {
@@ -184,18 +234,18 @@ extension ProductComment {
     }
 }
 
-// MARK: - ProductImage
-struct ProductImage: Codable {
+// MARK: - ProductImage3
+struct ProductImage3: Codable {
     let id: String?
     let sort: Int?
     let path: String?
 }
 
-// MARK: ProductImage convenience initializers and mutators
+// MARK: ProductImage3 convenience initializers and mutators
 
-extension ProductImage {
+extension ProductImage3 {
     init(data: Data) throws {
-        self = try newJSONDecoder().decode(ProductImage.self, from: data)
+        self = try newJSONDecoder3().decode(ProductImage3.self, from: data)
     }
 
     init(_ json: String, using encoding: String.Encoding = .utf8) throws {
@@ -213,8 +263,8 @@ extension ProductImage {
         id: String?? = nil,
         sort: Int?? = nil,
         path: String?? = nil
-    ) -> ProductImage {
-        return ProductImage(
+    ) -> ProductImage3 {
+        return ProductImage3(
             id: id ?? self.id,
             sort: sort ?? self.sort,
             path: path ?? self.path
@@ -222,7 +272,7 @@ extension ProductImage {
     }
 
     func jsonData() throws -> Data {
-        return try newJSONEncoder().encode(self)
+        return try newJSONEncoder3().encode(self)
     }
 
     func jsonString(encoding: String.Encoding = .utf8) throws -> String? {
@@ -232,7 +282,7 @@ extension ProductImage {
 
 // MARK: - Helper functions for creating encoders and decoders
 
-func newJSONDecoder() -> JSONDecoder {
+func newJSONDecoder3() -> JSONDecoder {
     let decoder = JSONDecoder()
     if #available(iOS 10.0, OSX 10.12, tvOS 10.0, watchOS 3.0, *) {
         decoder.dateDecodingStrategy = .iso8601
@@ -240,7 +290,7 @@ func newJSONDecoder() -> JSONDecoder {
     return decoder
 }
 
-func newJSONEncoder() -> JSONEncoder {
+func newJSONEncoder3() -> JSONEncoder {
     let encoder = JSONEncoder()
     if #available(iOS 10.0, OSX 10.12, tvOS 10.0, watchOS 3.0, *) {
         encoder.dateEncodingStrategy = .iso8601

@@ -165,6 +165,7 @@
 			isa = PBXGroup;
 			children = (
 				172C27CB2629D56300BAF434 /* Bitirme */,
+				175EA327263B7D6B004BC583 /* Controller */,
 				172C27E22629D56400BAF434 /* BitirmeTests */,
 				172C27ED2629D56400BAF434 /* BitirmeUITests */,
 				172C27CA2629D56300BAF434 /* Products */,
@@ -200,7 +201,6 @@
 				172BD97826382CD600DCE4AE /* NetworkManager.swift */,
 				172C27D22629D56300BAF434 /* Main.storyboard */,
 				177B41AA263DDC30000C9238 /* Model */,
-				175EA327263B7D6B004BC583 /* Controller */,
 				172C27FF2629DA2600BAF434 /* VC */,
 			);
 			path = Bitirme;

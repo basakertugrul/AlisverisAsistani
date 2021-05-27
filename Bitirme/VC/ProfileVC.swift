@@ -21,7 +21,7 @@ class ProfileVC:UIViewController, UICollectionViewDelegate, UICollectionViewData
     
     var favoritesArray = [ProfileProduct]()
     var scannedArray = [ProfileProduct]()
-    var commentedArray = ProfileProductComment3()
+    var commentedArray = ProfileProductComment()
     @IBOutlet weak var favoritesCollectionView: UICollectionView!
     @IBOutlet weak var scannedCollectionView: UICollectionView!
     @IBOutlet weak var commentedCollectionView: UICollectionView!
@@ -162,8 +162,17 @@ class ProfileVC:UIViewController, UICollectionViewDelegate, UICollectionViewData
             self.cardShadow(cell: cellA)
             cellA.label.text = favoritesArray[indexPath.row].name
             cellA.label.textColor = .black
-//            if ((scannedArray[indexPath.row].productImage?.path) != nil) {
-//                let path = String(describing: (scannedArray[indexPath.row].productImage?.path!)!)} //OPTIONI YOK ETTİM)
+            if ((favoritesArray[indexPath.row].productImage?.path) != nil) {
+                let path = String(describing: (favoritesArray[indexPath.row].productImage?.path!)!) //OPTIONI YOK ETTİM)
+                var imageUrlString = "http://192.168.1.155/\(path)"
+                imageUrlString = imageUrlString.replacingOccurrences(of: "\\",
+                                                                     with: "/")
+                let imageUrl = URL(string: imageUrlString)
+                if let data = try? Data(contentsOf: imageUrl!) {
+                    // Create Image and Update Image View
+                    cellA.imageView.image = UIImage(data: data)
+                }
+            }
             cellA.detail.text = String(describing: (favoritesArray[indexPath.row].id)!)
             return cellA
         }
@@ -172,8 +181,17 @@ class ProfileVC:UIViewController, UICollectionViewDelegate, UICollectionViewData
             self.cardShadow(cell: cellB)
             cellB.label.text = scannedArray[indexPath.row].name
             cellB.label.textColor = .black
-//            if ((scannedArray[indexPath.row].productImage?.path) != nil) {
-//                let path = String(describing: (scannedArray[indexPath.row].productImage?.path!)!)} //OPTIONI YOK ETTİM)
+            if ((scannedArray[indexPath.row].productImage?.path) != nil) {
+                let path = String(describing: (scannedArray[indexPath.row].productImage?.path!)!) //OPTIONI YOK ETTİM)
+                var imageUrlString = "http://192.168.1.155/\(path)"
+                imageUrlString = imageUrlString.replacingOccurrences(of: "\\",
+                                                                     with: "/")
+                let imageUrl = URL(string: imageUrlString)
+                if let data = try? Data(contentsOf: imageUrl!) {
+                    // Create Image and Update Image View
+                    cellB.imageView.image = UIImage(data: data)
+                }
+            }
             cellB.detail.text = String(describing: indexPath.row)
             return cellB
         }
@@ -182,13 +200,22 @@ class ProfileVC:UIViewController, UICollectionViewDelegate, UICollectionViewData
             self.cardShadow(cell: cellC)
             cellC.label.text = commentedArray[indexPath.row].name
             cellC.label.textColor = .black
-//            if ((scannedArray[indexPath.row].productImage?.path) != nil) {
-//                let path = String(describing: (scannedArray[indexPath.row].productImage?.path!)!)} //OPTIONI YOK ETTİM)
+            if ((commentedArray[indexPath.row].productImage?.path) != nil) {
+//                let path = String(describing: (scannedArray[indexPath.row].productImage?.path!)!) //OPTIONI YOK ETTİM)
+//                var imageUrlString = "http://192.168.1.155/\(path)"
+//                imageUrlString = imageUrlString.replacingOccurrences(of: "\\",
+//                                                                     with: "/")
+//                let imageUrl = URL(string: imageUrlString)
+//                if let data = try? Data(contentsOf: imageUrl!) {
+                    // Create Image and Update Image View
+//                    cellC.imageView.image = UIImage(data: data)
+                
+            }
             cellC.detail.text = String(describing: indexPath.row)
             
-//            let comments = commentedArray[indexPath.row]
-//            cellC.detail.text = comments![0].comment
-//            cellC.seconddetail.text = comments![0].createdOn
+            //            let comments = commentedArray[indexPath.row]
+            //            cellC.detail.text = comments![0].comment
+            //            cellC.seconddetail.text = comments![0].createdOn
             return cellC
         }
     }
@@ -219,5 +246,27 @@ class ProfileVC:UIViewController, UICollectionViewDelegate, UICollectionViewData
         let vc = mainStoryboard.instantiateViewController(withIdentifier: "registerVC") as! RegisterVC
         vc.modalPresentationStyle = .popover
         present(vc, animated: true, completion: nil)
+    }
+}
+
+//SUNA BI BAK KUCUK RESIMLER ICIN
+extension UIImageView {
+    func applyshadowWithCorner(containerView : UIView, cornerRadious : CGFloat){
+        containerView.clipsToBounds = false
+        containerView.layer.shadowColor = UIColor.black.cgColor
+        containerView.layer.shadowOpacity = 1
+        containerView.layer.shadowOffset = CGSize.zero
+        containerView.layer.shadowRadius = 10
+        containerView.layer.cornerRadius = cornerRadious
+        containerView.layer.shadowPath = UIBezierPath(roundedRect: containerView.bounds, cornerRadius: cornerRadious).cgPath
+        self.clipsToBounds = true
+        self.layer.cornerRadius = cornerRadious
+    }
+}
+
+extension UIImage {
+    convenience init?(withContentsOfUrl url: URL) throws {
+        let imageData = try Data(contentsOf: url)
+        self.init(data: imageData)
     }
 }

@@ -34,7 +34,9 @@ enum HTTPRequestMethod {
 typealias RequestCompletionBlock = (_ data: [String: Any]?, _ error: String?) -> ()
 typealias ScanRequestCompletionBlock = (_ data: Scan?, _ error: String?) -> ()
 typealias GetRequestCompletionBlock = (_ data: [ProfileProduct]?, _ error: String?) -> ()
-typealias CommentGetRequestCompletionBlock = (_ data: ProfileProductComment3?, _ error: String?) -> ()
+typealias CommentGetRequestCompletionBlock = (_ data: ProfileProductComment?, _ error: String?) -> ()
+typealias PostRequestCompletionBlock = (_ data: String?, _ error: String?) -> ()
+
 
 struct NetworkManager {
     static func sendPostRequest(urlStr: String,
@@ -77,8 +79,42 @@ struct NetworkManager {
             }
     }
     
+    static func sendPostRequestwithAuth(urlStr: String,
+                                        completion: @escaping PostRequestCompletionBlock) {
+        let stringToken = String(describing: KeychainWrapper.standard.string(forKey: "token") ?? "" )
+        let headers : HTTPHeaders = ["Content-Type": "application/json", "Authorization": "Bearer \(stringToken)"]
+        
+        AF.request(urlStr, method: .post, encoding: JSONEncoding.default, headers: headers)
+            .responseJSON { response in
+                switch response.result {
+                case .success:
+                    let jsonString = String(data: response.data!, encoding: .utf8)
+                    completion(jsonString, nil)
+                case .failure(let error):
+                    completion(nil, error.localizedDescription)
+                }
+            }
+    }
+    
+    static func sendDeleteFavoriteRequestwithAuth(urlStr: String,
+                                                  completion: @escaping PostRequestCompletionBlock) {
+        let stringToken = String(describing: KeychainWrapper.standard.string(forKey: "token") ?? "" )
+        let headers : HTTPHeaders = ["Content-Type": "application/json", "Authorization": "Bearer \(stringToken)"]
+        
+        AF.request(urlStr, method: .delete, encoding: JSONEncoding.default, headers: headers)
+            .responseJSON { response in
+                switch response.result {
+                case .success:
+                    let jsonString = String(data: response.data!, encoding: .utf8)
+                    completion(jsonString, nil)
+                case .failure(let error):
+                    completion(nil, error.localizedDescription)
+                }
+            }
+    }
+    
     static func sendCommentGetRequestwithAuth(urlStr: String,
-                                       completion: @escaping CommentGetRequestCompletionBlock) {
+                                              completion: @escaping CommentGetRequestCompletionBlock) {
         let stringToken = String(describing: KeychainWrapper.standard.string(forKey: "token") ?? "" )
         let headers : HTTPHeaders = ["Content-Type": "application/json", "Authorization": "Bearer \(stringToken)"]
         
@@ -88,7 +124,7 @@ struct NetworkManager {
                 case .success:
                     do {
                         let jsonString = String(data: response.data!, encoding: .utf8)
-                        let profileProductComment = try ProfileProductComment3(jsonString!)
+                        let profileProductComment = try ProfileProductComment(jsonString!)
                         completion(profileProductComment, nil )
                     }
                     catch let e {
@@ -104,7 +140,8 @@ struct NetworkManager {
     static func sendScanRequest(parameters: [String: Any],
                                 completion: @escaping ScanRequestCompletionBlock) {
         
-        let headers : HTTPHeaders = ["Content-Type": "application/json"]
+        let stringToken = String(describing: KeychainWrapper.standard.string(forKey: "token") ?? "" )
+        let headers : HTTPHeaders = ["Content-Type": "application/json", "Authorization": "Bearer \(stringToken)"]
         
         AF.request("http://192.168.1.155:62755/api/user/scan", method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers)
             .responseJSON { response in
