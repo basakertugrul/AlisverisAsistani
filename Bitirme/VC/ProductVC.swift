@@ -32,7 +32,7 @@ class ProductVC: UIViewController, UICollectionViewDelegate, UICollectionViewDat
     var latitude: Double = 0.0
     var productTypeID: String = ""
     
-    var liked: String = ""
+    var liked: Bool = false
     var storeName: String = ""
     var productsArray: [ScanProduct] = []
     var theProduct: [ScanProduct] = []
@@ -42,19 +42,23 @@ class ProductVC: UIViewController, UICollectionViewDelegate, UICollectionViewDat
     @IBOutlet weak var pageControl: UIPageControl!
     var currentIndex = 0
     
-    var allColors: [Int] = [1,2,3,4,5,6,78]
+    var allColors: [Int] = [1,2,3,4,5,6,7,8]
     var existcolors: [Int] = [4,6,7]
-    var allSizes: [Int] = [1,2,3,4]
-    var existSizes: [Int] = [1,4]
+    var allSizes: [Int] = [1,2,3]
+    var existSizes: [Int] = [1,3]
+    
     var colorButtons: [UIButton] = []
     var sizeButtons: [UIButton] = []
-    let colorDict: [Int: UIColor] = [1:UIColor.black, 2:UIColor.white, 3:UIColor(red: 0.698, green: 0.0784, blue: 0, alpha: 1.0), 4:UIColor(red: 0.898, green: 0.4784, blue: 0, alpha: 1.0), 5:UIColor(red: 0.898, green: 0.8392, blue: 0, alpha: 1.0), 6:UIColor(red: 0.4275, green: 0.7569, blue: 0, alpha: 1.0), 7:UIColor(red: 0, green: 0.5569, blue: 0.698, alpha: 1.0), 8:UIColor(red: 154/255, green: 0/255, blue: 154/255, alpha: 1.0)]
+    let colorDict: [Int: UIColor] = [1:UIColor.black.withAlphaComponent(0.7), 2:UIColor.white.withAlphaComponent(0.8), 3:UIColor(red: 0.698, green: 0.0784, blue: 0, alpha: 0.8), 4:UIColor(red: 0.898, green: 0.4784, blue: 0, alpha: 0.8), 5:UIColor(red: 0.898, green: 0.8392, blue: 0, alpha: 1.0), 6:UIColor(red: 0.4275, green: 0.7569, blue: 0, alpha: 0.8), 7:UIColor(red: 0, green: 0.5569, blue: 0.698, alpha: 0.8), 8:UIColor(red: 154/255, green: 0/255, blue: 154/255, alpha: 0.8)]
+    
+    let colorNamesDict:[Int: String] = [1: "siyah", 2: "beyaz", 3: "kırmızı", 4: "turuncu", 5:"sarı" , 6: "yeşil", 7:"mavi" , 8:"mor"]
+    let sizeNamesDict:[Int: String] = [1: "S", 2: "M", 3: "L"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         self.topView.layer.cornerRadius = 5
-        self.topView.layer.backgroundColor = UIColor(red: 0.184, green: 0.314, blue: 0.380, alpha: 1.0).cgColor
+//        self.topView.layer.backgroundColor = UIColor(red: 0.184, green: 0.314, blue: 0.380, alpha: 1.0).cgColor
         self.actionView.addShadow(shadowColor: .gray, offSet: CGSize(width: 2.6, height: 2.6), opacity: 0.8, shadowRadius: 5.0, cornerRadius: 10.0, corners: [.allCorners], fillColor: UIColor(red: 0.741, green: 0.780, blue: 0.788, alpha: 1.0))
         self.locationManager.delegate = self
         
@@ -91,7 +95,6 @@ class ProductVC: UIViewController, UICollectionViewDelegate, UICollectionViewDat
                 }
             }
         }
-        
         
         let num2 = allSizes.count
         let space2: Int
@@ -142,7 +145,10 @@ class ProductVC: UIViewController, UICollectionViewDelegate, UICollectionViewDat
     }
     
     @objc func nonExistColorButtonPressed() {
-        print("nonexist color button pressed")
+        let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = mainStoryboard.instantiateViewController(withIdentifier: "mapVC") as! MapVC
+        vc.modalPresentationStyle = .fullScreen
+        present(vc, animated: true, completion: nil)
     }
     
     @objc func existSizeButtonPressed() {
@@ -150,7 +156,10 @@ class ProductVC: UIViewController, UICollectionViewDelegate, UICollectionViewDat
     }
     
     @objc func nonExistSizeButtonPressed() {
-        print("nonexist size button pressed")
+        let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = mainStoryboard.instantiateViewController(withIdentifier: "mapVC") as! MapVC
+        vc.modalPresentationStyle = .fullScreen
+        present(vc, animated: true, completion: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -179,16 +188,16 @@ class ProductVC: UIViewController, UICollectionViewDelegate, UICollectionViewDat
                         self?.theProduct.append(item)
                     }
                 }
-                self?.colorLabel.text = "Color: \(String(Int(self!.theProduct[0].color!)))"
-                self?.sizeLabel.text = "Size: \(String(Int(self!.theProduct[0].size!)))"
-                self?.priceLabel.text = "Price: \(String(Double(self!.theProduct[0].price!)))"
-                self?.totallikesLabel.text = "\(String(Int(self!.theProduct[0].likeNumber!))) people have liked this product"
-                self?.totalscansLabel.text = "\(String(Int(self!.theProduct[0].scanNumber!))) people have scanned this product"
+                self?.colorLabel.text = "Renk: \(String(Int(self!.theProduct[0].color!)))"
+                self?.sizeLabel.text = "Beden: \(String(Int(self!.theProduct[0].size!)))"
+                self?.priceLabel.text = "Fiyat: \(String(Double(self!.theProduct[0].price!)))"
+                self?.totallikesLabel.text = "Bu ürün \(String(Int(self!.theProduct[0].likeNumber!))) defa beğenildi"
+                self?.totalscansLabel.text = "Bu ürün \(String(Int(self!.theProduct[0].scanNumber!))) defa tarandı"
                 self?.nameLabel.text = String(self!.theProduct[0].name!)
                 self?.productID = String(self!.theProduct[0].id!)
                 self?.productTypeID = String(self!.theProduct[0].productTypeID!)
-                self?.liked = String(self!.theProduct[0].liked!)
-                if self?.liked == "true" {
+                self?.liked = Bool(self!.theProduct[0].liked!)
+                if self?.liked == true {
                     self?.likeButton.tintColor = .systemRed
                 }
                 else{
@@ -221,7 +230,7 @@ class ProductVC: UIViewController, UICollectionViewDelegate, UICollectionViewDat
     }
     @IBAction func likeButtonPressed(_ sender: Any) {
         //POST
-        if self.liked == "false" {
+        if self.liked == false {
             
             NetworkManager.sendPostRequestwithAuth(urlStr: "http://192.168.1.155:62755/api/user/favorite/\(String(describing: self.productID))")
             { [weak self] (data, error) in
@@ -230,21 +239,22 @@ class ProductVC: UIViewController, UICollectionViewDelegate, UICollectionViewDat
                     return
                 }
                 if let data = data {
-                    self!.liked = "true"
+                    self!.liked = true
                     self!.likeButton.tintColor = .systemRed
                     
                 }
             }
         }
         else{
-            NetworkManager.sendDeleteFavoriteRequestwithAuth(urlStr: "http://192.168.1.155:62755/api/user/favorite/\(String(describing: {self.productID}))")
+            
+            NetworkManager.sendDeleteFavoriteRequestwithAuth(urlStr: "http://192.168.1.155:62755/api/user/favorite/\(String(describing: self.productID))")
             { [weak self] (data, error) in
                 if let error = error {
                     print("ERROR:\(error)")
                     return
                 }
                 if let data = data {
-                    self!.liked = "false"
+                    self!.liked = false
                     self!.likeButton.tintColor = .black
                 }
             }
@@ -260,6 +270,7 @@ class ProductVC: UIViewController, UICollectionViewDelegate, UICollectionViewDat
             present(vc, animated: true, completion: nil)
         }
         else{
+            
             let window = UIApplication.shared.keyWindow!
             let backgroundView = UIView(frame: window.bounds)
             window.addSubview(backgroundView)

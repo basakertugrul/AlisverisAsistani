@@ -61,7 +61,7 @@ struct ScanProduct: Codable {
     let color, size: Int?
     let barcode, productNo: String?
     let likeNumber, scanNumber: Int?
-    let liked: String?
+    let liked: Bool?
     let productImages: [ProductImage3]?
     let favorites: [Favorite]?
     let productComments: [ProductComment3]?
@@ -105,7 +105,7 @@ extension ScanProduct {
         productNo: String?? = nil,
         likeNumber: Int?? = nil,
         scanNumber: Int?? = nil,
-        liked: String?? = nil,
+        liked: Bool?? = nil,
         productImages: [ProductImage3]?? = nil,
         favorites: [Favorite]?? = nil,
         productComments: [ProductComment3]?? = nil

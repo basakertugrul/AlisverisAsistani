@@ -21,11 +21,11 @@ class ViewController: UIViewController {
         
         if KeychainWrapper.standard.string(forKey: "username") != nil {
             
-            let username = KeychainWrapper.standard.string(forKey: "username")
-            let password = KeychainWrapper.standard.string(forKey: "password")
+            let username = String(KeychainWrapper.standard.string(forKey: "username")!)
+            let password = String(KeychainWrapper.standard.string(forKey: "password")!)
             
-            let params: [String: Any] = ["username": username!,
-                                         "password": password!]
+            let params: [String: Any] = ["username": username,
+                                         "password": password]
             let signUrlStr = "http://192.168.1.155:62755/api/auth/login"
             NetworkManager.sendPostRequest(urlStr: signUrlStr,
                                            parameters: params)
@@ -34,7 +34,7 @@ class ViewController: UIViewController {
                     print("Sign In Error:\(error)")
                     return
                 }
-                self!.userSignedIn(data: data, username: username!, password: password!)
+                self!.userSignedIn(data: data, username: username, password: password)
             }
         }
              
@@ -72,10 +72,10 @@ class ViewController: UIViewController {
     func userSignedIn(data: [String : Any]?, username: String, password: String)  {
         if let token = data!["token"] as? String{
             if let expiration = data!["expiration"] as? String{
-                let saveSuccessfulToken: Bool = KeychainWrapper.standard.set(token, forKey: "token")
-                let saveSuccessfulUsername: Bool = KeychainWrapper.standard.set(username, forKey: "username")
-                let saveSuccessfulExpiration: Bool = KeychainWrapper.standard.set(expiration, forKey: "expiration")
-                let saveSuccessfulPassword: Bool = KeychainWrapper.standard.set(password, forKey: "password")
+                let _: Bool = KeychainWrapper.standard.set(String(token), forKey: "token")
+                let _: Bool = KeychainWrapper.standard.set(String(username), forKey: "username")
+                let _: Bool = KeychainWrapper.standard.set(String(expiration), forKey: "expiration")
+                let _: Bool = KeychainWrapper.standard.set(String(password), forKey: "password")
             }
         }
         

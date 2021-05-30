@@ -21,7 +21,7 @@ class ProfileVC:UIViewController, UICollectionViewDelegate, UICollectionViewData
     
     var favoritesArray = [ProfileProduct]()
     var scannedArray = [ProfileProduct]()
-    var commentedArray = ProfileProductComment()
+    var commentedArray = [ProfileProductCommentElement]()
     @IBOutlet weak var favoritesCollectionView: UICollectionView!
     @IBOutlet weak var scannedCollectionView: UICollectionView!
     @IBOutlet weak var commentedCollectionView: UICollectionView!
@@ -29,19 +29,25 @@ class ProfileVC:UIViewController, UICollectionViewDelegate, UICollectionViewData
     let scannedCollectionViewIdentifier = "ScannedCollectionCell"
     let commentedCollectionViewIdentifier = "CommentedCollectionCell"
     
+    let colorNamesDict:[Int: String] = [1: "Siyah", 2: "Beyaz", 3: "Kırmızı", 4: "Turuncu", 5:"Sarı" , 6: "Yeşil", 7:"Mavi" , 8:"Mor"]
+    let sizeNamesDict:[Int: String] = [1: "S", 2: "M", 3: "L"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        
+        self.signInButton?.heightAnchor.constraint(equalToConstant: 70.0).isActive = true
+        self.registerButton?.heightAnchor.constraint(equalToConstant: 36.0).isActive = true
         self.signInButton?.layer.cornerRadius = 0.05 * self.signInButton.bounds.size.width
         self.registerButton?.layer.cornerRadius = 0.05 * self.registerButton.bounds.size.width
+        self.topView?.clipsToBounds = true
         self.topView?.layer.cornerRadius = 5
+        self.topView?.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
         self.topView?.layer.backgroundColor = UIColor(red: 0.184, green: 0.314, blue: 0.380, alpha: 1.0).cgColor // koyu petrol
         self.signInButton?.backgroundColor = UIColor(red: 0.741, green: 0.780, blue: 0.788, alpha: 1.0)
-        self.leftScannedButton?.layer.cornerRadius = 15
-        self.leftFavoritesButton?.layer.cornerRadius = 15
-        self.leftcommentedButton?.layer.cornerRadius = 15
+        self.registerButton?.backgroundColor = UIColor(red: 0.741, green: 0.780, blue: 0.788, alpha: 1.0)
+        self.leftScannedButton?.layer.cornerRadius = 1
+        self.leftFavoritesButton?.layer.cornerRadius = 1
+        self.leftcommentedButton?.layer.cornerRadius = 1
         if (KeychainWrapper.standard.string(forKey: "username") == nil){
             //            pushSignInVC()
         }
@@ -162,6 +168,10 @@ class ProfileVC:UIViewController, UICollectionViewDelegate, UICollectionViewData
             self.cardShadow(cell: cellA)
             cellA.label.text = favoritesArray[indexPath.row].name
             cellA.label.textColor = .black
+            cellA.detail.text = self.colorNamesDict[favoritesArray[indexPath.row].color!]
+            cellA.detail.textColor = .black
+            cellA.seconddetail.text = self.sizeNamesDict[favoritesArray[indexPath.row].size!]
+            cellA.seconddetail.textColor = .black
             if ((favoritesArray[indexPath.row].productImage?.path) != nil) {
                 let path = String(describing: (favoritesArray[indexPath.row].productImage?.path!)!) //OPTIONI YOK ETTİM)
                 var imageUrlString = "http://192.168.1.155/\(path)"
@@ -173,14 +183,17 @@ class ProfileVC:UIViewController, UICollectionViewDelegate, UICollectionViewData
                     cellA.imageView.image = UIImage(data: data)
                 }
             }
-            cellA.detail.text = String(describing: (favoritesArray[indexPath.row].id)!)
             return cellA
         }
         else if collectionView == self.scannedCollectionView {
             let cellB = collectionView.dequeueReusableCell(withReuseIdentifier: self.scannedCollectionViewIdentifier, for: indexPath) as! ScannedCollectionCell
             self.cardShadow(cell: cellB)
-            cellB.label.text = scannedArray[indexPath.row].name
+            cellB.label.text = self.scannedArray[indexPath.row].name
             cellB.label.textColor = .black
+            cellB.detail.text = self.colorNamesDict[scannedArray[indexPath.row].color!]
+            cellB.detail.textColor = .black
+            cellB.seconddetail.text = self.sizeNamesDict[scannedArray[indexPath.row].size!]
+            cellB.seconddetail.textColor = .black
             if ((scannedArray[indexPath.row].productImage?.path) != nil) {
                 let path = String(describing: (scannedArray[indexPath.row].productImage?.path!)!) //OPTIONI YOK ETTİM)
                 var imageUrlString = "http://192.168.1.155/\(path)"
@@ -192,7 +205,6 @@ class ProfileVC:UIViewController, UICollectionViewDelegate, UICollectionViewData
                     cellB.imageView.image = UIImage(data: data)
                 }
             }
-            cellB.detail.text = String(describing: indexPath.row)
             return cellB
         }
         else{
@@ -200,22 +212,25 @@ class ProfileVC:UIViewController, UICollectionViewDelegate, UICollectionViewData
             self.cardShadow(cell: cellC)
             cellC.label.text = commentedArray[indexPath.row].name
             cellC.label.textColor = .black
-            if ((commentedArray[indexPath.row].productImage?.path) != nil) {
-//                let path = String(describing: (scannedArray[indexPath.row].productImage?.path!)!) //OPTIONI YOK ETTİM)
-//                var imageUrlString = "http://192.168.1.155/\(path)"
-//                imageUrlString = imageUrlString.replacingOccurrences(of: "\\",
-//                                                                     with: "/")
-//                let imageUrl = URL(string: imageUrlString)
-//                if let data = try? Data(contentsOf: imageUrl!) {
-                    // Create Image and Update Image View
-//                    cellC.imageView.image = UIImage(data: data)
-                
+            if let array =  commentedArray[indexPath.row].productComments{
+                cellC.detail.text = String(describing: array[0].comment!)
+                cellC.detail.textColor = .black
             }
-            cellC.detail.text = String(describing: indexPath.row)
             
-            //            let comments = commentedArray[indexPath.row]
-            //            cellC.detail.text = comments![0].comment
-            //            cellC.seconddetail.text = comments![0].createdOn
+            cellC.seconddetail.text = "\(String(describing: self.colorNamesDict[commentedArray[indexPath.row].color!]!)), \(String(describing: self.sizeNamesDict[commentedArray[indexPath.row].size!]!))"
+            cellC.seconddetail.textColor = .black
+            
+            if ((commentedArray[indexPath.row].productImage?.path) != nil) {
+                let path = String(describing: (commentedArray[indexPath.row].productImage?.path!)!) //OPTIONI YOK ETTİM)
+                var imageUrlString = "http://192.168.1.155/\(path)"
+                imageUrlString = imageUrlString.replacingOccurrences(of: "\\",
+                                                                     with: "/")
+                let imageUrl = URL(string: imageUrlString)
+                if let data = try? Data(contentsOf: imageUrl!) {
+                    // Create Image and Update Image View
+                    cellC.imageView.image = UIImage(data: data)
+                }
+            }
             return cellC
         }
     }

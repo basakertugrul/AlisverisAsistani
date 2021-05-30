@@ -16,6 +16,11 @@ class SignInVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        
+        usernameTextField.textColor = .white
+        passwordTextField.textColor = .white
+//        usernameTextField.layer.backgroundColor = UIColor.lightGray.cgColor
+//        passwordTextField.layer.backgroundColor = UIColor.lightGray.cgColor
     }
     
     @IBAction func signInButtonPressed(_ sender: Any) {

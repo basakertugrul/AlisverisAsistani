@@ -166,7 +166,6 @@ struct NetworkManager {
                                    completion: @escaping RequestCompletionBlock) {
         let stringToken = String(describing: KeychainWrapper.standard.string(forKey: "token") ?? "" )
         let headers : HTTPHeaders = ["Content-Type": "application/json", "Authorization": "Bearer \(stringToken)"]
-        
         AF.request("http://192.168.1.155:62755/api/product/comment", method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers)
             .responseJSON { response in
                 switch response.result {
