@@ -32,7 +32,9 @@ class CommentsofProductCollectionCell: UICollectionViewCell{
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var label: UILabel!
     @IBOutlet weak var detail: UILabel!
+    @IBOutlet weak var seconddetail: UILabel!
 }
+
 
 class PhotosofProductCell: UICollectionViewCell{
     @IBOutlet weak var imageView: UIImageView!
@@ -43,3 +45,9 @@ class PhotosofProductCell: UICollectionViewCell{
     }
 }
 
+class PetitCommentsCell: UICollectionViewCell{
+    @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var label: UILabel!
+    @IBOutlet weak var detail: UILabel!
+    @IBOutlet weak var seconddetail: UILabel!
+}

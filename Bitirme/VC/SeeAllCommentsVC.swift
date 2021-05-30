@@ -13,6 +13,10 @@ class SeeAllCommentsVC: UIViewController, UICollectionViewDelegate, UICollection
     @IBOutlet weak var CommentsofProductsCollectionView: UICollectionView!
     let favoritesCollectionViewIdentifier = "CommentsofProductCollectionCell"
     
+    var comments: [ProductComment3] = []
+    var imageUrlArray: [String] = []
+    var theProduct: [ScanProduct] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -22,8 +26,36 @@ class SeeAllCommentsVC: UIViewController, UICollectionViewDelegate, UICollection
         self.CommentsofProductsCollectionView?.delegate = self
         self.CommentsofProductsCollectionView?.dataSource = self
         self.view.addSubview(self.CommentsofProductsCollectionView)
-        
     }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return self.comments.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: self.favoritesCollectionViewIdentifier, for: indexPath) as! CommentsofProductCollectionCell
+        self.cardShadow(cell: cell)
+        cell.label.text = self.theProduct[0].name
+        cell.label.textColor = .black
+        cell.detail.text = self.comments[indexPath.row].comment
+        cell.detail.textColor = .black
+        cell.seconddetail.text = self.comments[indexPath.row].username
+        cell.seconddetail.textColor = .black
+        var imageUrlString = "http://192.168.1.155/\(String(describing: self.imageUrlArray[indexPath.row % (self.imageUrlArray.count)]))"
+        imageUrlString = imageUrlString.replacingOccurrences(of: "\\",
+                                                             with: "/")
+        let imageUrl = URL(string: imageUrlString)
+        if let data = try? Data(contentsOf: imageUrl!) {
+            // Create Image and Update Image View
+            cell.imageView.image = UIImage(data: data)
+        }
+        return cell
+    }
+    
+    @IBAction func goBackButtonPressed(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
     func cardShadow(cell: UICollectionViewCell){
         //This creates the shadows and modifies the cards a little bit
 //        cell.backgroundColor = UIColor(red: 0.957, green: 0.918, blue: 0.902, alpha: 1.0)
@@ -39,20 +71,5 @@ class SeeAllCommentsVC: UIViewController, UICollectionViewDelegate, UICollection
         cell.layer.shadowOpacity = 0.7
         cell.layer.masksToBounds = false
         cell.layer.cornerRadius = 15.0
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 12
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: self.favoritesCollectionViewIdentifier, for: indexPath) as! CommentsofProductCollectionCell
-        self.cardShadow(cell: cell)
-        cell.label.text = "commentttingggjbfgd"
-        return cell
-    }
-    
-    @IBAction func goBackButtonPressed(_ sender: Any) {
-        self.dismiss(animated: true, completion: nil)
     }
 }

@@ -27,7 +27,7 @@ class MakeCommentVC: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         commentTextField.borderStyle = UITextField.BorderStyle.roundedRect
-        commentTextField.attributedPlaceholder = NSAttributedString(string: "Thank you for the feedback",
+        commentTextField.attributedPlaceholder = NSAttributedString(string: "Feedback için teşekkür ederiz.",
                                                                     attributes: [NSAttributedString.Key.foregroundColor: UIColor.white,
                                                                                  NSAttributedString.Key.font : UIFont.systemFont(ofSize: 20)])
         commentTextField.textAlignment = .left

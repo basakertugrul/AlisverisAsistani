@@ -10,6 +10,8 @@ struct Scan: Codable {
     let id, name: String?
     let address: JSONNull?
     let products: [ScanProduct]?
+    let sizes: [Int]?
+    let colors: [Int]?
 }
 
 // MARK: Scan convenience initializers and mutators
@@ -34,13 +36,17 @@ extension Scan {
         id: String?? = nil,
         name: String?? = nil,
         address: JSONNull?? = nil,
-        products: [ScanProduct]?? = nil
+        products: [ScanProduct]?? = nil,
+        sizes: [Int]? = nil,
+        colors: [Int]? = nil
     ) -> Scan {
         return Scan(
             id: id ?? self.id,
             name: name ?? self.name,
             address: address ?? self.address,
-            products: products ?? self.products
+            products: products ?? self.products,
+            sizes: sizes ?? self.sizes,
+            colors: colors ?? self.colors
         )
     }
 

@@ -43,22 +43,32 @@ class ProductVC: UIViewController, UICollectionViewDelegate, UICollectionViewDat
     var currentIndex = 0
     
     var allColors: [Int] = [1,2,3,4,5,6,7,8]
-    var existcolors: [Int] = [4,6,7]
+    var existcolors: [Int] = []
     var allSizes: [Int] = [1,2,3]
-    var existSizes: [Int] = [1,3]
+    var existSizes: [Int] = []
     
     var colorButtons: [UIButton] = []
     var sizeButtons: [UIButton] = []
     let colorDict: [Int: UIColor] = [1:UIColor.black.withAlphaComponent(0.7), 2:UIColor.white.withAlphaComponent(0.8), 3:UIColor(red: 0.698, green: 0.0784, blue: 0, alpha: 0.8), 4:UIColor(red: 0.898, green: 0.4784, blue: 0, alpha: 0.8), 5:UIColor(red: 0.898, green: 0.8392, blue: 0, alpha: 1.0), 6:UIColor(red: 0.4275, green: 0.7569, blue: 0, alpha: 0.8), 7:UIColor(red: 0, green: 0.5569, blue: 0.698, alpha: 0.8), 8:UIColor(red: 154/255, green: 0/255, blue: 154/255, alpha: 0.8)]
     
-    let colorNamesDict:[Int: String] = [1: "siyah", 2: "beyaz", 3: "kırmızı", 4: "turuncu", 5:"sarı" , 6: "yeşil", 7:"mavi" , 8:"mor"]
+    let colorNamesDict:[Int: String] = [1: "Siyah", 2: "Beyaz", 3: "Kırmızı", 4: "Turuncu", 5:"Sarı" , 6: "Yeşil", 7:"Mavi" , 8:"Mor"]
     let sizeNamesDict:[Int: String] = [1: "S", 2: "M", 3: "L"]
+    
+    var comments: [ProductComment3] = []
+    @IBOutlet weak var commentsCollectionView: UICollectionView!
+    let commentsCollectionViewIdentifier = "PetitCommentsCell"
+    @IBOutlet weak var left: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        self.shadowButton(button: self.likeButton)
+        self.shadowButton(button: self.seeAllCommentsButton)
+        self.shadowButton(button: self.makeCommentButton)
+        self.left.layer.cornerRadius = 5
+        self.left.layer.maskedCorners = [.layerMaxXMaxYCorner, .layerMaxXMinYCorner]
         self.topView.layer.cornerRadius = 5
-//        self.topView.layer.backgroundColor = UIColor(red: 0.184, green: 0.314, blue: 0.380, alpha: 1.0).cgColor
+        //        self.topView.layer.backgroundColor = UIColor(red: 0.184, green: 0.314, blue: 0.380, alpha: 1.0).cgColor
         self.actionView.addShadow(shadowColor: .gray, offSet: CGSize(width: 2.6, height: 2.6), opacity: 0.8, shadowRadius: 5.0, cornerRadius: 10.0, corners: [.allCorners], fillColor: UIColor(red: 0.741, green: 0.780, blue: 0.788, alpha: 1.0))
         self.locationManager.delegate = self
         
@@ -67,65 +77,18 @@ class ProductVC: UIViewController, UICollectionViewDelegate, UICollectionViewDat
         self.likeButton.setImage(tintedImage, for: .normal)
         self.likeButton.imageView?.contentMode = .scaleAspectFit
         
-        //willappeardaki servisin altına koy burayı
-        let num = allColors.count
-        let space: Int
-        if num > 1 {
-            space = ( 450 - (25 * num)) / (num-1) }
-        else {
-            space = 10
-        }
-        for item in allColors {
-            let i = allColors.firstIndex(of: item)
-            let x = (space * i!) + 50
-            let y = 445
-            self.colorButtons.append(makeColorButton(x: x, y: y))
-            self.colorButtons[i!].backgroundColor = colorDict[i!+1]
-            if existcolors.contains(item){
-                self.colorButtons[i!].addTarget(self, action: #selector(self.existColorButtonPressed), for: .touchUpInside)
-            }
-            else{
-                self.colorButtons[i!].addTarget(self, action: #selector(self.nonExistColorButtonPressed), for: .touchUpInside)
-                if self.colorButtons[i!].backgroundColor != .black {
-                    self.colorButtons[i!].setImage(UIImage(named: "x"), for: .normal)
-                    
-                }
-                else{
-                    self.colorButtons[i!].setImage(UIImage(named: "xwhite"), for: .normal)
-                }
-            }
-        }
-        
-        let num2 = allSizes.count
-        let space2: Int
-        if num2 > 1 {
-            space2 = ( 350 - (60 * num2)) / (num2-1) + 15 }
-        else {
-            space2 = 10
-        }
-        print("num: \(num2)")
-        print("space: \(space2)")
-        for item in allSizes {
-            let i = allSizes.firstIndex(of: item)
-            let x = (space2 * i!) + 50
-            let y = 475
-            self.sizeButtons.append(makeSizeButton(x: x, y: y))
-            if existSizes.contains(item){
-                self.sizeButtons[i!].addTarget(self, action: #selector(self.existSizeButtonPressed), for: .touchUpInside)
-            }
-            else{
-                self.sizeButtons[i!].addTarget(self, action: #selector(self.nonExistSizeButtonPressed), for: .touchUpInside)
-                self.sizeButtons[i!].setImage(UIImage(named: "x"), for: .normal)
-            }
-        }
     }
+    func shadowButton(button: UIButton) {
+        button.layer.shadowColor = UIColor(red: 0.502, green: 0.7412, blue: 0.8667, alpha: 0.5).cgColor
+        button.layer.shadowOffset = CGSize(width: 5, height: 5)
+        button.layer.shadowRadius = 5
+        button.layer.shadowOpacity = 0.5   }
     
     func makeColorButton(x:Int, y:Int) -> UIButton {
         let button = UIButton(type: .custom)
         button.frame = CGRect(x: x, y: y, width: 25, height: 25)
         button.layer.cornerRadius = 0.5 * button.bounds.size.width
         button.clipsToBounds = true
-        button.backgroundColor = .red
         view.addSubview(button)
         return button
     }
@@ -135,7 +98,9 @@ class ProductVC: UIViewController, UICollectionViewDelegate, UICollectionViewDat
         button.frame = CGRect(x: x, y: y, width: 60, height: 30)
         button.layer.cornerRadius = 0.1 * button.bounds.size.width
         button.clipsToBounds = true
-        button.backgroundColor = .red
+        button.backgroundColor = .lightGray
+        button.layer.borderWidth = 1.0
+        button.layer.borderColor = UIColor.black.cgColor
         view.addSubview(button)
         return button
     }
@@ -178,18 +143,70 @@ class ProductVC: UIViewController, UICollectionViewDelegate, UICollectionViewDat
             }
             if let dictionary = data {
                 self!.storeName = String((dictionary.name)!)
-                self!.productsArray = (dictionary.products)!
                 self!.storeLabel.text = String(self!.storeName)
-                let products = dictionary.products
                 
-                for item in products! {
+                self!.productsArray = (dictionary.products)!
+                for item in self!.productsArray {
                     let tempBarcode = item.barcode
                     if (String(tempBarcode!) == self?.barcodeNumber){
                         self?.theProduct.append(item)
                     }
                 }
-                self?.colorLabel.text = "Renk: \(String(Int(self!.theProduct[0].color!)))"
-                self?.sizeLabel.text = "Beden: \(String(Int(self!.theProduct[0].size!)))"
+                
+                //Servis gelince scan modeli ve burayı değiştir. Gelecek arrayleri ata existcolors ve sizes'a
+                self!.existcolors = dictionary.colors!
+                self!.existSizes = dictionary.sizes!
+                let num = self!.allColors.count
+                let space: Int
+                if num > 1 {
+                    space = ( 450 - (25 * num)) / (num-1) }
+                else {
+                    space = 10
+                }
+                for item in self!.allColors {
+                    let i = self!.allColors.firstIndex(of: item)
+                    let x = (space * i!) + 50
+                    let y = 445
+                    self!.colorButtons.append(self!.makeColorButton(x: x, y: y))
+                    self!.colorButtons[i!].backgroundColor = self!.colorDict[i!+1]
+                    if self!.existcolors.contains(item){
+                        self!.colorButtons[i!].addTarget(self, action: #selector(self!.existColorButtonPressed), for: .touchUpInside)
+                    }
+                    else{
+                        self!.colorButtons[i!].addTarget(self, action: #selector(self!.nonExistColorButtonPressed), for: .touchUpInside)
+                        self!.colorButtons[i!].setImage(UIImage(named: "x"), for: .normal)
+                    }
+                }
+                
+                let num2 = self!.allSizes.count
+                let space2: Int
+                if num2 > 1 {
+                    space2 = ( 350 - (60 * num2)) / (num2-1) + 15 }
+                else {
+                    space2 = 10
+                }
+                print("num: \(num2)")
+                print("space: \(space2)")
+                for item in self!.allSizes {
+                    let i = self!.allSizes.firstIndex(of: item)
+                    let x = (space2 * i!) + 50
+                    let y = 478
+                    self!.sizeButtons.append(self!.makeSizeButton(x: x, y: y))
+                    if self!.existSizes.contains(item){
+                        self!.sizeButtons[i!].addTarget(self, action: #selector(self!.existSizeButtonPressed), for: .touchUpInside)
+                    }
+                    else{
+                        self!.sizeButtons[i!].addTarget(self, action: #selector(self!.nonExistSizeButtonPressed), for: .touchUpInside)
+                        self!.sizeButtons[i!].setImage(UIImage(named: "inceX"), for: .normal)
+                    }
+                    self!.sizeButtons[i!].setTitle(String(self!.sizeNamesDict[i!+1]!), for: .normal)
+                }
+                if let color = self?.colorNamesDict[Int((self!.theProduct[0].color!))] {
+                    self?.colorLabel.text = "Renk: \(color)"
+                }
+                if let size = self?.sizeNamesDict[Int((self!.theProduct[0].size!))] {
+                    self?.sizeLabel.text = "Beden: \(size)"
+                }
                 self?.priceLabel.text = "Fiyat: \(String(Double(self!.theProduct[0].price!)))"
                 self?.totallikesLabel.text = "Bu ürün \(String(Int(self!.theProduct[0].likeNumber!))) defa beğenildi"
                 self?.totalscansLabel.text = "Bu ürün \(String(Int(self!.theProduct[0].scanNumber!))) defa tarandı"
@@ -210,6 +227,12 @@ class ProductVC: UIViewController, UICollectionViewDelegate, UICollectionViewDat
                 DispatchQueue.main.async{
                     self?.photosCollectionView.reloadData()
                 }
+                if let array = self!.theProduct[0].productComments{
+                    self?.comments = array
+                    DispatchQueue.main.async{
+                        self?.commentsCollectionView.reloadData()
+                    }
+                }
             }
         }
     }
@@ -225,13 +248,14 @@ class ProductVC: UIViewController, UICollectionViewDelegate, UICollectionViewDat
         let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = mainStoryboard.instantiateViewController(withIdentifier: "SeeAllCommentsVC") as! SeeAllCommentsVC
         vc.modalPresentationStyle = .fullScreen
-        //        vc.barcodeNumber = self.barcodeNumber
+        vc.theProduct = self.theProduct
+        vc.comments = self.comments
+        vc.imageUrlArray = self.imageUrlArray
         present(vc, animated: true, completion: nil)
     }
     @IBAction func likeButtonPressed(_ sender: Any) {
         //POST
         if self.liked == false {
-            
             NetworkManager.sendPostRequestwithAuth(urlStr: "http://192.168.1.155:62755/api/user/favorite/\(String(describing: self.productID))")
             { [weak self] (data, error) in
                 if let error = error {
@@ -241,12 +265,10 @@ class ProductVC: UIViewController, UICollectionViewDelegate, UICollectionViewDat
                 if let data = data {
                     self!.liked = true
                     self!.likeButton.tintColor = .systemRed
-                    
                 }
             }
         }
-        else{
-            
+        else {
             NetworkManager.sendDeleteFavoriteRequestwithAuth(urlStr: "http://192.168.1.155:62755/api/user/favorite/\(String(describing: self.productID))")
             { [weak self] (data, error) in
                 if let error = error {
@@ -269,8 +291,7 @@ class ProductVC: UIViewController, UICollectionViewDelegate, UICollectionViewDat
             vc.productID = self.productID
             present(vc, animated: true, completion: nil)
         }
-        else{
-            
+        else {
             let window = UIApplication.shared.keyWindow!
             let backgroundView = UIView(frame: window.bounds)
             window.addSubview(backgroundView)
@@ -293,7 +314,6 @@ class ProductVC: UIViewController, UICollectionViewDelegate, UICollectionViewDat
         case .notDetermined:
             locationManager.requestWhenInUseAuthorization()
             return
-            
         // 2
         case .denied, .restricted:
             let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
@@ -306,7 +326,6 @@ class ProductVC: UIViewController, UICollectionViewDelegate, UICollectionViewDat
         case .authorizedAlways, .authorizedWhenInUse:
             manager.requestLocation()
             break
-            
         @unknown default:
             print("unknown")
             fatalError()
@@ -325,21 +344,52 @@ class ProductVC: UIViewController, UICollectionViewDelegate, UICollectionViewDat
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.imageUrlArray.count
+        if collectionView == self.photosCollectionView {
+            return self.imageUrlArray.count
+        }
+        else {
+//            return self.comments.count
+            if self.theProduct.isEmpty {
+                return 0
+            }
+            else{
+                return 5
+            }
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: self.photosCollectionViewIdentifier, for: indexPath) as! PhotosofProductCell
-        var imageUrlString = "http://192.168.1.155/\(String(describing: self.imageUrlArray[indexPath.row]))"
-        imageUrlString = imageUrlString.replacingOccurrences(of: "\\",
-                                                             with: "/")
-        
-        let imageUrl = URL(string: imageUrlString)
-        if let data = try? Data(contentsOf: imageUrl!) {
-            // Create Image and Update Image View
-            cell.imageView.image = UIImage(data: data)
+        if collectionView == self.photosCollectionView {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: self.photosCollectionViewIdentifier, for: indexPath) as! PhotosofProductCell
+            var imageUrlString = "http://192.168.1.155/\(String(describing: self.imageUrlArray[indexPath.row]))"
+            imageUrlString = imageUrlString.replacingOccurrences(of: "\\",
+                                                                 with: "/")
+            let imageUrl = URL(string: imageUrlString)
+            if let data = try? Data(contentsOf: imageUrl!) {
+                // Create Image and Update Image View
+                cell.imageView.image = UIImage(data: data)
+            }
+            return cell
         }
-        return cell
+        else {
+            let cellA = collectionView.dequeueReusableCell(withReuseIdentifier: self.commentsCollectionViewIdentifier, for: indexPath) as! PetitCommentsCell
+            self.cardShadow(cell: cellA)
+            cellA.label.text = self.theProduct[0].name
+            cellA.label.textColor = .black
+            cellA.detail.text = self.comments[indexPath.row].comment
+            cellA.detail.textColor = .black
+            cellA.seconddetail.text = self.comments[indexPath.row].username
+            cellA.seconddetail.textColor = .black
+            var imageUrlString = "http://192.168.1.155/\(String(describing: self.imageUrlArray[indexPath.row % (self.imageUrlArray.count)]))"
+            imageUrlString = imageUrlString.replacingOccurrences(of: "\\",
+                                                                 with: "/")
+            let imageUrl = URL(string: imageUrlString)
+            if let data = try? Data(contentsOf: imageUrl!) {
+                // Create Image and Update Image View
+                cellA.imageView.image = UIImage(data: data)
+            }
+            return cellA
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -347,8 +397,28 @@ class ProductVC: UIViewController, UICollectionViewDelegate, UICollectionViewDat
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        self.currentIndex = Int(scrollView.contentOffset.x / photosCollectionView.frame.size.width)
-        pageControl.currentPage = currentIndex
+        if scrollView == self.photosCollectionView {
+            self.currentIndex = Int(scrollView.contentOffset.x / photosCollectionView.frame.size.width)
+            pageControl.currentPage = currentIndex
+        }
+        else {
+            //code for this scrollView2
+        }
+        
+    }
+    
+    func cardShadow(cell: UICollectionViewCell){
+        //        This creates the shadows and modifies the cards a little bit
+        cell.contentView.layer.cornerRadius = 15.0
+        cell.contentView.layer.borderWidth = 1.0
+        cell.contentView.layer.borderColor = UIColor.clear.cgColor
+        cell.contentView.layer.masksToBounds = false
+        cell.layer.shadowColor = UIColor.gray.cgColor
+        cell.layer.shadowOffset = CGSize(width: 0, height: 0.0)
+        cell.layer.shadowRadius = 2.0
+        cell.layer.shadowOpacity = 0.8
+        cell.layer.masksToBounds = false
+        cell.layer.cornerRadius = 15.0
     }
 }
 
