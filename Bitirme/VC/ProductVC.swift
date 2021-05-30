@@ -78,7 +78,7 @@ class ProductVC: UIViewController, UICollectionViewDelegate, UICollectionViewDat
         for item in allColors {
             let i = allColors.firstIndex(of: item)
             let x = (space * i!) + 50
-            let y = 650
+            let y = 445
             self.colorButtons.append(makeColorButton(x: x, y: y))
             self.colorButtons[i!].backgroundColor = colorDict[i!+1]
             if existcolors.contains(item){
@@ -99,7 +99,7 @@ class ProductVC: UIViewController, UICollectionViewDelegate, UICollectionViewDat
         let num2 = allSizes.count
         let space2: Int
         if num2 > 1 {
-            space2 = ( 450 - (60 * num2)) / (num2-1) + 15 }
+            space2 = ( 350 - (60 * num2)) / (num2-1) + 15 }
         else {
             space2 = 10
         }
@@ -108,7 +108,7 @@ class ProductVC: UIViewController, UICollectionViewDelegate, UICollectionViewDat
         for item in allSizes {
             let i = allSizes.firstIndex(of: item)
             let x = (space2 * i!) + 50
-            let y = 690
+            let y = 475
             self.sizeButtons.append(makeSizeButton(x: x, y: y))
             if existSizes.contains(item){
                 self.sizeButtons[i!].addTarget(self, action: #selector(self.existSizeButtonPressed), for: .touchUpInside)
