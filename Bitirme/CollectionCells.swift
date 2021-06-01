@@ -29,7 +29,6 @@ class CommentedCollectionCell: UICollectionViewCell{
 }
 
 class CommentsofProductCollectionCell: UICollectionViewCell{
-    @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var label: UILabel!
     @IBOutlet weak var detail: UILabel!
     @IBOutlet weak var seconddetail: UILabel!

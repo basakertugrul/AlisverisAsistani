@@ -4,8 +4,8 @@ import MapKit
 class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
     
     @IBOutlet weak var mapView: MKMapView!
-    let locationArray = [[41.02513437515097, 29.039961120620085],[41.0772587890899, 29.009406339746615],[41.025602596771705, 29.106860592984635]]
-    let titleArray = ["Altunizade Koton", "Özdilek Koton", "Canpark Koton"]
+    var locationArray = [[41.02513437515097, 29.039961120620085],[41.0772587890899, 29.009406339746615],[41.025602596771705, 29.106860592984635]]
+    var titleArray = ["Altunizade Koton", "Özdilek Koton", "Canpark Koton"]
     var myLocation = CLLocationCoordinate2D()
     
     let locationManager = CLLocationManager()
@@ -50,7 +50,7 @@ class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
         for i in coords.indices {
             let annotation = MKPointAnnotation()
             annotation.coordinate = coords[i]
-            annotation.title = titles[i]
+            annotation.title = titles[i % titles.count]
             mapView.addAnnotation(annotation)
         }
     }

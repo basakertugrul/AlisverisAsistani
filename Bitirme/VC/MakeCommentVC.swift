@@ -8,7 +8,7 @@
 import UIKit
 import SwiftKeychainWrapper
 
-class MakeCommentVC: UIViewController {
+class MakeCommentVC: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var commentTextField: UITextField!
     @IBOutlet weak var sendButton: UIButton!
@@ -26,6 +26,7 @@ class MakeCommentVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        self.commentTextField.delegate = self
         commentTextField.borderStyle = UITextField.BorderStyle.roundedRect
         commentTextField.attributedPlaceholder = NSAttributedString(string: "Feedback için teşekkür ederiz.",
                                                                     attributes: [NSAttributedString.Key.foregroundColor: UIColor.white,
@@ -72,5 +73,9 @@ class MakeCommentVC: UIViewController {
             print(String(describing: data))
             self!.dismiss(animated: true, completion: nil)
         }
+    }
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return false
     }
 }

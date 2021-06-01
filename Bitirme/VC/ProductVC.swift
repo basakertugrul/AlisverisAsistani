@@ -31,6 +31,10 @@ class ProductVC: UIViewController, UICollectionViewDelegate, UICollectionViewDat
     var longitude: Double = 0.0
     var latitude: Double = 0.0
     var productTypeID: String = ""
+    var productNo: String = ""
+    var currentColor: Int = 0
+    var currentSize: Int = 0
+    
     
     var liked: Bool = false
     var storeName: String = ""
@@ -105,15 +109,32 @@ class ProductVC: UIViewController, UICollectionViewDelegate, UICollectionViewDat
         return button
     }
     
-    @objc func existColorButtonPressed() {
-        print("exist color button pressed")
+    @objc func existColorButtonPressed(sender: UIButton) {
+        
     }
     
-    @objc func nonExistColorButtonPressed() {
-        let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        let vc = mainStoryboard.instantiateViewController(withIdentifier: "mapVC") as! MapVC
-        vc.modalPresentationStyle = .fullScreen
-        present(vc, animated: true, completion: nil)
+    @objc func nonExistColorButtonPressed(sender: UIButton) {
+        print(self.productNo)
+        print(sender.tag)
+        print(self.currentSize)
+        let params: [String: Any] = ["productNo": self.productNo ,
+                                     "color": sender.tag,
+                                     "size": self.currentSize]
+        NetworkManager.sendPostRequestLoc(urlStr: "http://192.168.1.155:62755/api/store/map",
+        parameters: params)
+        { [weak self] (data, error) in
+            if let error = error {
+                print("Sign In Error:\(error)")
+                return
+            }
+            let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
+            let vc = mainStoryboard.instantiateViewController(withIdentifier: "mapVC") as! MapVC
+            for item in data! {
+                vc.locationArray.append( [ item.latitude! , item.longtitude! ] )
+                }
+            vc.modalPresentationStyle = .fullScreen
+            self!.present(vc, animated: true, completion: nil)
+        }
     }
     
     @objc func existSizeButtonPressed() {
@@ -169,6 +190,7 @@ class ProductVC: UIViewController, UICollectionViewDelegate, UICollectionViewDat
                     let y = 445
                     self!.colorButtons.append(self!.makeColorButton(x: x, y: y))
                     self!.colorButtons[i!].backgroundColor = self!.colorDict[i!+1]
+                    self!.colorButtons[i!].tag = i!+1
                     if self!.existcolors.contains(item){
                         self!.colorButtons[i!].addTarget(self, action: #selector(self!.existColorButtonPressed), for: .touchUpInside)
                     }
@@ -212,7 +234,10 @@ class ProductVC: UIViewController, UICollectionViewDelegate, UICollectionViewDat
                 self?.totalscansLabel.text = "Bu ürün \(String(Int(self!.theProduct[0].scanNumber!))) defa tarandı"
                 self?.nameLabel.text = String(self!.theProduct[0].name!)
                 self?.productID = String(self!.theProduct[0].id!)
+                self?.productNo = String(self!.theProduct[0].productNo!)
                 self?.productTypeID = String(self!.theProduct[0].productTypeID!)
+                self?.currentSize = Int(self!.theProduct[0].size!)
+                self?.currentColor = Int(self!.theProduct[0].color!)
                 self?.liked = Bool(self!.theProduct[0].liked!)
                 if self?.liked == true {
                     self?.likeButton.tintColor = .systemRed
@@ -248,9 +273,7 @@ class ProductVC: UIViewController, UICollectionViewDelegate, UICollectionViewDat
         let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = mainStoryboard.instantiateViewController(withIdentifier: "SeeAllCommentsVC") as! SeeAllCommentsVC
         vc.modalPresentationStyle = .fullScreen
-        vc.theProduct = self.theProduct
         vc.comments = self.comments
-        vc.imageUrlArray = self.imageUrlArray
         present(vc, animated: true, completion: nil)
     }
     @IBAction func likeButtonPressed(_ sender: Any) {

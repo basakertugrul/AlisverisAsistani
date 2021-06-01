@@ -14,8 +14,6 @@ class SeeAllCommentsVC: UIViewController, UICollectionViewDelegate, UICollection
     let favoritesCollectionViewIdentifier = "CommentsofProductCollectionCell"
     
     var comments: [ProductComment3] = []
-    var imageUrlArray: [String] = []
-    var theProduct: [ScanProduct] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,20 +33,12 @@ class SeeAllCommentsVC: UIViewController, UICollectionViewDelegate, UICollection
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: self.favoritesCollectionViewIdentifier, for: indexPath) as! CommentsofProductCollectionCell
         self.cardShadow(cell: cell)
-        cell.label.text = self.theProduct[0].name
+        cell.label.text = self.comments[indexPath.row].comment
         cell.label.textColor = .black
-        cell.detail.text = self.comments[indexPath.row].comment
+        cell.detail.text = self.comments[indexPath.row].username
         cell.detail.textColor = .black
-        cell.seconddetail.text = self.comments[indexPath.row].username
+        cell.seconddetail.text = self.comments[indexPath.row].createdOn
         cell.seconddetail.textColor = .black
-        var imageUrlString = "http://192.168.1.155/\(String(describing: self.imageUrlArray[indexPath.row % (self.imageUrlArray.count)]))"
-        imageUrlString = imageUrlString.replacingOccurrences(of: "\\",
-                                                             with: "/")
-        let imageUrl = URL(string: imageUrlString)
-        if let data = try? Data(contentsOf: imageUrl!) {
-            // Create Image and Update Image View
-            cell.imageView.image = UIImage(data: data)
-        }
         return cell
     }
     

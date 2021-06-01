@@ -36,6 +36,7 @@
 		179064842656F82C00E6D93F /* ProfileProductCommentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 179064832656F82C00E6D93F /* ProfileProductCommentModel.swift */; };
 		17C0FC1B263D910A002F565E /* CollectionCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C0FC1A263D910A002F565E /* CollectionCells.swift */; };
 		17CEAA9B26481287003FE9DA /* ScanModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17CEAA9A26481287003FE9DA /* ScanModel.swift */; };
+		17D5C3112666CECA0039022C /* MapModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17D5C3102666CECA0039022C /* MapModel.swift */; };
 		17D787C0263F6012005A8257 /* scanError.gif in Resources */ = {isa = PBXBuildFile; fileRef = 17D787BD263F6012005A8257 /* scanError.gif */; };
 		17D787C1263F6012005A8257 /* signInError.gif in Resources */ = {isa = PBXBuildFile; fileRef = 17D787BE263F6012005A8257 /* signInError.gif */; };
 		17D787C2263F6012005A8257 /* funny.gif in Resources */ = {isa = PBXBuildFile; fileRef = 17D787BF263F6012005A8257 /* funny.gif */; };
@@ -118,6 +119,7 @@
 		179064832656F82C00E6D93F /* ProfileProductCommentModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileProductCommentModel.swift; sourceTree = "<group>"; };
 		17C0FC1A263D910A002F565E /* CollectionCells.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionCells.swift; sourceTree = "<group>"; };
 		17CEAA9A26481287003FE9DA /* ScanModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanModel.swift; sourceTree = "<group>"; };
+		17D5C3102666CECA0039022C /* MapModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapModel.swift; sourceTree = "<group>"; };
 		17D787BD263F6012005A8257 /* scanError.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = scanError.gif; path = ../../../Development/scanError.gif; sourceTree = "<group>"; };
 		17D787BE263F6012005A8257 /* signInError.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = signInError.gif; path = ../../../Development/signInError.gif; sourceTree = "<group>"; };
 		17D787BF263F6012005A8257 /* funny.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = funny.gif; path = ../../../Development/funny.gif; sourceTree = "<group>"; };
@@ -257,6 +259,7 @@
 			children = (
 				17CEAA9A26481287003FE9DA /* ScanModel.swift */,
 				178E9135264CA1060085D7EC /* ProfileProductModel.swift */,
+				17D5C3102666CECA0039022C /* MapModel.swift */,
 				179064832656F82C00E6D93F /* ProfileProductCommentModel.swift */,
 			);
 			path = Model;
@@ -538,6 +541,7 @@
 				172C27D12629D56300BAF434 /* ViewController.swift in Sources */,
 				172C280E2629E77D00BAF434 /* ForgotPasswordVC.swift in Sources */,
 				172BD97926382CD600DCE4AE /* NetworkManager.swift in Sources */,
+				17D5C3112666CECA0039022C /* MapModel.swift in Sources */,
 				172C27CD2629D56300BAF434 /* AppDelegate.swift in Sources */,
 				1762280326610ED6005E5953 /* MapVC.swift in Sources */,
 				178E9136264CA1060085D7EC /* ProfileProductModel.swift in Sources */,

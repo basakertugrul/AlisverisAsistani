@@ -36,6 +36,7 @@ typealias ScanRequestCompletionBlock = (_ data: Scan?, _ error: String?) -> ()
 typealias GetRequestCompletionBlock = (_ data: [ProfileProduct]?, _ error: String?) -> ()
 typealias CommentGetRequestCompletionBlock = (_ data: ProfileProductComment?, _ error: String?) -> ()
 typealias PostRequestCompletionBlock = (_ data: String?, _ error: String?) -> ()
+typealias PostRequestLocCompletionBlock = (_ data: Mapp?, _ error: String?) -> ()
 
 
 struct NetworkManager {
@@ -176,4 +177,28 @@ struct NetworkManager {
                 }
             }
     }
+    
+    static func sendPostRequestLoc(urlStr: String,
+                                parameters: [String: Any],
+                                completion: @escaping PostRequestLocCompletionBlock) {
+        
+        AF.request(urlStr, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: nil)
+            .validate(statusCode: 200..<600)
+            .responseJSON { response in
+                switch response.result {
+                case .success:
+                    do {
+                        let jsonString = String(data: response.data!, encoding: .utf8)
+                        let mapp = try Mapp(jsonString!)
+                        completion(mapp, nil )
+                    }
+                    catch let e {
+                        completion(nil, e.localizedDescription)
+                    }
+                    
+                case .failure(let error):
+                    completion(nil, error.localizedDescription)
+                }
+            }
+}
 }
