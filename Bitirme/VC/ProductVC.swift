@@ -66,6 +66,7 @@ class ProductVC: UIViewController, UICollectionViewDelegate, UICollectionViewDat
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        print(self.barcodeNumber!)
         self.shadowButton(button: self.likeButton)
         self.shadowButton(button: self.seeAllCommentsButton)
         self.shadowButton(button: self.makeCommentButton)
