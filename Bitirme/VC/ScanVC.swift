@@ -10,16 +10,18 @@ import MTBBarcodeScanner
 
 class ScanVC: UIViewController {
 
-    @IBOutlet weak var scanButton: UIButton!
     var barcodeNumber: String = ""
-    
     @IBOutlet var previewView: UIView!
         var scanner: MTBBarcodeScanner?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        scanButton.layer.cornerRadius = 5.0
+        self.previewView.layer.cornerRadius = 10.0
+        self.previewView.layer.shadowColor = UIColor.gray.cgColor
+        self.previewView.layer.shadowOffset = CGSize(width: 0.0, height: 0.0)
+        self.previewView.layer.shadowRadius = 6.0
+        self.previewView.layer.shadowOpacity = 0.7
         scanner = MTBBarcodeScanner(previewView: previewView)
                // Alternatively, limit the type of codes you can scan:
         scanner = MTBBarcodeScanner(metadataObjectTypes: [AVMetadataObject.ObjectType.code128.rawValue], previewView: previewView)
@@ -36,7 +38,10 @@ class ScanVC: UIViewController {
                         if let codes = codes {
                             for code in codes {
                                 let stringValue = code.stringValue!
-                                print("Found code: \(stringValue)")
+                                print(stringValue)
+                                self.barcodeNumber = stringValue
+                                self.scanner?.stopScanning()
+                                self.scanButtonPressed()
                             }
                         }
                     })
@@ -49,8 +54,8 @@ class ScanVC: UIViewController {
         })
     }
     
-    @IBAction func scanButtonPressed(_ sender: Any) {
-        self.barcodeNumber = ""
+    func scanButtonPressed() {
+        
         if barcodeNumber == "" {
             let gif = UIImage.gifImageWithName("scanError")
             let imageView = UIImageView(image: gif)
