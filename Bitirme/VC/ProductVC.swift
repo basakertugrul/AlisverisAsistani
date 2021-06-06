@@ -81,6 +81,7 @@ class ProductVC: UIViewController, UICollectionViewDelegate, UICollectionViewDat
         let tintedImage = origImage?.withRenderingMode(.alwaysTemplate)
         self.likeButton.setImage(tintedImage, for: .normal)
         self.likeButton.imageView?.contentMode = .scaleAspectFit
+        print("BITTI")
         
     }
     func shadowButton(button: UIButton) {
@@ -241,7 +242,7 @@ class ProductVC: UIViewController, UICollectionViewDelegate, UICollectionViewDat
                 self?.currentColor = Int(self!.theProduct[0].color!)
                 self?.liked = Bool(self!.theProduct[0].liked!)
                 if self?.liked == true {
-                    self?.likeButton.tintColor = .systemRed
+                    self?.likeButton.tintColor = UIColor(red: 158/255, green: 0/255, blue: 0/255, alpha: 1.0)
                 }
                 else{
                     self?.likeButton.tintColor = .black
@@ -288,7 +289,7 @@ class ProductVC: UIViewController, UICollectionViewDelegate, UICollectionViewDat
                 }
                 if let data = data {
                     self!.liked = true
-                    self!.likeButton.tintColor = .systemRed
+                    self!.likeButton.tintColor = UIColor(red: 158/255, green: 0/255, blue: 0/255, alpha: 1.0)
                 }
             }
         }

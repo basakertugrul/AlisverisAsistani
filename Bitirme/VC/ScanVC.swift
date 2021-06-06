@@ -23,7 +23,7 @@ class ScanVC: UIViewController {
         self.previewView.layer.shadowRadius = 6.0
         self.previewView.layer.shadowOpacity = 0.7
         scanner = MTBBarcodeScanner(previewView: previewView)
-               // Alternatively, limit the type of codes you can scan:
+        // Alternatively, limit the type of codes you can scan:
         scanner = MTBBarcodeScanner(metadataObjectTypes: [AVMetadataObject.ObjectType.code128.rawValue], previewView: previewView)
     }
     
@@ -40,8 +40,16 @@ class ScanVC: UIViewController {
                                 let stringValue = code.stringValue!
                                 print(stringValue)
                                 self.barcodeNumber = stringValue
+                                self.scanner?.freezeCapture()
+                                let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                                let vc = mainStoryboard.instantiateViewController(withIdentifier: "productVC") as! ProductVC
+                                vc.modalPresentationStyle = .fullScreen
+                                vc.barcodeNumber = self.barcodeNumber
+                                do {
+                                    sleep(5)
+                                }
                                 self.scanner?.stopScanning()
-                                self.scanButtonPressed()
+                                self.present(vc, animated: true, completion: nil)
                             }
                         }
                     })

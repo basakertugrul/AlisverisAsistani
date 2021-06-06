@@ -23,14 +23,23 @@ class MakeCommentVC: UIViewController, UITextFieldDelegate {
     var productID: String = ""
     
     
+    @IBOutlet weak var commentLabel: UILabel!
+    @IBOutlet weak var asSendLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         self.commentTextField.delegate = self
+        
+        self.commentLabel.textColor = .black
+        self.anonymousLabel.textColor = .black
+        self.nicknameLabel.textColor = .black
+        self.asSendLabel.textColor = .black
+        
         commentTextField.borderStyle = UITextField.BorderStyle.roundedRect
         commentTextField.attributedPlaceholder = NSAttributedString(string: "Feedback için teşekkür ederiz.",
-                                                                    attributes: [NSAttributedString.Key.foregroundColor: UIColor.white,
-                                                                                 NSAttributedString.Key.font : UIFont.systemFont(ofSize: 20)])
+                                                                    attributes: [NSAttributedString.Key.foregroundColor: UIColor.black,
+                                                                                 NSAttributedString.Key.font : UIFont.systemFont(ofSize: 14)])
         commentTextField.textAlignment = .left
         commentTextField.contentVerticalAlignment = .top
         sendButton.layer.cornerRadius = 0.05 * sendButton.bounds.size.width
