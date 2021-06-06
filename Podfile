@@ -19,5 +19,6 @@ target 'Bitirme' do
 pod 'Alamofire', '~> 5.0.0-rc.2'
 pod 'SwiftKeychainWrapper'
 pod 'AlamofireObjectMapper', '~> 6.2.0'
+pod 'MTBBarcodeScanner'
 
 end

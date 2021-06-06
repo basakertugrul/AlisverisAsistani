@@ -95,14 +95,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="626"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="0YAM91037LK991" borderStyle="roundedRect" placeholder="Barcode here" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IVA-QG-zTV">
-                                <rect key="frame" x="72" y="241" width="270" height="34"/>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fIs-Hq-YcD">
+                                <rect key="frame" x="20" y="20" width="260" height="271"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </view>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gdZ-xX-Hsc">
-                                <rect key="frame" x="183" y="338" width="48" height="30"/>
+                                <rect key="frame" x="89" y="364" width="48" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.74117647060000003" green="0.78039215689999997" blue="0.78823529410000004" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="SCAN">
@@ -117,13 +116,13 @@
                         <color key="backgroundColor" red="0.91764705879999997" green="0.82745098039999998" blue="0.79607843140000001" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <connections>
-                        <outlet property="barcode" destination="IVA-QG-zTV" id="i0W-xW-Dgk"/>
+                        <outlet property="previewView" destination="fIs-Hq-YcD" id="wfD-zV-Z1s"/>
                         <outlet property="scanButton" destination="gdZ-xX-Hsc" id="JS1-mW-Ynv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lK1-Nu-y9b" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-698.13084112149534" y="819.65442764578836"/>
+            <point key="canvasLocation" x="-698.55072463768124" y="819.29347826086962"/>
         </scene>
         <!--ProfileVC-->
         <scene sceneID="oxv-rj-f5G">
@@ -1143,6 +1142,9 @@
         <image name="x" width="512" height="512"/>
         <systemColor name="opaqueSeparatorColor">
             <color red="0.77647058823529413" green="0.77647058823529413" blue="0.78431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
     </resources>
 </document>
